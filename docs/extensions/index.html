@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, height=device-height">
+    <title>
+Create Extensions    </title>
+    <meta property="og:title" content="Create Extensions – grow.io">
+    <meta property="og:site_name" content="grow.io">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://localhost/docs/extensions/">
+      <link rel="shortcut icon" href="/favicon.ico">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Dosis:300,400,500|Source+Code+Pro" rel="stylesheet">
+    <link href="/css/composite/global-815332777827e9f19889b183c4d607cd.min.css" rel="stylesheet">
+  <link href="/css/composite/docs-f7da157a92f76d14dfae562341bc6dc1.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="wrapper">
+<header class="header">
+  <div class="header__logo">
+    <a href="/">
+      <img src="/static/images/grow.svg">
+      Grow
+    </a>
+  </div>
+  <nav class="header__nav nav">
+    <div class="nav__items nav__items--end">
+        <a class="nav__items__item " href="/start/">Start</a>
+        <a class="nav__items__item " href="/docs/">Docs</a>
+        <a class="nav__items__item " href="/project/">About</a>
+        <a class="nav__items__item " href="/search/">Search</a>
+        <a class="nav__items__item " href="/styleguide/">Styles</a>
+    </div>
+  </nav>
+</header>  <div class="block__main">
+    <div class="split_columns split_columns--reverse">
+<nav class="side_nav">
+      <h3>Get Started</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/">Welcome</a>
+      </li>
+      <li>
+        <a href="/docs/samples/">Themes &amp; samples</a>
+      </li>
+        </ul>
+      <h3>Reference</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/directory-structure/">Directory structure</a>
+      </li>
+      <li>
+        <a href="/docs/podspec/">Podspec</a>
+      </li>
+      <li>
+        <a href="/docs/templates/">Templates</a>
+      </li>
+      <li>
+        <a href="/docs/collections/">Collections</a>
+      </li>
+      <li>
+        <a href="/docs/documents/">Documents</a>
+      </li>
+      <li>
+        <a href="/docs/urls/">Routes and URLs</a>
+      </li>
+      <li>
+        <a href="/docs/content-localization/">Content localization</a>
+      </li>
+      <li>
+        <a href="/docs/environments/">Build Environments</a>
+      </li>
+      <li>
+        <a href="/docs/markdown-extensions/">Markdown reference</a>
+      </li>
+      <li>
+        <a href="/docs/translations/">Translations</a>
+      </li>
+      <li>
+        <a href="/docs/preprocessors/">Preprocessors</a>
+      </li>
+      <li>
+        <a href="/docs/ui-tools/">UI Tools</a>
+      </li>
+      <li>
+        <a href="/docs/preferences/">Command Preferences</a>
+      </li>
+        </ul>
+      <h3>Extensions</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/extensions-install/">Installing Extensions</a>
+      </li>
+      <li>
+        <a href="/docs/extensions-legacy/">Legacy Extensions</a>
+      </li>
+      <li class="active">
+        <a href="/docs/extensions/">Create Extensions</a>
+      </li>
+      <li>
+        <a href="/docs/extensions-preprocessor-legacy/">Create Preprocessors</a>
+      </li>
+        </ul>
+      <h3>Style Guide</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/partials/">Partials</a>
+      </li>
+        </ul>
+      <h3>Workflow</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/development-server/">Development server</a>
+      </li>
+      <li>
+        <a href="/docs/building/">Building</a>
+      </li>
+      <li>
+        <a href="/docs/deployment/">Deployment</a>
+      </li>
+      <li>
+        <a href="/docs/continuous/">Continuous integration</a>
+      </li>
+      <li>
+        <a href="/docs/git-usage/">Git + Grow = ♡</a>
+      </li>
+  </ul>
+</nav>        <main class="main_column pad readable_lines">
+          <h1>Create Extensions</h1>
+  <div class="content">
+      
+<p>Grow has a powerful extension system that enables you to extend the
+functionality of Grow with extensions.</p>
+<h3 id="example-extension">Example Extension</h3>
+<p>As an example of a simple Grow extension see the <a href="https://github.com/grow/grow-ext-html-min">html min extension</a>.</p>
+<h3 id="anatomy-of-an-extension">Anatomy of an Extension</h3>
+<p>Grow extensions work by creating hooks to bind to events that happen within
+Grow. For example, a hook to change the contents of a page after it has already
+been rendered. Each extension can bind to any number of hooks.</p>
+<p>Extensions are provided with a configuration optionally defined in the
+<code>podspec.yaml</code> that can be used to control the extension's functionality:</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic"># podspec.yaml</span>
+ext:
+- extensions.html_min.HtmlMinExtension:
+    options:
+      remove_comments: true
+      reduce_boolean_attributes: false
+</pre></div>
+
+
+<p>For complex extensions specific hooks can be enabled or disabled piecemeal:</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic"># podspec.yaml</span>
+ext:
+- extensions.complex.ComplexExtension:
+    enabled:
+    - post_render
+    disabled:
+    - dev_file_change
+</pre></div>
+
+
+<h3 id="extension-hooks">Extension Hooks</h3>
+<p>Base hooks are defined by Grow and can be extended in the extension. When hooks
+are triggered in Grow (ex: after the content is rendered) it calls the <code>trigger</code>
+method on the hook.</p>
+<p>Hook triggers follow some basic conventions:</p>
+<ul>
+<li>The first argument is the <code>previous_result</code> from any hooks already triggered.</li>
+<li>Arguments change depending on the hook and are documented below.</li>
+<li>Each trigger method should have <code>*_args, **_kwargs</code> as the last two
+  arguments.</li>
+</ul>
+<p>For hooks that are expecting a specific result a result object will be provided
+in the <code>previous_result</code> argument and should just be updated as needed. If there
+is a specific return type it will be documented with the hook.</p>
+<p>Even if your extension doesn't change the <code>previous_result</code>, the
+<code>previous_result</code> should be returned to continue the chain of extensions.</p>
+<p>By using the <code>*_args, **_kwargs</code> on all trigger methods it allows Grow to add
+additional arguments to the hook without breaking existing extensions.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">grow.extensions</span> <span style="color: #007020; font-weight: bold">import</span> hooks
+
+
+<span style="color: #007020; font-weight: bold">class</span> <span style="color: #0e84b5; font-weight: bold">MyPostRenderHook</span>(hooks<span style="color: #666666">.</span>PostRenderHook):
+    <span style="color: #4070a0; font-style: italic">&quot;&quot;&quot;Handle the post-render hook.&quot;&quot;&quot;</span>
+
+    <span style="color: #007020; font-weight: bold">def</span> <span style="color: #06287e">trigger</span>(<span style="color: #007020">self</span>, previous_result, doc, raw_content, <span style="color: #666666">*</span>_args, <span style="color: #666666">**</span>_kwargs):
+        <span style="color: #4070a0; font-style: italic">&quot;&quot;&quot;Execute post-render modification.&quot;&quot;&quot;</span>
+        content <span style="color: #666666">=</span> previous_result <span style="color: #007020; font-weight: bold">if</span> previous_result <span style="color: #007020; font-weight: bold">else</span> raw_content
+
+        <span style="color: #60a0b0; font-style: italic"># Do something to modify the contents.</span>
+
+        <span style="color: #007020; font-weight: bold">return</span> content
+</pre></div>
+
+
+<h3 id="extensions">Extensions</h3>
+<p>A simple extension only needs to extend the <code>BaseExtension</code> and define the
+<code>available_hooks</code> property.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">grow</span> <span style="color: #007020; font-weight: bold">import</span> extensions
+
+
+<span style="color: #007020; font-weight: bold">class</span> <span style="color: #0e84b5; font-weight: bold">MyExtension</span>(extensions<span style="color: #666666">.</span>BaseExtension):
+    <span style="color: #4070a0; font-style: italic">&quot;&quot;&quot;Example Extension.&quot;&quot;&quot;</span>
+
+    <span style="color: #555555; font-weight: bold">@property</span>
+    <span style="color: #007020; font-weight: bold">def</span> <span style="color: #06287e">available_hooks</span>(<span style="color: #007020">self</span>):
+        <span style="color: #4070a0; font-style: italic">&quot;&quot;&quot;Returns the available hook classes.&quot;&quot;&quot;</span>
+        <span style="color: #007020; font-weight: bold">return</span> [MyPostRenderHook]
+</pre></div>
+
+
+<p>For special cases when you need to have additional arguments to the hook class
+you can create hook getters in the extension to control how the hook is created.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">grow</span> <span style="color: #007020; font-weight: bold">import</span> extensions
+
+
+<span style="color: #007020; font-weight: bold">class</span> <span style="color: #0e84b5; font-weight: bold">MyExtension</span>(extensions<span style="color: #666666">.</span>BaseExtension):
+  <span style="color: #4070a0; font-style: italic">&quot;&quot;&quot;Example Extension.&quot;&quot;&quot;</span>
+
+  <span style="color: #555555; font-weight: bold">@property</span>
+  <span style="color: #007020; font-weight: bold">def</span> <span style="color: #06287e">available_hooks</span>(<span style="color: #007020">self</span>):
+    <span style="color: #4070a0; font-style: italic">&quot;&quot;&quot;Returns the available hook classes.&quot;&quot;&quot;</span>
+    <span style="color: #007020; font-weight: bold">return</span> [MyPostRenderHook]
+
+  <span style="color: #007020; font-weight: bold">def</span> <span style="color: #06287e">post_render_hook</span>(<span style="color: #007020">self</span>):
+    <span style="color: #4070a0; font-style: italic">&quot;&quot;&quot;Returns the hook object.&quot;&quot;&quot;</span>
+    <span style="color: #007020; font-weight: bold">return</span> MyPostRenderHook(<span style="color: #007020">self</span>, other_arg<span style="color: #666666">=</span><span style="color: #007020">True</span>)
+</pre></div>
+
+
+<h3 id="grow-hooks">Grow Hooks</h3>
+<p>The following hooks are currently available for extensions.</p>
+<h3 id="hooks.devfilechangehook">hooks.DevFileChangeHook</h3>
+<p>When a file is changed when running the development server this hook is
+triggered.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020; font-weight: bold">def</span> <span style="color: #06287e">trigger</span>(<span style="color: #007020">self</span>, previous_result, pod_path, <span style="color: #666666">*</span>_args, <span style="color: #666666">**</span>_kwargs):
+  <span style="color: #007020; font-weight: bold">return</span> previous_result
+</pre></div>
+
+
+<ul>
+<li><code>pod_path</code> – path of the file that changed in the pod.</li>
+</ul>
+<p>See the <a href="https://github.com/grow/grow/blob/master/grow/extensions/core/routes_extension.py">core routes extension</a> for an example of the dev file change.</p>
+<h3 id="hooks.devhandlerhook">hooks.DevHandlerHook</h3>
+<p>When running the local development server the dev handler hook allows for
+adding custom handlers for the development server.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020; font-weight: bold">def</span> <span style="color: #06287e">trigger</span>(<span style="color: #007020">self</span>, previous_result, routes, <span style="color: #666666">*</span>_args, <span style="color: #666666">**</span>_kwargs):
+  <span style="color: #007020; font-weight: bold">return</span> previous_result
+</pre></div>
+
+
+<ul>
+<li><code>routes</code> – The routes object for adding the handler.</li>
+</ul>
+<p>See the <a href="https://github.com/grow/grow/blob/master/grow/extensions/core/routes_extension.py">core routes extension</a> for an example of the dev handler.</p>
+<h3 id="hooks.postrenderhook">hooks.PostRenderHook</h3>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020; font-weight: bold">def</span> <span style="color: #06287e">trigger</span>(<span style="color: #007020">self</span>, previous_result, doc, raw_content, <span style="color: #666666">*</span>_args, <span style="color: #666666">**</span>_kwargs):
+  <span style="color: #007020; font-weight: bold">return</span> previous_result
+</pre></div>
+
+
+<ul>
+<li><code>doc</code> – The document being rendered. This can be a normal document or a
+   static document.</li>
+<li><code>raw_content</code> – The raw rendered content.</li>
+</ul>
+<p>See the <a href="https://github.com/grow/grow-ext-html-min/blob/master/html_min/html_min.py">html min extension</a> for an example of the dev handler.</p>
+  </div>
+        </main>
+          <aside class="toc_column">
+            <h3>In this document</h3>
+            <div class="toc">
+<ul>
+<li><a href="#example-extension">Example Extension</a></li>
+<li><a href="#anatomy-of-an-extension">Anatomy of an Extension</a></li>
+<li><a href="#extension-hooks">Extension Hooks</a></li>
+<li><a href="#extensions">Extensions</a></li>
+<li><a href="#grow-hooks">Grow Hooks</a></li>
+<li><a href="#hooks.devfilechangehook">hooks.DevFileChangeHook</a></li>
+<li><a href="#hooks.devhandlerhook">hooks.DevHandlerHook</a></li>
+<li><a href="#hooks.postrenderhook">hooks.PostRenderHook</a></li>
+</ul>
+</div>
+          </aside>
+    </div>
+  </div>
+<footer class="footer">
+  <div class="footer__container">
+    <p class="body-1">
+      <a href="https://github.com/grow/grow/">Grow</a> is released under the <a href="https://github.com/grow/grow/blob/master/LICENSE">MIT License</a>.
+      <br>
+      Except otherwise noted, docs are released under <a href="http://creativecommons.org/licenses/by/3.0/us/">CC 3.0</a> and icons are from <a href="http://flatties.uiparade.com">Flatties</a>.
+    </p>
+    <p class="body-1">
+      <a href="https://github.com/grow/grow.io/edit/master/content/docs/extensions.md">Edit on GitHub</a>
+    </p>
+  </div>
+</footer>    </div>
+
+    <script src="/js/composite/global-7bb167004cd34288c477594f56fc1413.min.js"></script>
+
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-44018013-3', 'auto');
+        ga('send', 'pageview');
+      </script>
+  <script src="/js/composite/docs-86f8da85c9025afce6b585ab59548634.min.js"></script>
+  </body>
+</html>

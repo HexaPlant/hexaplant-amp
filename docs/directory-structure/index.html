@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, height=device-height">
+    <title>
+Directory structure    </title>
+    <meta property="og:title" content="Directory structure – grow.io">
+    <meta property="og:site_name" content="grow.io">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://localhost/docs/directory-structure/">
+      <link rel="shortcut icon" href="/favicon.ico">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Dosis:300,400,500|Source+Code+Pro" rel="stylesheet">
+    <link href="/css/composite/global-815332777827e9f19889b183c4d607cd.min.css" rel="stylesheet">
+  <link href="/css/composite/docs-f7da157a92f76d14dfae562341bc6dc1.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="wrapper">
+<header class="header">
+  <div class="header__logo">
+    <a href="/">
+      <img src="/static/images/grow.svg">
+      Grow
+    </a>
+  </div>
+  <nav class="header__nav nav">
+    <div class="nav__items nav__items--end">
+        <a class="nav__items__item " href="/start/">Start</a>
+        <a class="nav__items__item " href="/docs/">Docs</a>
+        <a class="nav__items__item " href="/project/">About</a>
+        <a class="nav__items__item " href="/search/">Search</a>
+        <a class="nav__items__item " href="/styleguide/">Styles</a>
+    </div>
+  </nav>
+</header>  <div class="block__main">
+    <div class="split_columns split_columns--reverse">
+<nav class="side_nav">
+      <h3>Get Started</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/">Welcome</a>
+      </li>
+      <li>
+        <a href="/docs/samples/">Themes &amp; samples</a>
+      </li>
+        </ul>
+      <h3>Reference</h3>
+      <ul class="nav nav-stacked">
+      <li class="active">
+        <a href="/docs/directory-structure/">Directory structure</a>
+      </li>
+      <li>
+        <a href="/docs/podspec/">Podspec</a>
+      </li>
+      <li>
+        <a href="/docs/templates/">Templates</a>
+      </li>
+      <li>
+        <a href="/docs/collections/">Collections</a>
+      </li>
+      <li>
+        <a href="/docs/documents/">Documents</a>
+      </li>
+      <li>
+        <a href="/docs/urls/">Routes and URLs</a>
+      </li>
+      <li>
+        <a href="/docs/content-localization/">Content localization</a>
+      </li>
+      <li>
+        <a href="/docs/environments/">Build Environments</a>
+      </li>
+      <li>
+        <a href="/docs/markdown-extensions/">Markdown reference</a>
+      </li>
+      <li>
+        <a href="/docs/translations/">Translations</a>
+      </li>
+      <li>
+        <a href="/docs/preprocessors/">Preprocessors</a>
+      </li>
+      <li>
+        <a href="/docs/ui-tools/">UI Tools</a>
+      </li>
+      <li>
+        <a href="/docs/preferences/">Command Preferences</a>
+      </li>
+        </ul>
+      <h3>Extensions</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/extensions-install/">Installing Extensions</a>
+      </li>
+      <li>
+        <a href="/docs/extensions-legacy/">Legacy Extensions</a>
+      </li>
+      <li>
+        <a href="/docs/extensions/">Create Extensions</a>
+      </li>
+      <li>
+        <a href="/docs/extensions-preprocessor-legacy/">Create Preprocessors</a>
+      </li>
+        </ul>
+      <h3>Style Guide</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/partials/">Partials</a>
+      </li>
+        </ul>
+      <h3>Workflow</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/development-server/">Development server</a>
+      </li>
+      <li>
+        <a href="/docs/building/">Building</a>
+      </li>
+      <li>
+        <a href="/docs/deployment/">Deployment</a>
+      </li>
+      <li>
+        <a href="/docs/continuous/">Continuous integration</a>
+      </li>
+      <li>
+        <a href="/docs/git-usage/">Git + Grow = ♡</a>
+      </li>
+  </ul>
+</nav>        <main class="main_column pad readable_lines">
+          <h1>Directory structure</h1>
+  <div class="content">
+      
+<p>Grow sites are encapsulated into directories that follow a specific structure. These directories are called "pods". Grow uses the configuration files and the structure of files in each pod to declaratively build your site. Your pod is your site: its content, the structure of its URLs, the translations, redirect behavior, etc. Everything needed by your site is in a pod.</p>
+<p>Each pod is a Git repo, and each pod contains all the files used to build your site. Pods contain source files, but upon deployment, Grow deploys only what's needed to serve your site. Sources and other "internal" files are never deployed.</p>
+<h2 id="example-structure">Example structure</h2>
+<p>Here's an example pod. Folders and files marked with <strong>*</strong> are <em>builtins</em>, and their names cannot change.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>├──  /build                        <span style="color: #60a0b0; font-style: italic"># Where your site is built by default.</span>
+├──  /content*                     <span style="color: #60a0b0; font-style: italic"># All your content.</span>
+|    ├──  /pages                   <span style="color: #60a0b0; font-style: italic"># A content collection.</span>
+|         ├──  /_blueprint.yaml*   <span style="color: #60a0b0; font-style: italic"># A blueprint.</span>
+|         ├──  /about.md           <span style="color: #60a0b0; font-style: italic"># A content document.</span>
+|         ├──  /contact.md
+|         └──  /index.md
+|    └──  /posts
+|         ├──  /_blueprint.yaml*
+|         ├──  /my-first-post.md
+|         └──  /hello-grow.md
+├──  /dist                         <span style="color: #60a0b0; font-style: italic"># Compiled files like minified js and css.</span>
+|    ├──  /css                     <span style="color: #60a0b0; font-style: italic"># Used for static serving of minified files.</span>
+|         └──  /composite
+|              ├──  global.min.css
+|              └──  main.min.css
+|    └──  /js
+|         └──  /composite
+|              ├──  global.min.js
+|              └──  main.min.js
+├──  /partials*                    <span style="color: #60a0b0; font-style: italic"># Partial files.</span>
+|    └──  /hero
+|         ├──  /hero.html
+|         ├──  /hero.js
+|         └──  /hero.sass
+├──  /source                       <span style="color: #60a0b0; font-style: italic"># Source files.</span>
+|    ├──  /js
+|         └──  /composite
+|              ├──  /global.js
+|              └──  /main.js
+|    └──  /sass
+|         └──  /composite
+|              ├──  /global.sass
+|              └──  /main.sass
+├──  /static                       <span style="color: #60a0b0; font-style: italic"># Static files.</span>
+|    ├──  /images
+|         └──  /favicon.png
+├──  /translations*                <span style="color: #60a0b0; font-style: italic"># All your translation data.</span>
+|    ├──  /messages.pot            <span style="color: #60a0b0; font-style: italic"># Message catalog template.</span>
+|    └──  /de
+|         └──  /messages.po        <span style="color: #60a0b0; font-style: italic"># A message catalog.</span>
+|    └──  /fr
+|         └──  /messages.po
+|    └──  /it
+|         └──  /messages.po
+├──  /views*                       <span style="color: #60a0b0; font-style: italic"># Front end views.</span>
+|    └──  /base.html
+|    └──  /pages.html
+|    └──  /posts.html
+├──  /package.json                 <span style="color: #60a0b0; font-style: italic"># JS dependencies.</span>
+└──  /podspec.yaml*                <span style="color: #60a0b0; font-style: italic"># Pod specification.</span>
+</pre></div>
+  </div>
+        </main>
+          <aside class="toc_column">
+            <h3>In this document</h3>
+            <div class="toc">
+<ul>
+<li><a href="#example-structure">Example structure</a></li>
+</ul>
+</div>
+          </aside>
+    </div>
+  </div>
+<footer class="footer">
+  <div class="footer__container">
+    <p class="body-1">
+      <a href="https://github.com/grow/grow/">Grow</a> is released under the <a href="https://github.com/grow/grow/blob/master/LICENSE">MIT License</a>.
+      <br>
+      Except otherwise noted, docs are released under <a href="http://creativecommons.org/licenses/by/3.0/us/">CC 3.0</a> and icons are from <a href="http://flatties.uiparade.com">Flatties</a>.
+    </p>
+    <p class="body-1">
+      <a href="https://github.com/grow/grow.io/edit/master/content/docs/directory-structure.md">Edit on GitHub</a>
+    </p>
+  </div>
+</footer>    </div>
+
+    <script src="/js/composite/global-7bb167004cd34288c477594f56fc1413.min.js"></script>
+
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-44018013-3', 'auto');
+        ga('send', 'pageview');
+      </script>
+  <script src="/js/composite/docs-86f8da85c9025afce6b585ab59548634.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, height=device-height">
+    <title>
+Initializing a new Grow project    </title>
+    <meta property="og:title" content="Initializing a new Grow project – grow.io">
+    <meta property="og:site_name" content="grow.io">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://localhost/start/2/">
+      <link rel="shortcut icon" href="/favicon.ico">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Dosis:300,400,500|Source+Code+Pro" rel="stylesheet">
+    <link href="/css/composite/global-815332777827e9f19889b183c4d607cd.min.css" rel="stylesheet">
+  <link href="/css/composite/docs-f7da157a92f76d14dfae562341bc6dc1.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="wrapper">
+<header class="header">
+  <div class="header__logo">
+    <a href="/">
+      <img src="/static/images/grow.svg">
+      Grow
+    </a>
+  </div>
+  <nav class="header__nav nav">
+    <div class="nav__items nav__items--end">
+        <a class="nav__items__item " href="/start/">Start</a>
+        <a class="nav__items__item " href="/docs/">Docs</a>
+        <a class="nav__items__item " href="/project/">About</a>
+        <a class="nav__items__item " href="/search/">Search</a>
+        <a class="nav__items__item " href="/styleguide/">Styles</a>
+    </div>
+  </nav>
+</header>  <div class="block__main">
+    <div class="split_columns split_columns--reverse">
+<nav class="side_nav">
+      <h3>Codelab</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/start/">Start with Grow</a>
+      </li>
+      <li>
+        <a href="/start/1/">Getting Grow</a>
+      </li>
+      <li class="active">
+        <a href="/start/2/">Initializing a new Grow project</a>
+      </li>
+      <li>
+        <a href="/start/3/">Live development</a>
+      </li>
+      <li>
+        <a href="/start/4/">Pod specification</a>
+      </li>
+      <li>
+        <a href="/start/5/">Working with content</a>
+      </li>
+      <li>
+        <a href="/start/6/">Localizing your site</a>
+      </li>
+      <li>
+        <a href="/start/7/">Building your site</a>
+      </li>
+      <li>
+        <a href="/start/8/">Launching</a>
+      </li>
+      <li>
+        <a href="/start/9/">Wrap up</a>
+      </li>
+  </ul>
+</nav>        <main class="pad readable_lines">
+          <h1>Initializing a new Grow project</h1>
+  <div class="content">
+      <p>To start your first Grow project, the easiest thing to do is to use the <code>grow init</code> command. This command fetches a <em>theme</em> (which is like a scaffold) and clones it to your computer, ready for you to develop upon. Themes are Git repositories. They are just Grow projects with some special theme-related data.</p>
+<p>But wait! You mentioned that Grow is all about configuration, not code, and now we're downloading scaffolding? Grow's default themes are primarily <em>configuration scaffolds</em>. When you run <code>grow init</code>, Grow creates a set of all the basic required config files. <em>Pods require you to implement absolutely zero business logic code</em>; Grow uses the config files to determine your web site's entire architecture.</p>
+<p>Run the following command:</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic"># Clones the &quot;codelab&quot; default theme to a directory &quot;my-codelab&quot; in the current directory.</span>
+$ grow init codelab ./my-codelab/
+$ <span style="color: #007020">cd</span> my-codelab/
+</pre></div>
+
+
+<p>You'll now have the "codelab" theme on your computer, ready to use with Grow. To understand what we mean by "configuration, not code," let's take a look at the structure of a Grow project.</p>
+<h2 id="install-dependencies">Install dependencies</h2>
+<p>When first starting work with a grow site it is a good practice to run the install command to install and setup any dependencies for the project.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic"># Installs any dependencies such as node packages and extensions.</span>
+$ grow install
+</pre></div>
+
+
+<h2 id="pod-structure">Pod structure</h2>
+<p>Grow projects (which we call <em>pods</em>) contain everything that Grow needs to build your site: content, structure, translations, static files, templates, etc. Again, you won't have to write any code to determine how your site is served or its architecture – configs take care of that for you. Because of this concept, if you need to change URLs later, or add or remove localizations (for example), it's simply a matter of changing the configs within your pod.</p>
+<p>Let's now take a look at the structure of a pod. This is the "codelab" pod that was cloned to your computer.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>/content/       # Content collections, blueprints, and documents.
+/source/        # Source files for asset/media/JS/CSS generation.
+/translations/  # Content and UI string translations.
+/views/         # Frontend templates.
+/podspec.yaml   # Pod specification file.
+</pre></div>
+  </div>
+
+          <nav class="relative_nav">
+              <a href="/start/1/" class="button button--icon-start">
+                <i class="material-icons">arrow_back</i>
+                Getting Grow
+              </a>
+              <a href="/start/3/" class="button button--icon-end">
+                Live development
+                <i class="material-icons">arrow_forward</i>
+              </a>
+          </nav>
+        </main>
+    </div>
+  </div>
+<footer class="footer">
+  <div class="footer__container">
+    <p class="body-1">
+      <a href="https://github.com/grow/grow/">Grow</a> is released under the <a href="https://github.com/grow/grow/blob/master/LICENSE">MIT License</a>.
+      <br>
+      Except otherwise noted, docs are released under <a href="http://creativecommons.org/licenses/by/3.0/us/">CC 3.0</a> and icons are from <a href="http://flatties.uiparade.com">Flatties</a>.
+    </p>
+    <p class="body-1">
+      <a href="https://github.com/grow/grow.io/edit/master/content/codelab/2.md">Edit on GitHub</a>
+    </p>
+  </div>
+</footer>    </div>
+
+    <script src="/js/composite/global-7bb167004cd34288c477594f56fc1413.min.js"></script>
+
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-44018013-3', 'auto');
+        ga('send', 'pageview');
+      </script>
+  <script src="/js/composite/docs-86f8da85c9025afce6b585ab59548634.min.js"></script>
+  </body>
+</html>

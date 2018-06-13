@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, height=device-height">
+    <title>
+Partials    </title>
+    <meta property="og:title" content="Partials – grow.io">
+    <meta property="og:site_name" content="grow.io">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://localhost/docs/partials/">
+      <link rel="shortcut icon" href="/favicon.ico">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Dosis:300,400,500|Source+Code+Pro" rel="stylesheet">
+    <link href="/css/composite/global-815332777827e9f19889b183c4d607cd.min.css" rel="stylesheet">
+  <link href="/css/composite/docs-f7da157a92f76d14dfae562341bc6dc1.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="wrapper">
+<header class="header">
+  <div class="header__logo">
+    <a href="/">
+      <img src="/static/images/grow.svg">
+      Grow
+    </a>
+  </div>
+  <nav class="header__nav nav">
+    <div class="nav__items nav__items--end">
+        <a class="nav__items__item " href="/start/">Start</a>
+        <a class="nav__items__item " href="/docs/">Docs</a>
+        <a class="nav__items__item " href="/project/">About</a>
+        <a class="nav__items__item " href="/search/">Search</a>
+        <a class="nav__items__item " href="/styleguide/">Styles</a>
+    </div>
+  </nav>
+</header>  <div class="block__main">
+    <div class="split_columns split_columns--reverse">
+<nav class="side_nav">
+      <h3>Get Started</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/">Welcome</a>
+      </li>
+      <li>
+        <a href="/docs/samples/">Themes &amp; samples</a>
+      </li>
+        </ul>
+      <h3>Reference</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/directory-structure/">Directory structure</a>
+      </li>
+      <li>
+        <a href="/docs/podspec/">Podspec</a>
+      </li>
+      <li>
+        <a href="/docs/templates/">Templates</a>
+      </li>
+      <li>
+        <a href="/docs/collections/">Collections</a>
+      </li>
+      <li>
+        <a href="/docs/documents/">Documents</a>
+      </li>
+      <li>
+        <a href="/docs/urls/">Routes and URLs</a>
+      </li>
+      <li>
+        <a href="/docs/content-localization/">Content localization</a>
+      </li>
+      <li>
+        <a href="/docs/environments/">Build Environments</a>
+      </li>
+      <li>
+        <a href="/docs/markdown-extensions/">Markdown reference</a>
+      </li>
+      <li>
+        <a href="/docs/translations/">Translations</a>
+      </li>
+      <li>
+        <a href="/docs/preprocessors/">Preprocessors</a>
+      </li>
+      <li>
+        <a href="/docs/ui-tools/">UI Tools</a>
+      </li>
+      <li>
+        <a href="/docs/preferences/">Command Preferences</a>
+      </li>
+        </ul>
+      <h3>Extensions</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/extensions-install/">Installing Extensions</a>
+      </li>
+      <li>
+        <a href="/docs/extensions-legacy/">Legacy Extensions</a>
+      </li>
+      <li>
+        <a href="/docs/extensions/">Create Extensions</a>
+      </li>
+      <li>
+        <a href="/docs/extensions-preprocessor-legacy/">Create Preprocessors</a>
+      </li>
+        </ul>
+      <h3>Style Guide</h3>
+      <ul class="nav nav-stacked">
+      <li class="active">
+        <a href="/docs/partials/">Partials</a>
+      </li>
+        </ul>
+      <h3>Workflow</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/development-server/">Development server</a>
+      </li>
+      <li>
+        <a href="/docs/building/">Building</a>
+      </li>
+      <li>
+        <a href="/docs/deployment/">Deployment</a>
+      </li>
+      <li>
+        <a href="/docs/continuous/">Continuous integration</a>
+      </li>
+      <li>
+        <a href="/docs/git-usage/">Git + Grow = ♡</a>
+      </li>
+  </ul>
+</nav>        <main class="main_column pad readable_lines">
+          <h1>Partials</h1>
+  <div class="content">
+      
+<p>Partial templates are a powerful concept that permit site architects to divide a design up into sections, and then freely rearrange and reuse those designs throughout the site.</p>
+<p>Most pages that can be divided up into discrete sections (such as a header, content area – or collection of various content areas in order, and a footer) should be implemented using partials.</p>
+<h2 id="setting-up-the-partial-system">Setting up the partial system</h2>
+<p>Setup the partial system by adding a partial loop to your page template.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic">{# /views/base.html #}</span>
+<span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">if</span> <span style="color: #bb60d5">doc.partials</span> <span style="color: #007020">%}</span>
+  <span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">for</span> <span style="color: #bb60d5">field</span> <span style="color: #007020; font-weight: bold">in</span> <span style="color: #bb60d5">doc.partials</span> <span style="color: #007020">%}</span>
+    <span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">if</span> <span style="color: #007020; font-weight: bold">not</span> <span style="color: #bb60d5">field.partial</span> <span style="color: #007020">%}</span>
+      <span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">continue</span> <span style="color: #007020">%}</span>
+    <span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">endif</span> <span style="color: #007020">%}</span>
+
+    <span style="color: #60a0b0; font-style: italic">{# Render the partial with the values in {{partial}}. #}</span>
+    <span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">set</span> <span style="color: #bb60d5">partial_filename</span> <span style="color: #666666">=</span> <span style="color: #bb60d5">field.partial</span><span style="color: #666666">|</span><span style="color: #06287e">expand_partial</span> <span style="color: #007020">%}</span>
+    <span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">with</span> <span style="color: #bb60d5">partial</span> <span style="color: #666666">=</span> <span style="color: #bb60d5">field</span> <span style="color: #007020">%}</span>
+      <span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">include</span> <span style="color: #bb60d5">partial_filename</span> <span style="color: #007020; font-weight: bold">with context</span> <span style="color: #007020">%}</span>
+    <span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">endwith</span> <span style="color: #007020">%}</span>
+  <span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">endfor</span> <span style="color: #007020">%}</span>
+<span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">else</span> <span style="color: #007020">%}</span>
+  <span style="color: #007020">{{</span><span style="color: #bb60d5">doc.html</span><span style="color: #666666">|</span><span style="color: #06287e">safe</span><span style="color: #007020">}}</span>
+<span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">endif</span> <span style="color: #007020">%}</span>
+</pre></div>
+
+
+<h3 id="create-partials-in-the-/partials-directory.">Create partials in the <code>/partials</code> directory.</h3>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic">{# /partials/hero/hero.html #}</span>
+&lt;div class=”hero”&gt;
+   &lt;h1 class=”hero__title”&gt;<span style="color: #007020">{{_</span><span style="color: #666666">(</span><span style="color: #bb60d5">partial.title</span><span style="color: #666666">)</span><span style="color: #007020">}}</span>&lt;/h1&gt;
+&lt;/div&gt;
+</pre></div>
+
+
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic">{# /partials/about-me/about-me.html #}</span>
+&lt;div class=”about-me”&gt;
+   &lt;h2 class=”about-me__title”&gt;<span style="color: #007020">{{_</span><span style="color: #666666">(</span><span style="color: #bb60d5">partial.title</span><span style="color: #666666">)</span><span style="color: #007020">}}</span>&lt;/h2&gt;
+   &lt;p&gt;<span style="color: #007020">{{_</span><span style="color: #666666">(</span><span style="color: #bb60d5">partial.description</span><span style="color: #666666">)</span><span style="color: #007020">}}</span>&lt;/p&gt;
+&lt;/div&gt;
+</pre></div>
+
+
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic">{# /partials/footer/footer.html #}</span>
+&lt;div class=”footer”&gt;
+   &lt;p class=”footer__copyright&gt;<span style="color: #007020">{{_</span><span style="color: #666666">(</span><span style="color: #bb60d5">partial.copyright</span><span style="color: #666666">)</span><span style="color: #007020">}}</span>&lt;/p&gt;
+&lt;/div&gt;
+</pre></div>
+
+
+<h3 id="add-structured-partials-to-your-page-front-matter">Add structured partials to your page front matter</h3>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic"># /content/pages/about.yaml</span>
+$view: /views/base.html
+$path: /about/
+
+partials:
+- partial: hero
+  title@: My hero
+  image: <span style="color: #902000">!gstatic</span> /static/images/about_me.jpg
+- partial: about-me
+  title@: About me
+  description@: I am a grow.io user!
+- partial: footer  
+  copyright@: 2017 Mysite.com
+</pre></div>
+
+
+<p>Now your “about” page will render a hero, about-me and footer partial.   Easily reuse partials across your site pages.</p>
+<h2 id="naming-partials">Naming Partials</h2>
+<p>Name partials in a generic way. The name of the partial should not be coupled to a specific page if possible, but rather the partials’ design.</p>
+<p>Taking advantage partial system
+Partials can be easily reused across different pages.  You can even selectively render different partials per locale.</p>
+<p>The following example would should show a different “about” page for Canada.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic"># /content/pages/about.yaml</span>
+$view: /views/base.html
+$path: /about/
+
+partials:
+- partial: hero
+  title@: My hero
+  image: <span style="color: #902000">!gstatic</span> /static/images/about_me.jpg
+- partial@en_US: about-me
+  title@: About me
+  Description: I am a grow.io user!
+- partial@en_CA: trip
+  title@: My trip to Canada
+- partial: footer
+  copyright@: 2017 Mysite.com
+</pre></div>
+
+
+<h2 id="keep-it-dry">Keep it DRY</h2>
+<p>Don’t repeat yourself and duplicate similar partials.  Instead try to create multiple variations within same partial by passing configuration flags or by passing css classes.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic"># /content/pages/about.yaml</span>
+partials:
+- partial: hero
+  title@: My hero
+  class@ja_JP: carousel--large
+  carousel_disabled@en_CA: true
+</pre></div>
+  </div>
+        </main>
+          <aside class="toc_column">
+            <h3>In this document</h3>
+            <div class="toc">
+<ul>
+<li><a href="#setting-up-the-partial-system">Setting up the partial system</a><ul>
+<li><a href="#create-partials-in-the-/partials-directory.">Create partials in the /partials directory.</a></li>
+<li><a href="#add-structured-partials-to-your-page-front-matter">Add structured partials to your page front matter</a></li>
+</ul>
+</li>
+<li><a href="#naming-partials">Naming Partials</a></li>
+<li><a href="#keep-it-dry">Keep it DRY</a></li>
+</ul>
+</div>
+          </aside>
+    </div>
+  </div>
+<footer class="footer">
+  <div class="footer__container">
+    <p class="body-1">
+      <a href="https://github.com/grow/grow/">Grow</a> is released under the <a href="https://github.com/grow/grow/blob/master/LICENSE">MIT License</a>.
+      <br>
+      Except otherwise noted, docs are released under <a href="http://creativecommons.org/licenses/by/3.0/us/">CC 3.0</a> and icons are from <a href="http://flatties.uiparade.com">Flatties</a>.
+    </p>
+    <p class="body-1">
+      <a href="https://github.com/grow/grow.io/edit/master/content/docs/partials.md">Edit on GitHub</a>
+    </p>
+  </div>
+</footer>    </div>
+
+    <script src="/js/composite/global-7bb167004cd34288c477594f56fc1413.min.js"></script>
+
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-44018013-3', 'auto');
+        ga('send', 'pageview');
+      </script>
+  <script src="/js/composite/docs-86f8da85c9025afce6b585ab59548634.min.js"></script>
+  </body>
+</html>

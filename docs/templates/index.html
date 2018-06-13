@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, height=device-height">
+    <title>
+Templates    </title>
+    <meta property="og:title" content="Templates – grow.io">
+    <meta property="og:site_name" content="grow.io">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://localhost/docs/templates/">
+      <link rel="shortcut icon" href="/favicon.ico">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Dosis:300,400,500|Source+Code+Pro" rel="stylesheet">
+    <link href="/css/composite/global-815332777827e9f19889b183c4d607cd.min.css" rel="stylesheet">
+  <link href="/css/composite/docs-f7da157a92f76d14dfae562341bc6dc1.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="wrapper">
+<header class="header">
+  <div class="header__logo">
+    <a href="/">
+      <img src="/static/images/grow.svg">
+      Grow
+    </a>
+  </div>
+  <nav class="header__nav nav">
+    <div class="nav__items nav__items--end">
+        <a class="nav__items__item " href="/start/">Start</a>
+        <a class="nav__items__item " href="/docs/">Docs</a>
+        <a class="nav__items__item " href="/project/">About</a>
+        <a class="nav__items__item " href="/search/">Search</a>
+        <a class="nav__items__item " href="/styleguide/">Styles</a>
+    </div>
+  </nav>
+</header>  <div class="block__main">
+    <div class="split_columns split_columns--reverse">
+<nav class="side_nav">
+      <h3>Get Started</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/">Welcome</a>
+      </li>
+      <li>
+        <a href="/docs/samples/">Themes &amp; samples</a>
+      </li>
+        </ul>
+      <h3>Reference</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/directory-structure/">Directory structure</a>
+      </li>
+      <li>
+        <a href="/docs/podspec/">Podspec</a>
+      </li>
+      <li class="active">
+        <a href="/docs/templates/">Templates</a>
+      </li>
+      <li>
+        <a href="/docs/collections/">Collections</a>
+      </li>
+      <li>
+        <a href="/docs/documents/">Documents</a>
+      </li>
+      <li>
+        <a href="/docs/urls/">Routes and URLs</a>
+      </li>
+      <li>
+        <a href="/docs/content-localization/">Content localization</a>
+      </li>
+      <li>
+        <a href="/docs/environments/">Build Environments</a>
+      </li>
+      <li>
+        <a href="/docs/markdown-extensions/">Markdown reference</a>
+      </li>
+      <li>
+        <a href="/docs/translations/">Translations</a>
+      </li>
+      <li>
+        <a href="/docs/preprocessors/">Preprocessors</a>
+      </li>
+      <li>
+        <a href="/docs/ui-tools/">UI Tools</a>
+      </li>
+      <li>
+        <a href="/docs/preferences/">Command Preferences</a>
+      </li>
+        </ul>
+      <h3>Extensions</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/extensions-install/">Installing Extensions</a>
+      </li>
+      <li>
+        <a href="/docs/extensions-legacy/">Legacy Extensions</a>
+      </li>
+      <li>
+        <a href="/docs/extensions/">Create Extensions</a>
+      </li>
+      <li>
+        <a href="/docs/extensions-preprocessor-legacy/">Create Preprocessors</a>
+      </li>
+        </ul>
+      <h3>Style Guide</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/partials/">Partials</a>
+      </li>
+        </ul>
+      <h3>Workflow</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/development-server/">Development server</a>
+      </li>
+      <li>
+        <a href="/docs/building/">Building</a>
+      </li>
+      <li>
+        <a href="/docs/deployment/">Deployment</a>
+      </li>
+      <li>
+        <a href="/docs/continuous/">Continuous integration</a>
+      </li>
+      <li>
+        <a href="/docs/git-usage/">Git + Grow = ♡</a>
+      </li>
+  </ul>
+</nav>        <main class="main_column pad readable_lines">
+          <h1>Templates</h1>
+  <div class="content">
+      
+<p>Grow templates are stored in a pod's <code>/views/</code> directory. Templates are processed using the <a href="http://jinja.pocoo.org/docs/">Jinja2</a> template language. Grow extends Jinja2 with a few variables and functions that make building content-rich web sites more convenient.</p>
+<p>Variables have no prefix and are part of the global template scope. Functions are prefixed into the <code>g</code> namespace, for example: <code>g.&lt;function name&gt;</code>.</p>
+<h2 id="variables">Variables</h2>
+<p>There are several built-in global variables available to templates. Because these variables are not namespaced, take caution not to overwrite their values.</p>
+<h3 id="doc">doc</h3>
+<p>The current content document associated with the current page that's being rendered. See the <a href="/docs/documents/">full documentation for the document API</a>.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020">{{</span><span style="color: #bb60d5">doc.category</span><span style="color: #007020">}}</span>      # Document&#39;s category
+<span style="color: #007020">{{</span><span style="color: #bb60d5">doc.title</span><span style="color: #007020">}}</span>         # Document&#39;s canonical title.
+<span style="color: #007020">{{</span><span style="color: #bb60d5">doc.titles</span><span style="color: #666666">(</span><span style="color: #4070a0">&#39;nav&#39;</span><span style="color: #666666">)</span><span style="color: #007020">}}</span> # Document&#39;s &quot;nav&quot; title.
+<span style="color: #007020">{{</span><span style="color: #bb60d5">doc.html</span><span style="color: #666666">|</span><span style="color: #06287e">safe</span><span style="color: #007020">}}</span>     # Document&#39;s rendered Markdown body.
+<span style="color: #007020">{{</span><span style="color: #bb60d5">doc.foo</span><span style="color: #007020">}}</span>           # Value of the &quot;foo&quot; custom field from the YAML front matter.
+</pre></div>
+
+
+<h3 id="env">env</h3>
+<p>The rendering environment that exists when the page is being built or served.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020">{{</span><span style="color: #bb60d5">env.host</span><span style="color: #007020">}}</span>
+<span style="color: #007020">{{</span><span style="color: #bb60d5">env.name</span><span style="color: #007020">}}</span>
+<span style="color: #007020">{{</span><span style="color: #bb60d5">env.port</span><span style="color: #007020">}}</span>
+<span style="color: #007020">{{</span><span style="color: #bb60d5">env.scheme</span><span style="color: #007020">}}</span>
+<span style="color: #007020">{{</span><span style="color: #bb60d5">env.fingerprint</span><span style="color: #007020">}}</span>
+</pre></div>
+
+
+<h3 id="podspec">podspec</h3>
+<p>Refers to the <a href="/docs/podspec/"><code>podspec.yaml</code> configuration file</a> and allows you to access pod-wide settings in templates.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020">{{</span><span style="color: #bb60d5">podspec.title</span><span style="color: #007020">}}</span>         # Pod&#39;s title.
+<span style="color: #007020">{{</span><span style="color: #bb60d5">podspec.project_id</span><span style="color: #007020">}}</span>    # Pod&#39;s project ID.
+</pre></div>
+
+
+<h2 id="functions">Functions</h2>
+<h3 id="_">_</h3>
+<p><code>_(&lt;string&gt;)</code></p>
+<p>The <code>_</code> tag is a special function used to tag strings in templates for both translation and message extraction.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span># Simple translation.
+<span style="color: #007020">{{_</span><span style="color: #666666">(</span><span style="color: #4070a0">&#39;Hello&#39;</span><span style="color: #666666">)</span><span style="color: #007020">}}</span>
+
+# A translation with a placeholder.
+<span style="color: #007020">{{_</span><span style="color: #666666">(</span><span style="color: #4070a0">&#39;Hello, %(name)s&#39;</span><span style="color: #666666">,</span> <span style="color: #bb60d5">name</span><span style="color: #666666">=</span><span style="color: #4070a0">&#39;Alice&#39;</span><span style="color: #666666">)</span><span style="color: #007020">}}</span>
+</pre></div>
+
+
+<h3 id="g.categories">g.categories</h3>
+<p><code>g.categories(&lt;collection&gt;)</code></p>
+<p>Lists content documents within a collection and groups them by their <em>$category</em>. Useful for generating navigation and categorized lists of documents.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">for</span> <span style="color: #bb60d5">category</span><span style="color: #666666">,</span> <span style="color: #bb60d5">docs</span> <span style="color: #007020; font-weight: bold">in</span> <span style="color: #bb60d5">g.categories</span><span style="color: #666666">(</span><span style="color: #4070a0">&#39;pages&#39;</span><span style="color: #666666">)</span> <span style="color: #007020">%}</span>
+  &lt;h3&gt;<span style="color: #007020">{{</span><span style="color: #bb60d5">category</span><span style="color: #007020">}}</span>&lt;/h3&gt;
+  &lt;ul&gt;
+    <span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">for</span> <span style="color: #bb60d5">doc</span> <span style="color: #007020; font-weight: bold">in</span> <span style="color: #bb60d5">docs</span> <span style="color: #007020">%}</span>
+      &lt;li&gt;<span style="color: #007020">{{</span><span style="color: #bb60d5">doc.title</span><span style="color: #666666">()</span><span style="color: #007020">}}</span>
+    <span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">endfor</span> <span style="color: #007020">%}</span>
+  &lt;/ul&gt;
+<span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">endfor</span> <span style="color: #007020">%}</span>
+</pre></div>
+
+
+<h3 id="g.collection">g.collection</h3>
+<p><code>g.collection(&lt;collection&gt;)</code></p>
+<p>Returns a <code>Collection</code> object, given a collection path.</p>
+<h3 id="g.collections">g.collections</h3>
+<p><code>g.collections(&lt;optional list of collections&gt;)</code></p>
+<p>Returns a list of all <code>Collection</code> objects in the pod, or lists <code>Collection</code> objects given a list of collection paths.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020">{{</span><span style="color: #bb60d5">g.collections</span><span style="color: #666666">()</span><span style="color: #007020">}}</span>
+<span style="color: #007020">{{</span><span style="color: #bb60d5">g.collections</span><span style="color: #666666">([</span><span style="color: #4070a0">&#39;pages&#39;</span><span style="color: #666666">])</span><span style="color: #007020">}}</span>
+</pre></div>
+
+
+<h3 id="g.csv">g.csv</h3>
+<p><code>g.csv(&lt;path to csv&gt;, locale=&lt;identifier&gt;)</code></p>
+<p>Parses a CSV file and returns a list of dictionaries mapping header rows to values for each row. Optionally use keyword arguments to filter results. This can be particularly useful for using a spreadsheet for localization (where rows represent values for different locales).</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">set</span> <span style="color: #bb60d5">people</span> <span style="color: #666666">=</span> <span style="color: #bb60d5">g.csv</span><span style="color: #666666">(</span><span style="color: #4070a0">&#39;/data/people.csv&#39;</span><span style="color: #666666">)</span> <span style="color: #007020">%}</span>
+<span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">for</span> <span style="color: #bb60d5">person</span> <span style="color: #007020; font-weight: bold">in</span> <span style="color: #bb60d5">people</span> <span style="color: #007020">%}</span>
+  &lt;li&gt;<span style="color: #007020">{{</span><span style="color: #bb60d5">person.name</span><span style="color: #007020">}}</span>
+<span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">endfor</span> <span style="color: #007020">%}</span>
+</pre></div>
+
+
+<h3 id="g.date">g.date</h3>
+<p><code>g.date(&lt;DateTime|string&gt;, from=&lt;string&gt;)</code></p>
+<p>Parses a string into a Date object. Uses <a href="https://docs.python.org/2/library/datetime.html#strftime-and-strptime-behavior">Python date formatting directives</a>.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span># Returns a DateTime given a string and a format.
+<span style="color: #007020">{{</span><span style="color: #bb60d5">g.date</span><span style="color: #666666">(</span><span style="color: #4070a0">&#39;12/31/2000&#39;</span><span style="color: #666666">,</span> <span style="color: #bb60d5">from</span><span style="color: #666666">=</span><span style="color: #4070a0">&#39;%m/%d/%Y&#39;</span><span style="color: #666666">)</span><span style="color: #007020">}}</span>
+</pre></div>
+
+
+<h3 id="g.doc">g.doc</h3>
+<p><code>g.doc(&lt;document path&gt;, locale=&lt;locale&gt;)</code></p>
+<p>Gets a single content document, given its pod path.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">set</span> <span style="color: #bb60d5">foo</span> <span style="color: #666666">=</span> <span style="color: #bb60d5">g.doc</span><span style="color: #666666">(</span><span style="color: #4070a0">&#39;/content/pages/index.html&#39;</span><span style="color: #666666">)</span> <span style="color: #007020">%}</span>
+<span style="color: #007020">{{</span><span style="color: #bb60d5">foo</span><span style="color: #007020">}}</span>
+
+# Returns the fr version of a document.
+<span style="color: #007020">{{</span><span style="color: #bb60d5">g.doc</span><span style="color: #666666">(</span><span style="color: #4070a0">&#39;/content/pages/index.html&#39;</span><span style="color: #666666">,</span> <span style="color: #bb60d5">locale</span><span style="color: #666666">=</span><span style="color: #4070a0">&#39;fr&#39;</span><span style="color: #666666">)</span><span style="color: #007020">}}</span>
+</pre></div>
+
+
+<h3 id="g.docs">g.docs</h3>
+<p><code>g.docs(&lt;collection&gt;, order_by=&lt;field name&gt;, locale=&lt;locale&gt;)</code></p>
+<p>Searches content documents within a collection.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>&lt;ul&gt;
+  <span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">for</span> <span style="color: #bb60d5">doc</span> <span style="color: #007020; font-weight: bold">in</span> <span style="color: #bb60d5">g.docs</span><span style="color: #666666">(</span><span style="color: #4070a0">&#39;pages&#39;</span><span style="color: #666666">)</span> <span style="color: #007020">%}</span>
+    &lt;li&gt;<span style="color: #007020">{{</span><span style="color: #bb60d5">doc.title</span><span style="color: #007020">}}</span>
+  <span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">endfor</span> <span style="color: #007020">%}</span>
+&lt;/ul&gt;
+</pre></div>
+
+
+<p>The documents can also be sorted by multiple fields.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>&lt;ul&gt;
+  <span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">for</span> <span style="color: #bb60d5">doc</span> <span style="color: #007020; font-weight: bold">in</span> <span style="color: #bb60d5">g.docs</span><span style="color: #666666">(</span><span style="color: #4070a0">&#39;pages&#39;</span><span style="color: #666666">,</span> <span style="color: #bb60d5">order_by</span><span style="color: #666666">=(</span><span style="color: #4070a0">&#39;dates.published&#39;</span><span style="color: #666666">,</span> <span style="color: #4070a0">&#39;title&#39;</span><span style="color: #666666">))</span> <span style="color: #007020">%}</span>
+    &lt;li&gt;<span style="color: #007020">{{</span><span style="color: #bb60d5">doc.title</span><span style="color: #007020">}}</span>
+  <span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">endfor</span> <span style="color: #007020">%}</span>
+&lt;/ul&gt;
+</pre></div>
+
+
+<h3 id="g.json">g.json</h3>
+<p><code>g.json(&lt;path to json file&gt;)</code></p>
+<p>Returns a loaded JSON object, given a JSON file's pod path.</p>
+<h3 id="g.locales">g.locales</h3>
+<p><code>g.locales(&lt;list of locale identifier&gt;)</code></p>
+<p>Returns a list of <a href="http://babel.pocoo.org/docs/locale/#the-locale-class"><code>Locale class</code></a> given a list of locale identifiers.</p>
+<h3 id="g.nav">g.nav</h3>
+<div class="badge badge-not-implemented">Not implemented</div>
+
+<p>Returns an object which can be used to create navigation.</p>
+<h3 id="g.static">g.static</h3>
+<p><code>g.static(&lt;file path&gt;)</code></p>
+<p>Returns a <code>StaticFile</code> object corresponding to a static file contained within the pod. <code>&lt;file path&gt;</code> is the full pod path of the static file. You can access the <code>path</code> property of <code>StaticFile.url</code> to retrieve an absolute link to the file's serving path.</p>
+<p>It is a best practice to <em>always</em> refer to static files using the <code>g.static</code> tag rather than referring to their URLs directly. This has the benefit of making URL changes easy and Grow will catch broken links to static files at build time.</p>
+<p>Prior to using <code>g.static</code>, routes must be configured in the <code>static_dirs</code> property of <code>podspec.yaml</code>.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>&lt;img src=&quot;<span style="color: #007020">{{</span><span style="color: #bb60d5">g.static</span><span style="color: #666666">(</span><span style="color: #4070a0">&#39;/static/example.png&#39;</span><span style="color: #666666">)</span><span style="color: #bb60d5">.url.path</span><span style="color: #007020">}}</span>&quot;&gt;
+</pre></div>
+
+
+<p><code>g.static</code> supports static file localization by way of the <code>localization</code> option of the <code>static_dirs</code> setting in <code>podspec.yaml</code>. If a localized static file exists, it will return the object corresponding to the localized static file. If it doesn't, it will return the object corresponding to the base static file.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span># Uses the current document&#39;s locale.
+<span style="color: #007020">{{</span><span style="color: #bb60d5">g.static</span><span style="color: #666666">(</span><span style="color: #4070a0">&#39;/static/example.png&#39;</span><span style="color: #666666">,</span> <span style="color: #bb60d5">locale</span><span style="color: #666666">=</span><span style="color: #bb60d5">doc.locale</span><span style="color: #666666">)</span><span style="color: #007020">}}</span>
+
+# Uses a hardcoded locale.
+<span style="color: #007020">{{</span><span style="color: #bb60d5">g.static</span><span style="color: #666666">(</span><span style="color: #4070a0">&#39;/static/example.png&#39;</span><span style="color: #666666">,</span> <span style="color: #bb60d5">locale</span><span style="color: #666666">=</span><span style="color: #4070a0">&#39;de&#39;</span><span style="color: #666666">)</span><span style="color: #007020">}}</span>
+</pre></div>
+
+
+<h3 id="g.statics">g.statics</h3>
+<p><code>g.statics(&lt;pod path&gt;)</code></p>
+<p>Returns a list of StaticFile objects from in a directory within your pod.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">for</span> <span style="color: #bb60d5">static_file</span> <span style="color: #007020; font-weight: bold">in</span> <span style="color: #bb60d5">g.statics</span><span style="color: #666666">(</span><span style="color: #4070a0">&#39;/source/images/&#39;</span><span style="color: #666666">)</span> <span style="color: #007020">%}</span>
+  &lt;img src=&quot;<span style="color: #007020">{{</span><span style="color: #bb60d5">static_file.url.path</span><span style="color: #007020">}}</span>&quot;&gt;
+<span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">endfor</span> <span style="color: #007020">%}</span>
+</pre></div>
+
+
+<h3 id="g.url">g.url</h3>
+<p><code>g.url(&lt;document path&gt;)</code></p>
+<p>Returns the URL object for a document, given a document's pod path. Access the <code>path</code> property of the URL object to retrieve an absolute link to the document.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>&lt;a href=&quot;<span style="color: #007020">{{</span><span style="color: #bb60d5">g.url</span><span style="color: #666666">(</span><span style="color: #4070a0">&#39;/content/pages/index.html&#39;</span><span style="color: #666666">)</span><span style="color: #bb60d5">.path</span><span style="color: #007020">}}</span>&quot;&gt;Home&lt;/a&gt;
+</pre></div>
+
+
+<h3 id="g.yaml">g.yaml</h3>
+<p><code>g.yaml(&lt;path to yaml&gt;)</code></p>
+<p>Returns a parsed yaml object, given a yaml file's pod path. Respects translation tagging.</p>
+<h2 id="filters">Filters</h2>
+<h3 id="currency">currency</h3>
+<p>Formats currency in a localized format. Use's <a href="http://babel.pocoo.org/en/latest/api/numbers.html#babel.numbers.format_currency">Babel's format_currency</a>.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020">{{</span><span style="color: #40a070">12345</span><span style="color: #666666">|</span><span style="color: #06287e">currency</span><span style="color: #666666">(</span><span style="color: #4070a0">&#39;USD&#39;</span><span style="color: #666666">)</span><span style="color: #007020">}}</span>
+</pre></div>
+
+
+<h3 id="date">date</h3>
+<p>Formats localized and non-localized dates. Use's <a href="http://babel.pocoo.org/en/latest/dates.html#babel.dates.format_date">Babel's format_date</a>.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020">{{</span><span style="color: #bb60d5">date_object</span><span style="color: #666666">|</span><span style="color: #06287e">date</span><span style="color: #666666">(</span><span style="color: #bb60d5">format</span><span style="color: #666666">=</span><span style="color: #4070a0">&#39;short&#39;</span><span style="color: #666666">)</span><span style="color: #007020">}}</span>
+<span style="color: #007020">{{</span><span style="color: #bb60d5">date_object</span><span style="color: #666666">|</span><span style="color: #06287e">date</span><span style="color: #666666">(</span><span style="color: #bb60d5">format</span><span style="color: #666666">=</span><span style="color: #4070a0">&#39;short&#39;</span><span style="color: #666666">,</span> <span style="color: #bb60d5">locale</span><span style="color: #666666">=</span><span style="color: #4070a0">&#39;ja_JP&#39;</span><span style="color: #666666">)</span><span style="color: #007020">}}</span>
+<span style="color: #007020">{{</span><span style="color: #bb60d5">date_object</span><span style="color: #666666">|</span><span style="color: #06287e">date</span><span style="color: #666666">(</span><span style="color: #bb60d5">format</span><span style="color: #666666">=</span><span style="color: #4070a0">&quot;yyyy.MM.dd G &#39;at&#39; HH:mm:ss zzz&quot;</span><span style="color: #666666">)</span><span style="color: #007020">}}</span>
+</pre></div>
+
+
+<h3 id="datetime">datetime</h3>
+<p>Formats localized and non-localized datetimes. Use's <a href="http://babel.pocoo.org/en/latest/dates.html#babel.dates.format_datetime">Babel's format_datetime</a>.</p>
+<h3 id="decimal">decimal</h3>
+<p>Formats decimal in a localized format. Use's <a href="http://babel.pocoo.org/en/latest/api/numbers.html#babel.numbers.format_decimal">Babel's format_decimal</a>.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020">{{</span><span style="color: #40a070">123.45</span><span style="color: #666666">|</span><span style="color: #06287e">decimal</span><span style="color: #666666">()</span><span style="color: #007020">}}</span>
+</pre></div>
+
+
+<h3 id="deeptrans">deeptrans</h3>
+<p>Recursively applies the gettext translation function to strings within a dictionary.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">set</span> <span style="color: #bb60d5">content</span> <span style="color: #666666">=</span> <span style="color: #666666">{</span>
+  <span style="color: #4070a0">&#39;key&#39;</span><span style="color: #666666">:</span> <span style="color: #4070a0">&#39;String&#39;</span><span style="color: #666666">,</span>
+  <span style="color: #4070a0">&#39;item_list&#39;</span><span style="color: #666666">:</span> <span style="color: #666666">[</span>
+      <span style="color: #4070a0">&#39;String 1&#39;</span><span style="color: #666666">,</span>
+      <span style="color: #4070a0">&#39;String 2&#39;</span>
+  <span style="color: #666666">]</span>
+<span style="color: #666666">}</span> <span style="color: #007020">%}</span>
+<span style="color: #007020">{{</span><span style="color: #bb60d5">content</span><span style="color: #666666">|</span><span style="color: #06287e">deeptrans</span><span style="color: #007020">}}</span>
+</pre></div>
+
+
+<h3 id="jsonify">jsonify</h3>
+<p>Converts a dictionary into JSON.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020">{{</span><span style="color: #bb60d5">dict_object</span><span style="color: #666666">|</span><span style="color: #06287e">jsonify</span><span style="color: #007020">}}</span>
+</pre></div>
+
+
+<h3 id="markdown">markdown</h3>
+<p>Renders Markdown content into HTML. Use in conjunction with the <code>safe</code> filter to render HTML to a page.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020">{{</span><span style="color: #bb60d5">markdown_content</span><span style="color: #666666">|</span><span style="color: #06287e">markdown</span><span style="color: #007020">}}</span>
+<span style="color: #007020">{{</span><span style="color: #bb60d5">markdown_content</span><span style="color: #666666">|</span><span style="color: #06287e">markdown</span><span style="color: #666666">|</span><span style="color: #06287e">safe</span><span style="color: #007020">}}</span>
+</pre></div>
+
+
+<h3 id="number">number</h3>
+<p>Formats numbers in a localized format. Use's <a href="http://babel.pocoo.org/en/latest/api/numbers.html#babel.numbers.format_number">Babel's format_number</a>.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020">{{</span><span style="color: #40a070">1234.567</span><span style="color: #666666">|</span><span style="color: #06287e">number</span><span style="color: #007020">}}</span>
+</pre></div>
+
+
+<h3 id="percent">percent</h3>
+<p>Formats percentages in a localized format. Use's <a href="http://babel.pocoo.org/en/latest/api/numbers.html#babel.numbers.format_percent">Babel's format_percent</a>.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020">{{</span><span style="color: #40a070">0.123</span><span style="color: #666666">|</span><span style="color: #06287e">percent</span><span style="color: #007020">}}</span>
+</pre></div>
+
+
+<h3 id="relative">relative</h3>
+<p>Generates a relative URL (from the perspective of the current document context) from an absolute URL path.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020">{{</span><span style="color: #bb60d5">g.doc</span><span style="color: #666666">(</span><span style="color: #4070a0">&#39;/content/pages/home.yaml&#39;</span><span style="color: #666666">)</span><span style="color: #bb60d5">.url</span><span style="color: #666666">|</span><span style="color: #06287e">relative</span><span style="color: #007020">}}</span>
+</pre></div>
+
+
+<h3 id="shuffle">shuffle</h3>
+<p>Randomizes the order of items in a list.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020">{{</span><span style="color: #666666">[</span><span style="color: #40a070">1</span><span style="color: #666666">,</span><span style="color: #40a070">2</span><span style="color: #666666">,</span><span style="color: #40a070">3</span><span style="color: #666666">,</span><span style="color: #40a070">4</span><span style="color: #666666">,</span><span style="color: #40a070">5</span><span style="color: #666666">]|</span><span style="color: #06287e">shuffle</span><span style="color: #007020">}}</span>
+</pre></div>
+
+
+<h3 id="slug">slug</h3>
+<p>Creates a slug from text.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020">{{</span><span style="color: #4070a0">&#39;Hello World&#39;</span><span style="color: #666666">|</span><span style="color: #06287e">slug</span><span style="color: #007020">}}</span>
+</pre></div>
+
+
+<h3 id="time">time</h3>
+<p>Formats localized and non-localized times. Use's <a href="http://babel.pocoo.org/en/latest/dates.html#babel.dates.format_time">Babel's format_time</a>.</p>
+  </div>
+        </main>
+          <aside class="toc_column">
+            <h3>In this document</h3>
+            <div class="toc">
+<ul>
+<li><a href="#variables">Variables</a><ul>
+<li><a href="#doc">doc</a></li>
+<li><a href="#env">env</a></li>
+<li><a href="#podspec">podspec</a></li>
+</ul>
+</li>
+<li><a href="#functions">Functions</a><ul>
+<li><a href="#_">_</a></li>
+<li><a href="#g.categories">g.categories</a></li>
+<li><a href="#g.collection">g.collection</a></li>
+<li><a href="#g.collections">g.collections</a></li>
+<li><a href="#g.csv">g.csv</a></li>
+<li><a href="#g.date">g.date</a></li>
+<li><a href="#g.doc">g.doc</a></li>
+<li><a href="#g.docs">g.docs</a></li>
+<li><a href="#g.json">g.json</a></li>
+<li><a href="#g.locales">g.locales</a></li>
+<li><a href="#g.nav">g.nav</a></li>
+<li><a href="#g.static">g.static</a></li>
+<li><a href="#g.statics">g.statics</a></li>
+<li><a href="#g.url">g.url</a></li>
+<li><a href="#g.yaml">g.yaml</a></li>
+</ul>
+</li>
+<li><a href="#filters">Filters</a><ul>
+<li><a href="#currency">currency</a></li>
+<li><a href="#date">date</a></li>
+<li><a href="#datetime">datetime</a></li>
+<li><a href="#decimal">decimal</a></li>
+<li><a href="#deeptrans">deeptrans</a></li>
+<li><a href="#jsonify">jsonify</a></li>
+<li><a href="#markdown">markdown</a></li>
+<li><a href="#number">number</a></li>
+<li><a href="#percent">percent</a></li>
+<li><a href="#relative">relative</a></li>
+<li><a href="#shuffle">shuffle</a></li>
+<li><a href="#slug">slug</a></li>
+<li><a href="#time">time</a></li>
+</ul>
+</li>
+</ul>
+</div>
+          </aside>
+    </div>
+  </div>
+<footer class="footer">
+  <div class="footer__container">
+    <p class="body-1">
+      <a href="https://github.com/grow/grow/">Grow</a> is released under the <a href="https://github.com/grow/grow/blob/master/LICENSE">MIT License</a>.
+      <br>
+      Except otherwise noted, docs are released under <a href="http://creativecommons.org/licenses/by/3.0/us/">CC 3.0</a> and icons are from <a href="http://flatties.uiparade.com">Flatties</a>.
+    </p>
+    <p class="body-1">
+      <a href="https://github.com/grow/grow.io/edit/master/content/docs/templates.md">Edit on GitHub</a>
+    </p>
+  </div>
+</footer>    </div>
+
+    <script src="/js/composite/global-7bb167004cd34288c477594f56fc1413.min.js"></script>
+
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-44018013-3', 'auto');
+        ga('send', 'pageview');
+      </script>
+  <script src="/js/composite/docs-86f8da85c9025afce6b585ab59548634.min.js"></script>
+  </body>
+</html>

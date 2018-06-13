@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, height=device-height">
+    <title>
+Translations    </title>
+    <meta property="og:title" content="Translations – grow.io">
+    <meta property="og:site_name" content="grow.io">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://localhost/docs/translations/">
+      <link rel="shortcut icon" href="/favicon.ico">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Dosis:300,400,500|Source+Code+Pro" rel="stylesheet">
+    <link href="/css/composite/global-815332777827e9f19889b183c4d607cd.min.css" rel="stylesheet">
+  <link href="/css/composite/docs-f7da157a92f76d14dfae562341bc6dc1.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="wrapper">
+<header class="header">
+  <div class="header__logo">
+    <a href="/">
+      <img src="/static/images/grow.svg">
+      Grow
+    </a>
+  </div>
+  <nav class="header__nav nav">
+    <div class="nav__items nav__items--end">
+        <a class="nav__items__item " href="/start/">Start</a>
+        <a class="nav__items__item " href="/docs/">Docs</a>
+        <a class="nav__items__item " href="/project/">About</a>
+        <a class="nav__items__item " href="/search/">Search</a>
+        <a class="nav__items__item " href="/styleguide/">Styles</a>
+    </div>
+  </nav>
+</header>  <div class="block__main">
+    <div class="split_columns split_columns--reverse">
+<nav class="side_nav">
+      <h3>Get Started</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/">Welcome</a>
+      </li>
+      <li>
+        <a href="/docs/samples/">Themes &amp; samples</a>
+      </li>
+        </ul>
+      <h3>Reference</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/directory-structure/">Directory structure</a>
+      </li>
+      <li>
+        <a href="/docs/podspec/">Podspec</a>
+      </li>
+      <li>
+        <a href="/docs/templates/">Templates</a>
+      </li>
+      <li>
+        <a href="/docs/collections/">Collections</a>
+      </li>
+      <li>
+        <a href="/docs/documents/">Documents</a>
+      </li>
+      <li>
+        <a href="/docs/urls/">Routes and URLs</a>
+      </li>
+      <li>
+        <a href="/docs/content-localization/">Content localization</a>
+      </li>
+      <li>
+        <a href="/docs/environments/">Build Environments</a>
+      </li>
+      <li>
+        <a href="/docs/markdown-extensions/">Markdown reference</a>
+      </li>
+      <li class="active">
+        <a href="/docs/translations/">Translations</a>
+      </li>
+      <li>
+        <a href="/docs/preprocessors/">Preprocessors</a>
+      </li>
+      <li>
+        <a href="/docs/ui-tools/">UI Tools</a>
+      </li>
+      <li>
+        <a href="/docs/preferences/">Command Preferences</a>
+      </li>
+        </ul>
+      <h3>Extensions</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/extensions-install/">Installing Extensions</a>
+      </li>
+      <li>
+        <a href="/docs/extensions-legacy/">Legacy Extensions</a>
+      </li>
+      <li>
+        <a href="/docs/extensions/">Create Extensions</a>
+      </li>
+      <li>
+        <a href="/docs/extensions-preprocessor-legacy/">Create Preprocessors</a>
+      </li>
+        </ul>
+      <h3>Style Guide</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/partials/">Partials</a>
+      </li>
+        </ul>
+      <h3>Workflow</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/development-server/">Development server</a>
+      </li>
+      <li>
+        <a href="/docs/building/">Building</a>
+      </li>
+      <li>
+        <a href="/docs/deployment/">Deployment</a>
+      </li>
+      <li>
+        <a href="/docs/continuous/">Continuous integration</a>
+      </li>
+      <li>
+        <a href="/docs/git-usage/">Git + Grow = ♡</a>
+      </li>
+  </ul>
+</nav>        <main class="main_column pad readable_lines">
+          <h1>Translations</h1>
+  <div class="content">
+      
+<h2 id="translatable-items">Translatable items</h2>
+<p>Items that are "translatable" are ones which contain text which can be extracted by Grow into message catalogs for translation. Message catalogs can be used to generate translated content.</p>
+<p>Grow takes a <strong>what you tag is what you translate</strong> approach: only things that you deem translatable will be extracted for translation, and then subsequently translated upon request.</p>
+<h3 id="views">Views</h3>
+<p>UI strings (and other text) in views are translatable. UI strings must be tagged with a template function that indicates the text is translatable. This template function, <code>gettext</code>, has been aliased to <code>{{_(text)}}</code>.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic">&lt;!-- /views/pages.html --&gt;</span>
+
+<span style="color: #007020">&lt;!DOCTYPE html&gt;</span>
+&lt;<span style="color: #062873; font-weight: bold">meta</span> <span style="color: #4070a0">charset</span><span style="color: #666666">=</span><span style="color: #4070a0">&quot;utf-8&quot;</span>&gt;
+&lt;<span style="color: #062873; font-weight: bold">title</span>&gt;{{_(&#39;Hello World!&#39;)}}&lt;/<span style="color: #062873; font-weight: bold">title</span>&gt;
+&lt;<span style="color: #062873; font-weight: bold">h1</span>&gt;{{_(&#39;Page Title&#39;)}}&lt;/<span style="color: #062873; font-weight: bold">h1</span>&gt;
+
+&lt;<span style="color: #062873; font-weight: bold">ul</span>&gt;
+  {% for callout in g.doc.callouts %}
+    &lt;<span style="color: #062873; font-weight: bold">li</span>&gt;{{_(callout.title)}} – {{_(callout.description)}}
+  {% endfor %}
+&lt;/<span style="color: #062873; font-weight: bold">ul</span>&gt;
+
+<span style="color: #60a0b0; font-style: italic">&lt;!-- Using Python-format placeholders. --&gt;</span>
+&lt;<span style="color: #062873; font-weight: bold">p</span>&gt;{{_(&#39;Posted: %(date)s&#39;, date=&#39;12/25/86&#39;)}}
+</pre></div>
+
+
+<p>Since Grow translations are opt-in instead of opt-out, it's possible to show translated text from a content document right next to untranslated text.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>{{doc.title()}}      <span style="color: #60a0b0; font-style: italic">&lt;!-- Untranslated --&gt;</span>
+{{_(doc.title())}}   <span style="color: #60a0b0; font-style: italic">&lt;!-- Translated --&gt;</span>
+</pre></div>
+
+
+<h3 id="text-replacement">Text replacement</h3>
+<p>When doing translations there are two ways to text replacement:</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020">{{_</span><span style="color: #666666">(</span><span style="color: #4070a0">&#39;Test out %(name)s in %(text)s&#39;</span><span style="color: #666666">,</span> <span style="color: #bb60d5">name</span><span style="color: #666666">=</span><span style="color: #4070a0">&#39;Julie&#39;</span><span style="color: #666666">,</span> <span style="color: #bb60d5">text</span><span style="color: #666666">=</span><span style="color: #4070a0">&#39;indecipherable&#39;</span><span style="color: #666666">)</span><span style="color: #007020">}}</span>
+</pre></div>
+
+
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020">{{_</span><span style="color: #666666">(</span><span style="color: #4070a0">&#39;Test out {name} in {text}&#39;</span><span style="color: #666666">,</span> <span style="color: #bb60d5">name</span><span style="color: #666666">=</span><span style="color: #4070a0">&#39;Julie&#39;</span><span style="color: #666666">,</span> <span style="color: #bb60d5">text</span><span style="color: #666666">=</span><span style="color: #4070a0">&#39;indecipherable&#39;</span><span style="color: #666666">)</span><span style="color: #007020">}}</span>
+</pre></div>
+
+
+<p>Named placeholders should be used as other languages may not use the words in the same order.</p>
+<h3 id="content-documents">Content documents</h3>
+<p>Field names postfixed with an <code>@</code> symbol are translatable. Note that you should omit the <code>@</code> when referring to the field in a template. The @ is simply used to tag the field for translation in the YAML front matter.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic"># /content/pages/page.yaml (content document)</span>
+
+$title@: Hello World!
+
+sections:
+- title@: Section A        <span style="color: #60a0b0; font-style: italic"># Extracted for translation.</span>
+  content@: A&#39;s content.
+- title@: Section B        <span style="color: #60a0b0; font-style: italic"># Extracted for translation.</span>
+  content@: B&#39;s content.
+- title: Section C         <span style="color: #60a0b0; font-style: italic"># Not extracted for translation.</span>
+  content: C&#39;s content.
+
+items@:                    <span style="color: #60a0b0; font-style: italic"># Tagged list of strings.</span>
+- Item 1.
+- Item 2.
+</pre></div>
+
+
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span># /views/pages.html (sample usage in a view)
+
+{% for section in doc.sections %}
+  &lt;<span style="color: #062873; font-weight: bold">li</span>&gt;{{_(doc.title)}}     <span style="color: #60a0b0; font-style: italic">&lt;!-- Translated. --&gt;</span>
+  &lt;<span style="color: #062873; font-weight: bold">li</span>&gt;{{doc.content}}      <span style="color: #60a0b0; font-style: italic">&lt;!-- Not translated. --&gt;</span>
+{% endfor %}
+</pre></div>
+
+
+<h3 id="csv-files">CSV files</h3>
+<p>Messages can be extracted from CSV files by appending <code>@</code> to a header cell's value.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>header1,header2@,header3
+Not extracted,Extracted,Not Extracted
+</pre></div>
+
+
+<h2 id="translator-comments">Translator comments</h2>
+<p>You can provide clarifying details about strings to translators by using translator comments. Upon extraction, translator comments appear alongside their corresponding messages in message catalogs. Translators may then reference the comment in order to produce a more accurate translation.</p>
+<p>Translator comments are particularly useful to convey restrictions about a string (such as its length) or to clarify context when a string may be ambiguous.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic"># Translator comments in YAML.</span>
+prop@: Text to translate
+prop@#: Comment for translator.
+</pre></div>
+
+
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span># Translator comments in templates.
+<span style="color: #60a0b0; font-style: italic">{#: Comment for translator. #}</span>
+&lt;h1&gt;<span style="color: #007020">{{_</span><span style="color: #666666">(</span><span style="color: #4070a0">&#39;Text to translate&#39;</span><span style="color: #666666">)</span><span style="color: #007020">}}</span>&lt;/h1&gt;
+</pre></div>
+
+
+<h2 id="extracting-translations">Extracting translations</h2>
+<p>To extract translations into a message catalog, tag all translatable items as explained above, and then use the <code>grow translations extract</code> command. Messages will be extracted to a file <code>/translations/messages.pot</code>. The message catalog (<strong>messages.pot</strong>) contains all of your pod's extracted messages.</p>
+<p>This file can then be used to create translation catalogs manually using a PO file editor, or integrated with a translation provider such as Google Translator Toolkit.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>grow translations extract
+</pre></div>
+
+
+<p>Extracted translations can also be audited to find content that is untagged for translation.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>grow translations extract --audit
+</pre></div>
+
+
+<h2 id="compiling-translations">Compiling translations</h2>
+<p>Grow automatically recompiles translations when the development server starts, builds a pod, and during deployment. Translations must be recompiled before they're visible on your site.</p>
+<h2 id="importing-translations">Importing translations</h2>
+<p>Grow can import translation PO files from external sources. Currently Grow expects a zip file containing one directory named after its locale. Within each directory should be a <code>messages.po</code> file. Alternatively, you can specify a directory instead of a zip file.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span># Structure of source zip file.
+
+/foo.zip
+  /de
+    /messages.po
+  /it/
+    /messages.po
+</pre></div>
+
+
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>grow translations import --source<span style="color: #666666">=</span>&lt;path to zip file or directory of locales&gt;
+</pre></div>
+
+
+<h2 id="untranslated-content">Untranslated content</h2>
+<p>To help find content that is in use, but not yet translated you can generate a summary of the missing translations.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic"># Builds pod and shows untranslated strings.</span>
+grow build --locate-untranslated
+</pre></div>
+
+
+<p>You can also update the configuration in your podspec to prevent specific deployments when there are untranslated content.</p>
+  </div>
+        </main>
+          <aside class="toc_column">
+            <h3>In this document</h3>
+            <div class="toc">
+<ul>
+<li><a href="#translatable-items">Translatable items</a><ul>
+<li><a href="#views">Views</a></li>
+<li><a href="#text-replacement">Text replacement</a></li>
+<li><a href="#content-documents">Content documents</a></li>
+<li><a href="#csv-files">CSV files</a></li>
+</ul>
+</li>
+<li><a href="#translator-comments">Translator comments</a></li>
+<li><a href="#extracting-translations">Extracting translations</a></li>
+<li><a href="#compiling-translations">Compiling translations</a></li>
+<li><a href="#importing-translations">Importing translations</a></li>
+<li><a href="#untranslated-content">Untranslated content</a></li>
+</ul>
+</div>
+          </aside>
+    </div>
+  </div>
+<footer class="footer">
+  <div class="footer__container">
+    <p class="body-1">
+      <a href="https://github.com/grow/grow/">Grow</a> is released under the <a href="https://github.com/grow/grow/blob/master/LICENSE">MIT License</a>.
+      <br>
+      Except otherwise noted, docs are released under <a href="http://creativecommons.org/licenses/by/3.0/us/">CC 3.0</a> and icons are from <a href="http://flatties.uiparade.com">Flatties</a>.
+    </p>
+    <p class="body-1">
+      <a href="https://github.com/grow/grow.io/edit/master/content/docs/translations.md">Edit on GitHub</a>
+    </p>
+  </div>
+</footer>    </div>
+
+    <script src="/js/composite/global-7bb167004cd34288c477594f56fc1413.min.js"></script>
+
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-44018013-3', 'auto');
+        ga('send', 'pageview');
+      </script>
+  <script src="/js/composite/docs-86f8da85c9025afce6b585ab59548634.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, height=device-height">
+    <title>
+Command Preferences    </title>
+    <meta property="og:title" content="Command Preferences – grow.io">
+    <meta property="og:site_name" content="grow.io">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://localhost/docs/preferences/">
+      <link rel="shortcut icon" href="/favicon.ico">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Dosis:300,400,500|Source+Code+Pro" rel="stylesheet">
+    <link href="/css/composite/global-815332777827e9f19889b183c4d607cd.min.css" rel="stylesheet">
+  <link href="/css/composite/docs-f7da157a92f76d14dfae562341bc6dc1.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="wrapper">
+<header class="header">
+  <div class="header__logo">
+    <a href="/">
+      <img src="/static/images/grow.svg">
+      Grow
+    </a>
+  </div>
+  <nav class="header__nav nav">
+    <div class="nav__items nav__items--end">
+        <a class="nav__items__item " href="/start/">Start</a>
+        <a class="nav__items__item " href="/docs/">Docs</a>
+        <a class="nav__items__item " href="/project/">About</a>
+        <a class="nav__items__item " href="/search/">Search</a>
+        <a class="nav__items__item " href="/styleguide/">Styles</a>
+    </div>
+  </nav>
+</header>  <div class="block__main">
+    <div class="split_columns split_columns--reverse">
+<nav class="side_nav">
+      <h3>Get Started</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/">Welcome</a>
+      </li>
+      <li>
+        <a href="/docs/samples/">Themes &amp; samples</a>
+      </li>
+        </ul>
+      <h3>Reference</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/directory-structure/">Directory structure</a>
+      </li>
+      <li>
+        <a href="/docs/podspec/">Podspec</a>
+      </li>
+      <li>
+        <a href="/docs/templates/">Templates</a>
+      </li>
+      <li>
+        <a href="/docs/collections/">Collections</a>
+      </li>
+      <li>
+        <a href="/docs/documents/">Documents</a>
+      </li>
+      <li>
+        <a href="/docs/urls/">Routes and URLs</a>
+      </li>
+      <li>
+        <a href="/docs/content-localization/">Content localization</a>
+      </li>
+      <li>
+        <a href="/docs/environments/">Build Environments</a>
+      </li>
+      <li>
+        <a href="/docs/markdown-extensions/">Markdown reference</a>
+      </li>
+      <li>
+        <a href="/docs/translations/">Translations</a>
+      </li>
+      <li>
+        <a href="/docs/preprocessors/">Preprocessors</a>
+      </li>
+      <li>
+        <a href="/docs/ui-tools/">UI Tools</a>
+      </li>
+      <li class="active">
+        <a href="/docs/preferences/">Command Preferences</a>
+      </li>
+        </ul>
+      <h3>Extensions</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/extensions-install/">Installing Extensions</a>
+      </li>
+      <li>
+        <a href="/docs/extensions-legacy/">Legacy Extensions</a>
+      </li>
+      <li>
+        <a href="/docs/extensions/">Create Extensions</a>
+      </li>
+      <li>
+        <a href="/docs/extensions-preprocessor-legacy/">Create Preprocessors</a>
+      </li>
+        </ul>
+      <h3>Style Guide</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/partials/">Partials</a>
+      </li>
+        </ul>
+      <h3>Workflow</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/development-server/">Development server</a>
+      </li>
+      <li>
+        <a href="/docs/building/">Building</a>
+      </li>
+      <li>
+        <a href="/docs/deployment/">Deployment</a>
+      </li>
+      <li>
+        <a href="/docs/continuous/">Continuous integration</a>
+      </li>
+      <li>
+        <a href="/docs/git-usage/">Git + Grow = ♡</a>
+      </li>
+  </ul>
+</nav>        <main class="main_column pad readable_lines">
+          <h1>Command Preferences</h1>
+  <div class="content">
+      
+<h2 id="rc-file">RC File</h2>
+<p>Grow uses a <code>~/.growrc.yaml</code> file to keep track of global Grow preferences. This file tracks:</p>
+<ul>
+<li>Auto-update preferences.</li>
+<li>Timestamp of the last update check.</li>
+<li>Custom <code>grow</code> command flag defaults.</li>
+</ul>
+<p>Additionally, Grow will look for a <code>.growrc.yaml</code> file in the directory that the <code>grow</code> command is run. This allows for setting custom Grow preferences for individual projects.</p>
+<h2 id="custom-grow-command-flag-defaults">Custom Grow Command Flag Defaults</h2>
+<p>For certain command line flags you can provide custom defaults for Grow by adding them to the <code>.growrc.yaml</code> file.</p>
+<h3 id="build">Build</h3>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>grow:
+  build:
+    deployment: null
+    preprocess: true
+    clear-cache: false
+    locate-untranslated: false
+    re-route: false
+</pre></div>
+
+
+<h3 id="deploy">Deploy</h3>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>grow:
+  deploy:
+    preprocess: true
+    confirm: true
+    test: true
+    force-untranslated: false
+</pre></div>
+
+
+<h3 id="extract">Extract</h3>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>grow:
+  extract:
+    include-obsolete: null
+    localized: null
+    include-header: null
+    fuzzy-matching: null
+</pre></div>
+
+
+<h3 id="filter">Filter</h3>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>grow:
+  filter:
+    include-obsolete: false
+    localized: false
+    include-header: false
+    out-dir: null
+    force: false
+</pre></div>
+
+
+<h3 id="import-translations">Import Translations</h3>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>grow:
+  translations:
+    import:
+      include-obsolete: true
+</pre></div>
+
+
+<h3 id="preprocess">Preprocess</h3>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>grow:
+  preprocess:
+    deployment: null
+</pre></div>
+
+
+<h3 id="run">Run</h3>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>grow:
+  run:
+    deployment: null
+    host: localhost
+    port: 8080
+    https: false
+    debug: false
+    browser: false
+    update-check: true
+    preprocess: true
+    ui: true
+    re-route: false
+</pre></div>
+
+
+<h3 id="stage">Stage</h3>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>grow:
+  stage:
+    preprocess: true
+    force-untranslated: false
+</pre></div>
+
+
+<h3 id="stats">Stats</h3>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>grow:
+  stats:
+    full: true
+</pre></div>
+
+
+<h3 id="upload-translations">Upload Translations</h3>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>grow:
+  translations:
+    upload:
+      download: true
+      extract: true
+      force: false
+</pre></div>
+
+
+<h2 id="shared-command-flag-defaults">Shared Command Flag Defaults</h2>
+<p>Some of the flags are common between different Grow commands. These can be done as custom defaults in each command or in the shared settings:</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>grow:
+  shared:
+    deployment: null
+    force-untranslated: false
+    include-header: false
+    include-obsolete: false
+    localized: false
+    out-dir: null
+    preprocess: true
+    re-route: false
+</pre></div>
+  </div>
+        </main>
+          <aside class="toc_column">
+            <h3>In this document</h3>
+            <div class="toc">
+<ul>
+<li><a href="#rc-file">RC File</a></li>
+<li><a href="#custom-grow-command-flag-defaults">Custom Grow Command Flag Defaults</a><ul>
+<li><a href="#build">Build</a></li>
+<li><a href="#deploy">Deploy</a></li>
+<li><a href="#extract">Extract</a></li>
+<li><a href="#filter">Filter</a></li>
+<li><a href="#import-translations">Import Translations</a></li>
+<li><a href="#preprocess">Preprocess</a></li>
+<li><a href="#run">Run</a></li>
+<li><a href="#stage">Stage</a></li>
+<li><a href="#stats">Stats</a></li>
+<li><a href="#upload-translations">Upload Translations</a></li>
+</ul>
+</li>
+<li><a href="#shared-command-flag-defaults">Shared Command Flag Defaults</a></li>
+</ul>
+</div>
+          </aside>
+    </div>
+  </div>
+<footer class="footer">
+  <div class="footer__container">
+    <p class="body-1">
+      <a href="https://github.com/grow/grow/">Grow</a> is released under the <a href="https://github.com/grow/grow/blob/master/LICENSE">MIT License</a>.
+      <br>
+      Except otherwise noted, docs are released under <a href="http://creativecommons.org/licenses/by/3.0/us/">CC 3.0</a> and icons are from <a href="http://flatties.uiparade.com">Flatties</a>.
+    </p>
+    <p class="body-1">
+      <a href="https://github.com/grow/grow.io/edit/master/content/docs/preferences.md">Edit on GitHub</a>
+    </p>
+  </div>
+</footer>    </div>
+
+    <script src="/js/composite/global-7bb167004cd34288c477594f56fc1413.min.js"></script>
+
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-44018013-3', 'auto');
+        ga('send', 'pageview');
+      </script>
+  <script src="/js/composite/docs-86f8da85c9025afce6b585ab59548634.min.js"></script>
+  </body>
+</html>

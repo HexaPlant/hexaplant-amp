@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, height=device-height">
+    <title>
+Podspec    </title>
+    <meta property="og:title" content="Podspec – grow.io">
+    <meta property="og:site_name" content="grow.io">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://localhost/docs/podspec/">
+      <link rel="shortcut icon" href="/favicon.ico">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Dosis:300,400,500|Source+Code+Pro" rel="stylesheet">
+    <link href="/css/composite/global-815332777827e9f19889b183c4d607cd.min.css" rel="stylesheet">
+  <link href="/css/composite/docs-f7da157a92f76d14dfae562341bc6dc1.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="wrapper">
+<header class="header">
+  <div class="header__logo">
+    <a href="/">
+      <img src="/static/images/grow.svg">
+      Grow
+    </a>
+  </div>
+  <nav class="header__nav nav">
+    <div class="nav__items nav__items--end">
+        <a class="nav__items__item " href="/start/">Start</a>
+        <a class="nav__items__item " href="/docs/">Docs</a>
+        <a class="nav__items__item " href="/project/">About</a>
+        <a class="nav__items__item " href="/search/">Search</a>
+        <a class="nav__items__item " href="/styleguide/">Styles</a>
+    </div>
+  </nav>
+</header>  <div class="block__main">
+    <div class="split_columns split_columns--reverse">
+<nav class="side_nav">
+      <h3>Get Started</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/">Welcome</a>
+      </li>
+      <li>
+        <a href="/docs/samples/">Themes &amp; samples</a>
+      </li>
+        </ul>
+      <h3>Reference</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/directory-structure/">Directory structure</a>
+      </li>
+      <li class="active">
+        <a href="/docs/podspec/">Podspec</a>
+      </li>
+      <li>
+        <a href="/docs/templates/">Templates</a>
+      </li>
+      <li>
+        <a href="/docs/collections/">Collections</a>
+      </li>
+      <li>
+        <a href="/docs/documents/">Documents</a>
+      </li>
+      <li>
+        <a href="/docs/urls/">Routes and URLs</a>
+      </li>
+      <li>
+        <a href="/docs/content-localization/">Content localization</a>
+      </li>
+      <li>
+        <a href="/docs/environments/">Build Environments</a>
+      </li>
+      <li>
+        <a href="/docs/markdown-extensions/">Markdown reference</a>
+      </li>
+      <li>
+        <a href="/docs/translations/">Translations</a>
+      </li>
+      <li>
+        <a href="/docs/preprocessors/">Preprocessors</a>
+      </li>
+      <li>
+        <a href="/docs/ui-tools/">UI Tools</a>
+      </li>
+      <li>
+        <a href="/docs/preferences/">Command Preferences</a>
+      </li>
+        </ul>
+      <h3>Extensions</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/extensions-install/">Installing Extensions</a>
+      </li>
+      <li>
+        <a href="/docs/extensions-legacy/">Legacy Extensions</a>
+      </li>
+      <li>
+        <a href="/docs/extensions/">Create Extensions</a>
+      </li>
+      <li>
+        <a href="/docs/extensions-preprocessor-legacy/">Create Preprocessors</a>
+      </li>
+        </ul>
+      <h3>Style Guide</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/partials/">Partials</a>
+      </li>
+        </ul>
+      <h3>Workflow</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/development-server/">Development server</a>
+      </li>
+      <li>
+        <a href="/docs/building/">Building</a>
+      </li>
+      <li>
+        <a href="/docs/deployment/">Deployment</a>
+      </li>
+      <li>
+        <a href="/docs/continuous/">Continuous integration</a>
+      </li>
+      <li>
+        <a href="/docs/git-usage/">Git + Grow = ♡</a>
+      </li>
+  </ul>
+</nav>        <main class="main_column pad readable_lines">
+          <h1>Podspec</h1>
+  <div class="content">
+      
+<p>Grow pods <strong>must</strong> contain a file named <code>podspec.yaml</code>. The podspec contains flags and a few definitions that specify various behavior and properties of your site, such as URLs, the version of Grow compatible with the pod, and localization information.</p>
+<h2 id="podspec.yaml">podspec.yaml</h2>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>grow_version: <span style="color: #4070a0">&quot;&gt;=0.0.1&quot;</span>
+title: Project title.
+description: Project description.
+
+home: /content/pages/&lt;home&gt;.yaml
+
+static_dirs:
+- static_dir: /static/
+  serve_at: /site/files/
+
+error_routes:
+  default: /views/error.html
+
+localization:
+  root_path: /{locale}/
+  default_locale: en
+  locales:
+  - de
+  - en
+  - fr
+  - it
+  aliases:
+    en_uk: en_GB
+  import_as:
+    en_uk:
+    - en_GB
+  require_translations: false
+  require_translations@env.prod: true
+
+preprocessors:
+- kind: sass
+  sass_dir: /source/sass/
+  out_dir: /static/css/
+
+meta:
+  key: value
+
+sitemap:
+  enabled: yes
+  path: /sitemap.xml
+  collections:
+  - pages
+  locales:
+  - en
+  - fr
+
+deployments:
+  default:
+    destination: local
+    out_dir: grow-codelab-build/
+    env:
+      name: prod
+      host: example.com
+      port: 80
+      scheme: https
+</pre></div>
+
+
+<h3 id="grow_version">grow_version</h3>
+<p>The version of Grow that works with this pod. Grow displays a warning if the version of the SDK does not match this specification in <code>podspec.yaml</code>.</p>
+<p>Grow uses <a href="http://semver.org/">semantic versioning</a> which helps you know which versions of Grow will work with your pod. If your pod works with <code>1.2.3</code>, it will work at least up to <code>2.0.0</code>. Major versions (such as <code>2.x.x</code> from <code>1.x.x</code>) may introduce breaking changes when used with pods made for an older SDK version.</p>
+<p>This value must be a semantic version <em>specification</em>.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>grow_version: <span style="color: #4070a0">&quot;&gt;=0.0.1&quot;</span>       <span style="color: #60a0b0; font-style: italic"># At least SDK version 0.0.1.</span>
+</pre></div>
+
+
+<h3 id="static_dirs">static_dirs</h3>
+<p>A list of directories in the pod to treat as servable static files. Unlike the <code>static_dir</code> shorthand flag, this config provides additional customization and control over the source directory and the path at which the files are served.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>static_dirs:
+
+<span style="color: #60a0b0; font-style: italic"># Equivalent to the &quot;static_dir&quot; shorthand flag.</span>
+- static_dir: /static/
+  serve_at: /static/
+
+<span style="color: #60a0b0; font-style: italic"># Serves files in the /static/ directory of the pod at the URL path /files/.</span>
+- static_dir: /static/
+  serve_at: /files/
+
+<span style="color: #60a0b0; font-style: italic"># Serves files in the /static/ directory of the pod at the root.</span>
+- static_dir: /static/
+  serve_at: /
+</pre></div>
+
+
+<p>If you do not wish to use Grow's content management or templating features, you can leverage the other features of the system (such as testing, building, and deployment) by simply creating a <code>podspec.yaml</code> file and following the last above example. This can be a good way to migrate an existing site into Grow and slowly add new site sections leveraging Grow's content and templating features.</p>
+<h4 id="fingerprints">Fingerprints</h4>
+<p>Grow can rewrite static file paths with fingerprints.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>static_dirs:
+- static_dir: /source/
+  serve_at: /static/
+  fingerprinted: true
+</pre></div>
+
+
+<p>In the above example, a file at <code>/source/images/file.png</code> would be served at <code>/static/images/file-&lt;fingerprint&gt;.png</code> where <code>&lt;fingerprint&gt;</code> is an md5 hash of the file's contents.</p>
+<h4 id="filtering">Filtering</h4>
+<p>By default grow ignores building any static files that start with a <code>.</code>. The behavior can be changed by adding a main level <code>filter</code> or selectively by adding the filter to a <code>static_dirs</code> item.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>filter:
+  ignore_paths:
+  - \.DS_STORE
+  include_paths:
+  - \.htaccess
+</pre></div>
+
+
+<p>The <code>ignore_paths</code> defines regex patterns for which files to ignore. The <code>include_paths</code> defines regex patterns that override the ignore patterns.</p>
+<p>So if you want to ignore all files that start with a <code>.</code> except for <code>.htaccess</code> files you could do a filter like this (since the default is to ignore dot files you don't need a <code>ignore_paths</code>):</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>filter:
+  include_paths:
+  - \.htaccess
+</pre></div>
+
+
+<h3 id="error_routes">error_routes</h3>
+<p>Grow can build error pages for various error codes. The error page renders a view, which can leverage the template variable <code>{{error}}</code> to gain additional information about the error. To specify a generic error page, use "default". When a pod is built and deployed to a storage provider such as Amazon S3 or Google Cloud Storage, the storage provider will be configured to use these error pages.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>default: /views/errors/default.html
+not_found: /views/errors/404.html
+unauthorized: /views/errors/401.html
+forbidden: /views/errors/403.html
+method_not_allowed: /views/errors/405.html
+bad_request: /views/errors/400.html
+im_a_teapot: /views/errors/418.html
+</pre></div>
+
+
+<h3 id="localization">localization</h3>
+<p>The default localization configuration for all content in the pod.</p>
+<h4 id="default_locale">default_locale</h4>
+<p>Sets the global, default locale to use for content when a locale is not explicitly. This allows you to set a global, default locale for the content throughout your site. For example, if you wanted to serve English content at <em>http://example.com/site/</em> and localized content at <em>http://example.com/{locale}/site/</em>, you would set <em>default_locale</em> to <code>en</code>.</p>
+<p>It also allows you to use a non-English language as the source language for content (for example, when translating <em>from</em> Chinese <em>to</em> English).</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>default_locale: en
+</pre></div>
+
+
+<h4 id="locales">locales</h4>
+<p>A list of locale identifiers that your site is available in. Language codes will be derived from the identifiers in this list and individual translation catalogs will be created for each language. The <code>{locale}</code> converter can be used in <code>path</code> configs (such as in <code>podspec.yaml</code> or in a blueprint).</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>locales:
+- en_US
+- de_DE
+- it_IT
+</pre></div>
+
+
+<h4 id="aliases">aliases</h4>
+<p>A mapping of aliases to locale identifiers. This can be used to translate a Grow locale to a locale used by your web server, should the identifiers differ.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>aliases:
+  en_uk: en_gb
+</pre></div>
+
+
+<h4 id="import_as">import_as</h4>
+<p>A mapping of external to internal locales, used when translations are imported. When translations are imported using <code>grow translations import</code>, Grow converts external locales to internal locales. This mapping can be useful if you are working with a translation provider that uses non-standard locales.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>import_as:
+  en_uk:
+  - en_GB
+</pre></div>
+
+
+<h4 id="require_translations">require_translations</h4>
+<p>Flag for determining if the build requires all strings in use to be translated before being successful. To target a specific deployment use the <code>@env.&lt;deployment name&gt;</code> format.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>require_translations: false
+require_translations@env.prod: true
+</pre></div>
+
+
+<h3 id="preprocessors">preprocessors</h3>
+<p>A list of <a href="/docs/preprocessors/">preprocessors</a>. The type of preprocessor is determined by the <code>kind</code> key. The remaining keys are configuration parameters for the preprocessor.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>kind: sass
+sass_dir: /source/sass/
+out_dir: /static/css/
+</pre></div>
+
+
+<h3 id="meta">meta</h3>
+<p>Metadata set at a level global to the pod. Metadata here is arbitrary, unstructured, and can be used by templates via <code>{{podspec.meta}}</code>. Typcal uses for metadata may be for setting analytics tracking IDs, site verification IDs, etc.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>meta:
+  key: value
+  google_analytics: UA-12345
+</pre></div>
+
+
+<h3 id="sitemap">sitemap</h3>
+<p>Add <code>sitemap</code> to autogenerate a <code>sitemap.xml</code> file for your project.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>sitemap:
+  enabled: yes
+  path: <span style="color: #4070a0">&quot;/{root}/sitemap.xml&quot;</span>   <span style="color: #60a0b0; font-style: italic"># Optional.</span>
+  collections:                  <span style="color: #60a0b0; font-style: italic"># Optional.</span>
+  - pages
+  locales:                      <span style="color: #60a0b0; font-style: italic"># Optional.</span>
+  - en
+  - fr
+</pre></div>
+
+
+<h3 id="deployments">deployments</h3>
+<p>A mapping of named deployments. The deployment destination is determined by the <code>destination</code> key. The remaining keys are configuration parameters for the deployment. The <code>default</code> name can be used to specify the pod's default deployment. An <code>env</code> can optionally be specified.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>default:
+  destination: gcs
+  bucket: staging.example.com
+
+production:
+  destination: gcs
+  bucket: example.com
+</pre></div>
+
+
+<p>You can also specify the environment on a per-deployment basis. The environment properties are used in the <code>{{env}}</code> object, as well as used to derive the host, port, and scheme for the <code>url</code> properties of documents and static files. These are also used in sitemap generation.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>deployments:
+  example:
+    destination: local
+    keep_control_dir: no
+    control_dir: ./private/my-project/
+    out_dir: ./www/html/
+    env:
+      host: example.com
+      scheme: https
+      port: 9000
+</pre></div>
+
+
+<h3 id="footnotes">footnotes</h3>
+<p>Add <code>footnotes</code> to configure how footnotes are <a href="/docs/documents/#footnotes">generated in documents</a>.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>footnotes:
+  numeric_locales_pattern: US$
+  symbols:
+  - ∞
+  - ●
+  - ◐
+  - ◕
+</pre></div>
+
+
+<p>The default set of symbols follows the Chicago Manual footnote style. Symbols are repeated after the initial list is exhausted. For example, the above configuration would make the fifth footnote use ∞∞ as the symbol.</p>
+<p>By default, the DE and CA territories use numeric symbols instead of normal symbols. The <code>numeric_locales_pattern</code> configures what regex to apply to the locales to determine if it should use the numeric symbols instead of the normal symbol set. Ex: <code>numeric_locales_pattern: (US|CA)$</code> would make all the US and CA territories use the numeric symbols.</p>
+<p>You can force all locales to use numeric symbols by using <code>use_numeric_symbols: True</code> or turn off the usage of numeric symbols by using <code>use_numeric_symbols: False</code>.</p>
+  </div>
+        </main>
+          <aside class="toc_column">
+            <h3>In this document</h3>
+            <div class="toc">
+<ul>
+<li><a href="#podspec.yaml">podspec.yaml</a><ul>
+<li><a href="#grow_version">grow_version</a></li>
+<li><a href="#static_dirs">static_dirs</a><ul>
+<li><a href="#fingerprints">Fingerprints</a></li>
+<li><a href="#filtering">Filtering</a></li>
+</ul>
+</li>
+<li><a href="#error_routes">error_routes</a></li>
+<li><a href="#localization">localization</a><ul>
+<li><a href="#default_locale">default_locale</a></li>
+<li><a href="#locales">locales</a></li>
+<li><a href="#aliases">aliases</a></li>
+<li><a href="#import_as">import_as</a></li>
+<li><a href="#require_translations">require_translations</a></li>
+</ul>
+</li>
+<li><a href="#preprocessors">preprocessors</a></li>
+<li><a href="#meta">meta</a></li>
+<li><a href="#sitemap">sitemap</a></li>
+<li><a href="#deployments">deployments</a></li>
+<li><a href="#footnotes">footnotes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+          </aside>
+    </div>
+  </div>
+<footer class="footer">
+  <div class="footer__container">
+    <p class="body-1">
+      <a href="https://github.com/grow/grow/">Grow</a> is released under the <a href="https://github.com/grow/grow/blob/master/LICENSE">MIT License</a>.
+      <br>
+      Except otherwise noted, docs are released under <a href="http://creativecommons.org/licenses/by/3.0/us/">CC 3.0</a> and icons are from <a href="http://flatties.uiparade.com">Flatties</a>.
+    </p>
+    <p class="body-1">
+      <a href="https://github.com/grow/grow.io/edit/master/content/docs/podspec.md">Edit on GitHub</a>
+    </p>
+  </div>
+</footer>    </div>
+
+    <script src="/js/composite/global-7bb167004cd34288c477594f56fc1413.min.js"></script>
+
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-44018013-3', 'auto');
+        ga('send', 'pageview');
+      </script>
+  <script src="/js/composite/docs-86f8da85c9025afce6b585ab59548634.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, height=device-height">
+    <title>
+Live development    </title>
+    <meta property="og:title" content="Live development – grow.io">
+    <meta property="og:site_name" content="grow.io">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://localhost/start/3/">
+      <link rel="shortcut icon" href="/favicon.ico">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Dosis:300,400,500|Source+Code+Pro" rel="stylesheet">
+    <link href="/css/composite/global-815332777827e9f19889b183c4d607cd.min.css" rel="stylesheet">
+  <link href="/css/composite/docs-f7da157a92f76d14dfae562341bc6dc1.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="wrapper">
+<header class="header">
+  <div class="header__logo">
+    <a href="/">
+      <img src="/static/images/grow.svg">
+      Grow
+    </a>
+  </div>
+  <nav class="header__nav nav">
+    <div class="nav__items nav__items--end">
+        <a class="nav__items__item " href="/start/">Start</a>
+        <a class="nav__items__item " href="/docs/">Docs</a>
+        <a class="nav__items__item " href="/project/">About</a>
+        <a class="nav__items__item " href="/search/">Search</a>
+        <a class="nav__items__item " href="/styleguide/">Styles</a>
+    </div>
+  </nav>
+</header>  <div class="block__main">
+    <div class="split_columns split_columns--reverse">
+<nav class="side_nav">
+      <h3>Codelab</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/start/">Start with Grow</a>
+      </li>
+      <li>
+        <a href="/start/1/">Getting Grow</a>
+      </li>
+      <li>
+        <a href="/start/2/">Initializing a new Grow project</a>
+      </li>
+      <li class="active">
+        <a href="/start/3/">Live development</a>
+      </li>
+      <li>
+        <a href="/start/4/">Pod specification</a>
+      </li>
+      <li>
+        <a href="/start/5/">Working with content</a>
+      </li>
+      <li>
+        <a href="/start/6/">Localizing your site</a>
+      </li>
+      <li>
+        <a href="/start/7/">Building your site</a>
+      </li>
+      <li>
+        <a href="/start/8/">Launching</a>
+      </li>
+      <li>
+        <a href="/start/9/">Wrap up</a>
+      </li>
+  </ul>
+</nav>        <main class="pad readable_lines">
+          <h1>Live development</h1>
+  <div class="content">
+      <p>Now that you've got a grasp on the structure of a pod, we can jump into changing configs, writing content, and working on templates. All of this is easily possible using Grow's built-in development server, which you can start using the <code>run</code> command:</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>$ grow run
+</pre></div>
+
+
+<p>When you start the development server, Grow checks for updates to the SDK, compiles translations, and runs preprocessors. If any of these tasks fail, the test server will fail to start. Here's what it looks like when you start your development server:</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>$ grow run
+Compiled: /source/sass/main.scss -&gt; /dist/main.min.css
+Pod loaded in <span style="color: #40a070">0</span>.247 s
+           Pod: /my-codelab
+       Address: http://localhost:8080/
+  Server ready. Press ctrl-c to quit.
+</pre></div>
+
+
+<p>Your development server is now running, and by default, your web browser will open to your project's root, ready for you to preview.</p>
+<p>Changes to content (in <code>content/</code>), templates (in <code>views/</code>), or static files are immediately reflected, and a quick refresh of any page allows you to see your changes immediately.</p>
+<p>Grow watches for changes to files that require preprocessing (such as files in <code>source</code> or <code>translations</code>). Changes to those files will cause Grow to kick off a preprocessor to build the generated files, and your changes will be reflected in the live preview almost immediately.</p>
+<p>Open <code>http://localhost:8080</code> in your browser and navigate through the site. This entire site is built by your codelab pod.</p>
+  </div>
+
+          <nav class="relative_nav">
+              <a href="/start/2/" class="button button--icon-start">
+                <i class="material-icons">arrow_back</i>
+                Initializing a new Grow project
+              </a>
+              <a href="/start/4/" class="button button--icon-end">
+                Pod specification
+                <i class="material-icons">arrow_forward</i>
+              </a>
+          </nav>
+        </main>
+    </div>
+  </div>
+<footer class="footer">
+  <div class="footer__container">
+    <p class="body-1">
+      <a href="https://github.com/grow/grow/">Grow</a> is released under the <a href="https://github.com/grow/grow/blob/master/LICENSE">MIT License</a>.
+      <br>
+      Except otherwise noted, docs are released under <a href="http://creativecommons.org/licenses/by/3.0/us/">CC 3.0</a> and icons are from <a href="http://flatties.uiparade.com">Flatties</a>.
+    </p>
+    <p class="body-1">
+      <a href="https://github.com/grow/grow.io/edit/master/content/codelab/3.md">Edit on GitHub</a>
+    </p>
+  </div>
+</footer>    </div>
+
+    <script src="/js/composite/global-7bb167004cd34288c477594f56fc1413.min.js"></script>
+
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-44018013-3', 'auto');
+        ga('send', 'pageview');
+      </script>
+  <script src="/js/composite/docs-86f8da85c9025afce6b585ab59548634.min.js"></script>
+  </body>
+</html>

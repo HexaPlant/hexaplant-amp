@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, height=device-height">
+    <title>
+Deployment    </title>
+    <meta property="og:title" content="Deployment – grow.io">
+    <meta property="og:site_name" content="grow.io">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://localhost/docs/deployment/">
+      <link rel="shortcut icon" href="/favicon.ico">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Dosis:300,400,500|Source+Code+Pro" rel="stylesheet">
+    <link href="/css/composite/global-815332777827e9f19889b183c4d607cd.min.css" rel="stylesheet">
+  <link href="/css/composite/docs-f7da157a92f76d14dfae562341bc6dc1.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="wrapper">
+<header class="header">
+  <div class="header__logo">
+    <a href="/">
+      <img src="/static/images/grow.svg">
+      Grow
+    </a>
+  </div>
+  <nav class="header__nav nav">
+    <div class="nav__items nav__items--end">
+        <a class="nav__items__item " href="/start/">Start</a>
+        <a class="nav__items__item " href="/docs/">Docs</a>
+        <a class="nav__items__item " href="/project/">About</a>
+        <a class="nav__items__item " href="/search/">Search</a>
+        <a class="nav__items__item " href="/styleguide/">Styles</a>
+    </div>
+  </nav>
+</header>  <div class="block__main">
+    <div class="split_columns split_columns--reverse">
+<nav class="side_nav">
+      <h3>Get Started</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/">Welcome</a>
+      </li>
+      <li>
+        <a href="/docs/samples/">Themes &amp; samples</a>
+      </li>
+        </ul>
+      <h3>Reference</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/directory-structure/">Directory structure</a>
+      </li>
+      <li>
+        <a href="/docs/podspec/">Podspec</a>
+      </li>
+      <li>
+        <a href="/docs/templates/">Templates</a>
+      </li>
+      <li>
+        <a href="/docs/collections/">Collections</a>
+      </li>
+      <li>
+        <a href="/docs/documents/">Documents</a>
+      </li>
+      <li>
+        <a href="/docs/urls/">Routes and URLs</a>
+      </li>
+      <li>
+        <a href="/docs/content-localization/">Content localization</a>
+      </li>
+      <li>
+        <a href="/docs/environments/">Build Environments</a>
+      </li>
+      <li>
+        <a href="/docs/markdown-extensions/">Markdown reference</a>
+      </li>
+      <li>
+        <a href="/docs/translations/">Translations</a>
+      </li>
+      <li>
+        <a href="/docs/preprocessors/">Preprocessors</a>
+      </li>
+      <li>
+        <a href="/docs/ui-tools/">UI Tools</a>
+      </li>
+      <li>
+        <a href="/docs/preferences/">Command Preferences</a>
+      </li>
+        </ul>
+      <h3>Extensions</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/extensions-install/">Installing Extensions</a>
+      </li>
+      <li>
+        <a href="/docs/extensions-legacy/">Legacy Extensions</a>
+      </li>
+      <li>
+        <a href="/docs/extensions/">Create Extensions</a>
+      </li>
+      <li>
+        <a href="/docs/extensions-preprocessor-legacy/">Create Preprocessors</a>
+      </li>
+        </ul>
+      <h3>Style Guide</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/partials/">Partials</a>
+      </li>
+        </ul>
+      <h3>Workflow</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/development-server/">Development server</a>
+      </li>
+      <li>
+        <a href="/docs/building/">Building</a>
+      </li>
+      <li class="active">
+        <a href="/docs/deployment/">Deployment</a>
+      </li>
+      <li>
+        <a href="/docs/continuous/">Continuous integration</a>
+      </li>
+      <li>
+        <a href="/docs/git-usage/">Git + Grow = ♡</a>
+      </li>
+  </ul>
+</nav>        <main class="main_column pad readable_lines">
+          <h1>Deployment</h1>
+  <div class="content">
+      
+<p>Deployment is the act of taking your pod, generating a static site, and transferring it to a web server (or other location), typically ready for serving it publically to the world.</p>
+<h2 id="launch-lifecycle">Launch lifecycle</h2>
+<h3 id="steps">Steps</h3>
+<p>The launch lifecycle remains the same regardless of your deployment's destination. Here are the steps that every launch undergoes:</p>
+<ol>
+<li><strong>Processing</strong>: All pre and post-processors used by your pod are run.</li>
+<li><strong>Destination pre-launch</strong>: A test is run to verify that Grow can connect to and configure your destination.</li>
+<li><strong>Deployment index comparison</strong>: The deployment index is retrieved from the destination (if it exists), and a diff between what's live and what's about to be deployed is presented to you for confirmation.</li>
+<li><strong>Deployment</strong><ol>
+<li>The diff between your local index and the deployment index is applied (new files are written, old files are deleted, and edits are made).</li>
+<li>The destination is configured (if applicable) with things like redirects, custom error pages, etc.</li>
+</ol>
+</li>
+<li><strong>Destination post-launch</strong>: Any clean up tasks required by the destination are run.<ol>
+<li>The deployment log is updated at the destination.</li>
+<li>The deployment index is written to the destination.</li>
+</ol>
+</li>
+</ol>
+<p>These universal steps ensure that every deployment remains consistent – and so that future deployments have knowledge of the previous deployment.</p>
+<h3 id="configuration">Configuration</h3>
+<p>You can configure deployments by specifying them in <code>podspec.yaml</code>. The <em>deployments</em> key maps deployment names to destination configurations.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic"># podspec.yaml</span>
+
+deployments:
+
+  default:                <span style="color: #60a0b0; font-style: italic"># Deployment name.</span>
+    destination: local    <span style="color: #60a0b0; font-style: italic"># Destination kind.</span>
+    out_dir: ~/out/       <span style="color: #60a0b0; font-style: italic"># Parameters for &quot;local&quot; destination.</span>
+
+  grow.io:
+    destination: gcs
+    bucket: grow.io
+</pre></div>
+
+
+<h3 id="commands">Commands</h3>
+<p>Once you've configured a deployment in <code>podspec.yaml</code>, you can use the <code>grow deploy</code> command to launch your site. This will kick off the deployment process (above).</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic"># Deploys your site to a destination named `grow.io`.</span>
+grow deploy grow.io &lt;pod&gt;
+</pre></div>
+
+
+<h2 id="destinations">Destinations</h2>
+<h3 id="google-cloud-storage">Google Cloud Storage</h3>
+<p>Deploys a build to Google Cloud Storage, appropriate for serving directly from GCS using the website serving feature.</p>
+<p>There are two ways Grow can establish a connection to Google Cloud Storage. You can either use the "interoperable" method (which uses an access key and secret, similar to connections to Amazon S3), or you can use a client email address and key file.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic"># Authenticates using access key and secret.</span>
+destination: gcs
+bucket: mybucket.example.com
+
+<span style="color: #60a0b0; font-style: italic"># Authenticates using service account email and private key file.</span>
+destination: gcs
+bucket: mybucket.example.com
+project: project-id
+email: 606734090113-6ink7iugcv89da9sru7lii8bs3i0obqg@developer.gserviceaccount.com
+key_path: /path/to/key/file.p12
+</pre></div>
+
+
+<p>To use the "interoperable" method, obtain an access key and secret from the Cloud Console, and place them in <code>$HOME/.boto</code>. You can alternatively place them in environment variables <code>GS_ACCESS_KEY_ID</code> and <code>GS_SECRET_ACCESS_KEY</code> instead of using the <code>.boto</code> file. <a href="https://developers.google.com/storage/docs/migrating#keys">See documentation on obtaining access keys</a>.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic"># `$HOME/.boto`</span>
+<span style="color: #007020; font-weight: bold">[Credentials]</span>
+<span style="color: #4070a0">gs_access_key_id</span> <span style="color: #666666">=</span> <span style="color: #4070a0">GOOGTS7C7FUP3AIRVJTE</span>
+<span style="color: #4070a0">gs_secret_access_key</span> <span style="color: #666666">=</span> <span style="color: #4070a0">bGoa+V7g/yqDXvKRqq+JTFn4uQZbPiQJo4pf9RzJ</span>
+</pre></div>
+
+
+<p>To use a client email and private key file, visit the Google Developers Console (<code>https://console.developers.google.com/project/apps~YOUR_PROJECT/apiui/credential</code>) and use the <em>email address</em> for the <em>Service Account</em> and download the key using the <em>Generate New Key</em> button. If you do not have a <em>Service Account</em> listed on this screen, use the <em>Create new Client ID</em> button.</p>
+<p>In addition to obtaining your service account email address and key file, you must make sure that the service account has ownership access to the Google Cloud Storage bucket where you are deploying your site. To do this, make sure the service account's email address is in the bucket's ACL as a <em>User</em> and <em>Owner</em>. You can do this from the Developers Console Cloud Storage UI.</p>
+<h3 id="amazon-s3">Amazon S3</h3>
+<p>Deploys a build to an Amazon S3 bucket, appropriate for serving directly from S3 using the website serving feature.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>destination: s3
+bucket: mybucket.example.com
+</pre></div>
+
+
+<p>To authenticate to Amazon S3, obtain your access key and secret and place them in <code>$HOME/.boto</code>. You can also place these environment variables <code>AWS_ACCESS_KEY_ID</code> and <code>AWS_SECRET_ACCESS_KEY</code>.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020; font-weight: bold">[Credentials]</span>
+<span style="color: #4070a0">aws_access_key_id</span> <span style="color: #666666">=</span> <span style="color: #4070a0">...</span>
+<span style="color: #4070a0">aws_secret_access_key</span>  <span style="color: #666666">=</span> <span style="color: #4070a0">...</span>
+</pre></div>
+
+
+<h3 id="local">Local</h3>
+<p>Deploys a build to a local destination on your computer.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>destination: local
+out_dir: /path/to/out/directory/
+</pre></div>
+
+
+<h3 id="scp">SCP</h3>
+<p>Authenticates using the ssh keys running in ssh-agent. The <code>root_dir</code> option uses syntax from the standard <code>scp</code> command. Values can be either absolute or relative. The <code>host</code> is required. <code>port</code> is optional and will default to 22 if not specified. <code>username</code> is optional and is used to specify the target server username if it differs from your development environment user issuing the <code>grow deploy</code> command.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>destination: scp
+host: example.com
+port: 1111
+username: username
+root_dir: /home/username/domains/example.com/public_html/
+</pre></div>
+
+
+<h3 id="git">Git</h3>
+<p>Deploys a build to a Git repository (either remote or local). Remote repositories are first cloned to a temporary directory, then the specified branch is checked out. The deployment is applied, committed, and then (if the repository is remote), the branch is pushed to the origin. Unless specified otherwise by using the <code>path</code> field, builds are deployed to the root folder of the repository.</p>
+<p>Git deployments can be used in conjunction with GitHub pages by specifying the <code>gh-pages</code> branch.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>destination: git
+repo: https://github.com/owner/project.git
+branch: master
+root_dir: &lt;optional base path within the repository&gt;
+</pre></div>
+
+
+<h2 id="deployment-index">Deployment index</h2>
+<div class="badge badge-docs-incomplete">Documentation incomplete</div>
+
+<p>The deployment index is a record of deployment for each pod. The deployment index records the current state of the deployed site, which files exist, when they were deployed, and who performed the deployment. The deployment index is deployed along with generated files with each launch and used to display a diff before each deployment.</p>
+<h2 id="environment">Environment</h2>
+<p>Deployments can specify environment parameters – for access in the <code>{{env}}</code> context variable. Use <code>{{env}}</code> to customize template behavior based on the deployment.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>env:
+  name: prod
+  host: example.com
+  port: 80
+  scheme: http
+</pre></div>
+  </div>
+        </main>
+          <aside class="toc_column">
+            <h3>In this document</h3>
+            <div class="toc">
+<ul>
+<li><a href="#launch-lifecycle">Launch lifecycle</a><ul>
+<li><a href="#steps">Steps</a></li>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#commands">Commands</a></li>
+</ul>
+</li>
+<li><a href="#destinations">Destinations</a><ul>
+<li><a href="#google-cloud-storage">Google Cloud Storage</a></li>
+<li><a href="#amazon-s3">Amazon S3</a></li>
+<li><a href="#local">Local</a></li>
+<li><a href="#scp">SCP</a></li>
+<li><a href="#git">Git</a></li>
+</ul>
+</li>
+<li><a href="#deployment-index">Deployment index</a></li>
+<li><a href="#environment">Environment</a></li>
+</ul>
+</div>
+          </aside>
+    </div>
+  </div>
+<footer class="footer">
+  <div class="footer__container">
+    <p class="body-1">
+      <a href="https://github.com/grow/grow/">Grow</a> is released under the <a href="https://github.com/grow/grow/blob/master/LICENSE">MIT License</a>.
+      <br>
+      Except otherwise noted, docs are released under <a href="http://creativecommons.org/licenses/by/3.0/us/">CC 3.0</a> and icons are from <a href="http://flatties.uiparade.com">Flatties</a>.
+    </p>
+    <p class="body-1">
+      <a href="https://github.com/grow/grow.io/edit/master/content/docs/deployment.md">Edit on GitHub</a>
+    </p>
+  </div>
+</footer>    </div>
+
+    <script src="/js/composite/global-7bb167004cd34288c477594f56fc1413.min.js"></script>
+
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-44018013-3', 'auto');
+        ga('send', 'pageview');
+      </script>
+  <script src="/js/composite/docs-86f8da85c9025afce6b585ab59548634.min.js"></script>
+  </body>
+</html>

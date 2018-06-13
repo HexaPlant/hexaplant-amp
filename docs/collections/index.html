@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, height=device-height">
+    <title>
+Collections    </title>
+    <meta property="og:title" content="Collections – grow.io">
+    <meta property="og:site_name" content="grow.io">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://localhost/docs/collections/">
+      <link rel="shortcut icon" href="/favicon.ico">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Dosis:300,400,500|Source+Code+Pro" rel="stylesheet">
+    <link href="/css/composite/global-815332777827e9f19889b183c4d607cd.min.css" rel="stylesheet">
+  <link href="/css/composite/docs-f7da157a92f76d14dfae562341bc6dc1.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="wrapper">
+<header class="header">
+  <div class="header__logo">
+    <a href="/">
+      <img src="/static/images/grow.svg">
+      Grow
+    </a>
+  </div>
+  <nav class="header__nav nav">
+    <div class="nav__items nav__items--end">
+        <a class="nav__items__item " href="/start/">Start</a>
+        <a class="nav__items__item " href="/docs/">Docs</a>
+        <a class="nav__items__item " href="/project/">About</a>
+        <a class="nav__items__item " href="/search/">Search</a>
+        <a class="nav__items__item " href="/styleguide/">Styles</a>
+    </div>
+  </nav>
+</header>  <div class="block__main">
+    <div class="split_columns split_columns--reverse">
+<nav class="side_nav">
+      <h3>Get Started</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/">Welcome</a>
+      </li>
+      <li>
+        <a href="/docs/samples/">Themes &amp; samples</a>
+      </li>
+        </ul>
+      <h3>Reference</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/directory-structure/">Directory structure</a>
+      </li>
+      <li>
+        <a href="/docs/podspec/">Podspec</a>
+      </li>
+      <li>
+        <a href="/docs/templates/">Templates</a>
+      </li>
+      <li class="active">
+        <a href="/docs/collections/">Collections</a>
+      </li>
+      <li>
+        <a href="/docs/documents/">Documents</a>
+      </li>
+      <li>
+        <a href="/docs/urls/">Routes and URLs</a>
+      </li>
+      <li>
+        <a href="/docs/content-localization/">Content localization</a>
+      </li>
+      <li>
+        <a href="/docs/environments/">Build Environments</a>
+      </li>
+      <li>
+        <a href="/docs/markdown-extensions/">Markdown reference</a>
+      </li>
+      <li>
+        <a href="/docs/translations/">Translations</a>
+      </li>
+      <li>
+        <a href="/docs/preprocessors/">Preprocessors</a>
+      </li>
+      <li>
+        <a href="/docs/ui-tools/">UI Tools</a>
+      </li>
+      <li>
+        <a href="/docs/preferences/">Command Preferences</a>
+      </li>
+        </ul>
+      <h3>Extensions</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/extensions-install/">Installing Extensions</a>
+      </li>
+      <li>
+        <a href="/docs/extensions-legacy/">Legacy Extensions</a>
+      </li>
+      <li>
+        <a href="/docs/extensions/">Create Extensions</a>
+      </li>
+      <li>
+        <a href="/docs/extensions-preprocessor-legacy/">Create Preprocessors</a>
+      </li>
+        </ul>
+      <h3>Style Guide</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/partials/">Partials</a>
+      </li>
+        </ul>
+      <h3>Workflow</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/development-server/">Development server</a>
+      </li>
+      <li>
+        <a href="/docs/building/">Building</a>
+      </li>
+      <li>
+        <a href="/docs/deployment/">Deployment</a>
+      </li>
+      <li>
+        <a href="/docs/continuous/">Continuous integration</a>
+      </li>
+      <li>
+        <a href="/docs/git-usage/">Git + Grow = ♡</a>
+      </li>
+  </ul>
+</nav>        <main class="main_column pad readable_lines">
+          <h1>Collections</h1>
+  <div class="content">
+      
+<p>All content in Grow is stored as flat files in your pod's <code>/content/</code> directory. Content is grouped into <strong>collections</strong>, and each collection contains a single <strong>blueprint</strong> and many <strong>documents</strong>. Blueprints describe the structure of all documents in the collection.</p>
+<p>Grow makes it easy to separate content from presentation, but ultimately leaves the choice up to you. Content documents can be associated with URLs and with views (so they represent pages in your site), or not. Content documents without URLs are simply used internally, and can be referenced by other content documents.</p>
+<h2 id="blueprints">Blueprints</h2>
+<p>Every content collection must have a blueprint. Blueprints define how content is structured, displayed, and served. Blueprints are stored as YAML files in your pod's <em>content</em> directory.  For example, a blueprint for a collection "people" would be <code>/content/people/_blueprint.yaml</code></p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>path: /people/{slug}/              <span style="color: #60a0b0; font-style: italic"># The URL path format for content.</span>
+view: /views/people.html           <span style="color: #60a0b0; font-style: italic"># The template to use.</span>
+
+localization:                      <span style="color: #60a0b0; font-style: italic"># Overrides localization from podspec.yaml.</span>
+  path: /{locale}/people/{slug}/
+  locales:
+  - de
+  - fr
+  - it
+
+fields:                            <span style="color: #60a0b0; font-style: italic"># The content structure (currently unimplemented).</span>
+- name:
+    title: Name
+    type: text
+- age:
+    title: Age
+    type: number
+
+categories:                        <span style="color: #60a0b0; font-style: italic"># Content categories (unimplemented).</span>
+- Teachers
+- Students
+</pre></div>
+
+
+<h3 id="path">path</h3>
+<p>Specifies the URL path format for all content in this collection. Documents inherit the <code>path</code> specified in the blueprint. If <code>path</code> is omitted, content in this collection will not be generated into pages, unless a document specifies its own <code>$path</code>. If <code>path</code> is specified, <code>view</code> is a required field. <a href="{{g.doc('/docs/urls/').url.path}}#content-document-path-formatters">See a list of path formatters</a>.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>path: /{root}/{base}/
+</pre></div>
+
+
+<h3 id="view">view</h3>
+<p>Specifies which template should be used to render content in this collection. If <code>view</code> is specified, <code>path</code> is a required field.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic"># Documents in this collection will use the following template.</span>
+view: /views/pages.html
+</pre></div>
+
+
+<h3 id="localization">localization</h3>
+<p>Localization configuration for content in this collection.</p>
+<h4 id="path_1">path</h4>
+<p>Specifies a URL path format for localized content. By specifying both <code>path</code> and <code>localization:path</code>, you can use different formats for the URL paths for "root" and localized content.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>path: /{locale}/people/{slug}/
+</pre></div>
+
+
+<h4 id="locales">locales</h4>
+<p>Specifies a list of locales that documents in this collection are available in. Each document's <em>path</em> will be expanded using <em>locales</em> to derive the URLs that the document is available at.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>locales:
+- de
+- fr
+- it
+</pre></div>
+
+
+<h3 id="categories">categories</h3>
+<p>The <code>categories</code> key contains a list of categories that documents inside the collection can fall into. A collection's categories can be used in conjunction with the <code>g.categories</code> template function to iterate over the documents in the collection, grouped by category.</p>
+  </div>
+        </main>
+          <aside class="toc_column">
+            <h3>In this document</h3>
+            <div class="toc">
+<ul>
+<li><a href="#blueprints">Blueprints</a><ul>
+<li><a href="#path">path</a></li>
+<li><a href="#view">view</a></li>
+<li><a href="#localization">localization</a><ul>
+<li><a href="#path_1">path</a></li>
+<li><a href="#locales">locales</a></li>
+</ul>
+</li>
+<li><a href="#categories">categories</a></li>
+</ul>
+</li>
+</ul>
+</div>
+          </aside>
+    </div>
+  </div>
+<footer class="footer">
+  <div class="footer__container">
+    <p class="body-1">
+      <a href="https://github.com/grow/grow/">Grow</a> is released under the <a href="https://github.com/grow/grow/blob/master/LICENSE">MIT License</a>.
+      <br>
+      Except otherwise noted, docs are released under <a href="http://creativecommons.org/licenses/by/3.0/us/">CC 3.0</a> and icons are from <a href="http://flatties.uiparade.com">Flatties</a>.
+    </p>
+    <p class="body-1">
+      <a href="https://github.com/grow/grow.io/edit/master/content/docs/collections.md">Edit on GitHub</a>
+    </p>
+  </div>
+</footer>    </div>
+
+    <script src="/js/composite/global-7bb167004cd34288c477594f56fc1413.min.js"></script>
+
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-44018013-3', 'auto');
+        ga('send', 'pageview');
+      </script>
+  <script src="/js/composite/docs-86f8da85c9025afce6b585ab59548634.min.js"></script>
+  </body>
+</html>

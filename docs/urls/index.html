@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, height=device-height">
+    <title>
+Routes and URLs    </title>
+    <meta property="og:title" content="Routes and URLs – grow.io">
+    <meta property="og:site_name" content="grow.io">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://localhost/docs/urls/">
+      <link rel="shortcut icon" href="/favicon.ico">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Dosis:300,400,500|Source+Code+Pro" rel="stylesheet">
+    <link href="/css/composite/global-815332777827e9f19889b183c4d607cd.min.css" rel="stylesheet">
+  <link href="/css/composite/docs-f7da157a92f76d14dfae562341bc6dc1.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="wrapper">
+<header class="header">
+  <div class="header__logo">
+    <a href="/">
+      <img src="/static/images/grow.svg">
+      Grow
+    </a>
+  </div>
+  <nav class="header__nav nav">
+    <div class="nav__items nav__items--end">
+        <a class="nav__items__item " href="/start/">Start</a>
+        <a class="nav__items__item " href="/docs/">Docs</a>
+        <a class="nav__items__item " href="/project/">About</a>
+        <a class="nav__items__item " href="/search/">Search</a>
+        <a class="nav__items__item " href="/styleguide/">Styles</a>
+    </div>
+  </nav>
+</header>  <div class="block__main">
+    <div class="split_columns split_columns--reverse">
+<nav class="side_nav">
+      <h3>Get Started</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/">Welcome</a>
+      </li>
+      <li>
+        <a href="/docs/samples/">Themes &amp; samples</a>
+      </li>
+        </ul>
+      <h3>Reference</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/directory-structure/">Directory structure</a>
+      </li>
+      <li>
+        <a href="/docs/podspec/">Podspec</a>
+      </li>
+      <li>
+        <a href="/docs/templates/">Templates</a>
+      </li>
+      <li>
+        <a href="/docs/collections/">Collections</a>
+      </li>
+      <li>
+        <a href="/docs/documents/">Documents</a>
+      </li>
+      <li class="active">
+        <a href="/docs/urls/">Routes and URLs</a>
+      </li>
+      <li>
+        <a href="/docs/content-localization/">Content localization</a>
+      </li>
+      <li>
+        <a href="/docs/environments/">Build Environments</a>
+      </li>
+      <li>
+        <a href="/docs/markdown-extensions/">Markdown reference</a>
+      </li>
+      <li>
+        <a href="/docs/translations/">Translations</a>
+      </li>
+      <li>
+        <a href="/docs/preprocessors/">Preprocessors</a>
+      </li>
+      <li>
+        <a href="/docs/ui-tools/">UI Tools</a>
+      </li>
+      <li>
+        <a href="/docs/preferences/">Command Preferences</a>
+      </li>
+        </ul>
+      <h3>Extensions</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/extensions-install/">Installing Extensions</a>
+      </li>
+      <li>
+        <a href="/docs/extensions-legacy/">Legacy Extensions</a>
+      </li>
+      <li>
+        <a href="/docs/extensions/">Create Extensions</a>
+      </li>
+      <li>
+        <a href="/docs/extensions-preprocessor-legacy/">Create Preprocessors</a>
+      </li>
+        </ul>
+      <h3>Style Guide</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/partials/">Partials</a>
+      </li>
+        </ul>
+      <h3>Workflow</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/development-server/">Development server</a>
+      </li>
+      <li>
+        <a href="/docs/building/">Building</a>
+      </li>
+      <li>
+        <a href="/docs/deployment/">Deployment</a>
+      </li>
+      <li>
+        <a href="/docs/continuous/">Continuous integration</a>
+      </li>
+      <li>
+        <a href="/docs/git-usage/">Git + Grow = ♡</a>
+      </li>
+  </ul>
+</nav>        <main class="main_column pad readable_lines">
+          <h1>Routes and URLs</h1>
+  <div class="content">
+      
+<p>Grow provides a flexible way to configure the URL serving paths for your site's routes. By leveraging the URL path configuration features, you can easily create clean, maintainable, and flexible URLs for all routes in your site.</p>
+<h2 id="philosophy">Philosophy</h2>
+<p>Serving paths and filesystem paths do <em>not</em> need to match one-to-one. This is an explicit capability that exists to remove the need to name internal files a specific way. Because internal file paths do not need to match serving paths, you can change the URL of content at any time without renaming files or performing find and replace operations throughout your site.</p>
+<h2 id="configuring-urls">Configuring URLs</h2>
+<p>There are three places URLs are specified. Your site's routing map is generated by analyzing and combining the rules set in all three locations.</p>
+<ol>
+<li><code>podspec.yaml</code></li>
+<li>blueprints</li>
+<li>content documents</li>
+</ol>
+<h3 id="content-document-path-formatters">Content document path formatters</h3>
+<p>Use these formatters to configure serving paths for documents either in a content document or its blueprint.</p>
+<p>Setting <code>path</code> in <em>both</em> a collection's blueprint and in a content document is <em>optional</em>. You should only define a path in a content document if you need to <em>override</em> a content document's path from the one specified in its blueprint.</p>
+<p><strong>Remember: don't repeat yourself.</strong> If you can specify a path format in a collection's blueprint that generates the right path for all of its documents, then there is no need to also specify <code>$path</code> for each document. Only specify <code>$path</code> in a document for paths you need to override.</p>
+<table>
+<thead>
+<tr>
+<th>Path formatter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>{base}</code></td>
+<td>The document's basename. Ex: <code>my-page.yaml</code> -&gt; <code>my-page</code></td>
+</tr>
+<tr>
+<td><code>{collection.root}</code></td>
+<td>The document's collection's root.</td>
+</tr>
+<tr>
+<td><code>{collection.basename}</code></td>
+<td>The document's collection's base name. Ex: <code>/content/pages/my-page.yaml</code> -&gt; <code>/pages</code></td>
+</tr>
+<tr>
+<td><code>{collection.base_path}</code></td>
+<td>The document's collection sub directory path. Ex: <code>/content/pages/sub/my-page.yaml</code> -&gt; <code>/sub/</code></td>
+</tr>
+<tr>
+<td><code>{env.fingerprint}</code></td>
+<td>A fingerprint assigned to the build environment. By default this is a timestamp. You can optionally override it by specifying <code>env: fingerprint: &lt;fingerprint&gt;</code> in a deployment configuration.</td>
+</tr>
+<tr>
+<td><code>{date}</code></td>
+<td>The document's date.</td>
+</tr>
+<tr>
+<td><code>{locale}</code></td>
+<td>The document's locale (or its alias, if one exists).</td>
+</tr>
+<tr>
+<td><code>{root}</code></td>
+<td>The pod's root as defined in podspec.yaml.</td>
+</tr>
+<tr>
+<td><code>{slug}</code></td>
+<td>A url slug of the document's title.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="examples">Examples</h4>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic"># In a collection&#39;s _blueprint.yaml</span>
+path: /pages/{slug}/
+path: /pages/{base}/
+path: <span style="color: #4070a0">&quot;{root}/pages/{base}/&quot;</span>
+localization:
+  path: /{locale}/pages/{slug}/
+
+<span style="color: #60a0b0; font-style: italic"># In document.yaml (use &#39;$path&#39; instead of &#39;path&#39; – and only specify document-level paths if you need to override the format set in the blueprint)</span>
+$path: /pages/home/
+$localization:
+  path: /{locale}/pages/home/
+</pre></div>
+
+
+<h3 id="static-file-path-formatters">Static file path formatters</h3>
+<p>Use these formatters to configure serving paths for static files in <code>podspec.yaml</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Path formatter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>{env.fingerprint}</code></td>
+<td>A fingerprint assigned to the build environment. By default this is a timestamp. You can optionally override it by specifying <code>env: fingerprint: &lt;fingerprint&gt;</code> in a deployment configuration.</td>
+</tr>
+<tr>
+<td><code>{fingerprint}</code></td>
+<td>A fingerprint uniquely identifying a static file. The fingerprint is an md5 hash of the corresponding static file's contents. Can be used for cache-busting on a per-file basis.</td>
+</tr>
+<tr>
+<td><code>{locale}</code></td>
+<td>The static file's locale (or its alias, if one exists).</td>
+</tr>
+<tr>
+<td><code>{root}</code></td>
+<td>The pod's root as defined in podspec.yaml.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="examples_1">Examples</h4>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic"># In podspec.yaml</span>
+static_dirs:
+- static_dir: /source/images/
+  serve_at: /static/images/
+  localization:
+    static_dir: /source/{locale}/images/
+    serve_at: /{locale}/static/images/
+</pre></div>
+
+
+<h3 id="specifying-a-site-root">Specifying a site root</h3>
+<p>You can specify the site root in <code>podspec.yaml</code> and then reference the root in path formats elsewhere. This provides flexibility should you need to change the site root later, and allows you to avoid repeating the site root throughout multiple configurations.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic"># In podspec.yaml</span>
+root: /my-site/
+
+<span style="color: #60a0b0; font-style: italic"># In a collection&#39;s _blueprint.yaml</span>
+path: /{root}/pages/{base}/
+</pre></div>
+
+
+<h3 id="specifying-the-homepage">Specifying the homepage</h3>
+<p>Most sites have homepages. You can specify your site's homepage in <code>podspec.yaml</code>, which improves automation by providing you with a clickable link to your homepage when the development server starts up. Notifications may also contain links to your homepage, so it's always a good idea to set this.</p>
+<p>Note that the value of the homepage should point to a content document, not a URL path. Your homepage's URL will be derived from the content document's URL.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic"># In podspec.yaml</span>
+home: /content/pages/home.yaml
+</pre></div>
+
+
+<h2 id="urls-in-templates">URLs in templates</h2>
+<p>Because you are provided with the freedom to change a serving path at any time, whenever you need to reference a URL in a template (such as in a <code>&lt;link&gt;</code> element for a stylesheet or <code>&lt;a href&gt;</code> for a link), you should always programmatically generate those URLs using a built-in template function.</p>
+<p>In general, you should never refer to a linkable resource by its URL: you should refer to it by its internal pod path and leverage either <code>g.doc</code> or <code>g.static</code> to programmatically generate its URL. This technique provides you with flexibility to change URLs later without finding and replacing URLs in your site's code. Plus, it helps avoid broken links.</p>
+<h3 id="url-object">URL object</h3>
+<p>Documents and static files both have <code>url</code> properties that return their corresponding <code>Url</code> object.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span># The serving path for a content document.
+<span style="color: #007020">{{</span><span style="color: #bb60d5">g.doc</span><span style="color: #666666">(</span><span style="color: #4070a0">&#39;/content/pages/home.yaml&#39;</span><span style="color: #666666">)</span><span style="color: #bb60d5">.url.path</span><span style="color: #007020">}}</span>
+
+# The serving path for a static file.
+<span style="color: #007020">{{</span><span style="color: #bb60d5">g.static</span><span style="color: #666666">(</span><span style="color: #4070a0">&#39;/source/images/image.png&#39;</span><span style="color: #666666">)</span><span style="color: #bb60d5">.url.path</span><span style="color: #007020">}}</span>
+
+<span style="color: #007020">{{</span><span style="color: #bb60d5">doc.url</span><span style="color: #007020">}}</span>            # The full URL to the document (based on the environment).
+<span style="color: #007020">{{</span><span style="color: #bb60d5">doc.url.path</span><span style="color: #007020">}}</span>       # The serving path to the document.
+<span style="color: #007020">{{</span><span style="color: #bb60d5">doc.url.host</span><span style="color: #007020">}}</span>
+<span style="color: #007020">{{</span><span style="color: #bb60d5">doc.url.scheme</span><span style="color: #007020">}}</span>
+<span style="color: #007020">{{</span><span style="color: #bb60d5">doc.url.port</span><span style="color: #007020">}}</span>
+</pre></div>
+
+
+<h3 id="relative-urls">Relative URLs</h3>
+<p>All URLs generated from a <code>Url</code> object are absolute. However, if you'd like to generate relative URLs, you can use the <code>relative</code> template filter. The final URL generated is relative to the current document context.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020">{{</span><span style="color: #bb60d5">g.doc</span><span style="color: #666666">(</span><span style="color: #4070a0">&#39;/content/pages/home.yaml&#39;</span><span style="color: #666666">)</span><span style="color: #bb60d5">.url</span><span style="color: #666666">|</span><span style="color: #06287e">relative</span><span style="color: #007020">}}</span>
+</pre></div>
+
+
+<h2 id="checking-routes">Checking routes</h2>
+<p>Use the <code>grow inspect routes</code> command to quickly audit all of the routes that your site generates. You can use this command to avoid building the site and inspecting the generated fileset or saving and refreshing to check paths in the browser.</p>
+<p>Grow validates your URL path configuration and raises errors upon misconfiguration. For example, Grow will raise an error if you generate the same serving path for two different resources – no two resources may share the same serving path.</p>
+<h2 id="sitemap">Sitemap</h2>
+<p>Grow can autogenerate a <a href="https://support.google.com/webmasters/answer/156184"><code>sitemap.xml</code></a> file for your site, upon build. You can enable sitemap generation in <code>podspec.yaml</code> and, optionally, customize which pages and locales are included in the sitemap.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic"># podspec.yaml</span>
+
+sitemap:
+  enabled: yes
+  path: <span style="color: #4070a0">&quot;/{root}/sitemap.xml&quot;</span>   <span style="color: #60a0b0; font-style: italic"># Optional.</span>
+  collections:                  <span style="color: #60a0b0; font-style: italic"># Optional.</span>
+  - pages
+  locales:                      <span style="color: #60a0b0; font-style: italic"># Optional.</span>
+  - en
+  - fr
+</pre></div>
+  </div>
+        </main>
+          <aside class="toc_column">
+            <h3>In this document</h3>
+            <div class="toc">
+<ul>
+<li><a href="#philosophy">Philosophy</a></li>
+<li><a href="#configuring-urls">Configuring URLs</a><ul>
+<li><a href="#content-document-path-formatters">Content document path formatters</a><ul>
+<li><a href="#examples">Examples</a></li>
+</ul>
+</li>
+<li><a href="#static-file-path-formatters">Static file path formatters</a><ul>
+<li><a href="#examples_1">Examples</a></li>
+</ul>
+</li>
+<li><a href="#specifying-a-site-root">Specifying a site root</a></li>
+<li><a href="#specifying-the-homepage">Specifying the homepage</a></li>
+</ul>
+</li>
+<li><a href="#urls-in-templates">URLs in templates</a><ul>
+<li><a href="#url-object">URL object</a></li>
+<li><a href="#relative-urls">Relative URLs</a></li>
+</ul>
+</li>
+<li><a href="#checking-routes">Checking routes</a></li>
+<li><a href="#sitemap">Sitemap</a></li>
+</ul>
+</div>
+          </aside>
+    </div>
+  </div>
+<footer class="footer">
+  <div class="footer__container">
+    <p class="body-1">
+      <a href="https://github.com/grow/grow/">Grow</a> is released under the <a href="https://github.com/grow/grow/blob/master/LICENSE">MIT License</a>.
+      <br>
+      Except otherwise noted, docs are released under <a href="http://creativecommons.org/licenses/by/3.0/us/">CC 3.0</a> and icons are from <a href="http://flatties.uiparade.com">Flatties</a>.
+    </p>
+    <p class="body-1">
+      <a href="https://github.com/grow/grow.io/edit/master/content/docs/urls.md">Edit on GitHub</a>
+    </p>
+  </div>
+</footer>    </div>
+
+    <script src="/js/composite/global-7bb167004cd34288c477594f56fc1413.min.js"></script>
+
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-44018013-3', 'auto');
+        ga('send', 'pageview');
+      </script>
+  <script src="/js/composite/docs-86f8da85c9025afce6b585ab59548634.min.js"></script>
+  </body>
+</html>

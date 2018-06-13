@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, height=device-height">
+    <title>
+Continuous integration    </title>
+    <meta property="og:title" content="Continuous integration – grow.io">
+    <meta property="og:site_name" content="grow.io">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://localhost/docs/continuous/">
+      <link rel="shortcut icon" href="/favicon.ico">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Dosis:300,400,500|Source+Code+Pro" rel="stylesheet">
+    <link href="/css/composite/global-815332777827e9f19889b183c4d607cd.min.css" rel="stylesheet">
+  <link href="/css/composite/docs-f7da157a92f76d14dfae562341bc6dc1.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="wrapper">
+<header class="header">
+  <div class="header__logo">
+    <a href="/">
+      <img src="/static/images/grow.svg">
+      Grow
+    </a>
+  </div>
+  <nav class="header__nav nav">
+    <div class="nav__items nav__items--end">
+        <a class="nav__items__item " href="/start/">Start</a>
+        <a class="nav__items__item " href="/docs/">Docs</a>
+        <a class="nav__items__item " href="/project/">About</a>
+        <a class="nav__items__item " href="/search/">Search</a>
+        <a class="nav__items__item " href="/styleguide/">Styles</a>
+    </div>
+  </nav>
+</header>  <div class="block__main">
+    <div class="split_columns split_columns--reverse">
+<nav class="side_nav">
+      <h3>Get Started</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/">Welcome</a>
+      </li>
+      <li>
+        <a href="/docs/samples/">Themes &amp; samples</a>
+      </li>
+        </ul>
+      <h3>Reference</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/directory-structure/">Directory structure</a>
+      </li>
+      <li>
+        <a href="/docs/podspec/">Podspec</a>
+      </li>
+      <li>
+        <a href="/docs/templates/">Templates</a>
+      </li>
+      <li>
+        <a href="/docs/collections/">Collections</a>
+      </li>
+      <li>
+        <a href="/docs/documents/">Documents</a>
+      </li>
+      <li>
+        <a href="/docs/urls/">Routes and URLs</a>
+      </li>
+      <li>
+        <a href="/docs/content-localization/">Content localization</a>
+      </li>
+      <li>
+        <a href="/docs/environments/">Build Environments</a>
+      </li>
+      <li>
+        <a href="/docs/markdown-extensions/">Markdown reference</a>
+      </li>
+      <li>
+        <a href="/docs/translations/">Translations</a>
+      </li>
+      <li>
+        <a href="/docs/preprocessors/">Preprocessors</a>
+      </li>
+      <li>
+        <a href="/docs/ui-tools/">UI Tools</a>
+      </li>
+      <li>
+        <a href="/docs/preferences/">Command Preferences</a>
+      </li>
+        </ul>
+      <h3>Extensions</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/extensions-install/">Installing Extensions</a>
+      </li>
+      <li>
+        <a href="/docs/extensions-legacy/">Legacy Extensions</a>
+      </li>
+      <li>
+        <a href="/docs/extensions/">Create Extensions</a>
+      </li>
+      <li>
+        <a href="/docs/extensions-preprocessor-legacy/">Create Preprocessors</a>
+      </li>
+        </ul>
+      <h3>Style Guide</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/partials/">Partials</a>
+      </li>
+        </ul>
+      <h3>Workflow</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/development-server/">Development server</a>
+      </li>
+      <li>
+        <a href="/docs/building/">Building</a>
+      </li>
+      <li>
+        <a href="/docs/deployment/">Deployment</a>
+      </li>
+      <li class="active">
+        <a href="/docs/continuous/">Continuous integration</a>
+      </li>
+      <li>
+        <a href="/docs/git-usage/">Git + Grow = ♡</a>
+      </li>
+  </ul>
+</nav>        <main class="main_column pad readable_lines">
+          <h1>Continuous integration</h1>
+  <div class="content">
+      
+<p>You can easily test, build, and/or deploy your website using a continuous integration (CI) system. CI systems remove extra steps from your project's lifecycle and allow you to save time on repetitive tasks.</p>
+<p>The combination of GitHub, CI, Grow, and a static hosting service such as Google Cloud Storage or Amazon S3 allow you and your team to collaborate on Git and keep your site automatically up to date – without ever having to run a deploy command.</p>
+<p>In fact, this is <a href="https://github.com/grow/grow.io/blob/master/.circleci/config.yml">exactly how this documentation is deployed</a>.</p>
+<p>For security, when doing deployments from CI the CI providers allow you to set environment variables in the UI that can be used in the build but not committed to the repository. Your build steps can make use of these environment variables to authenticate to external services such as Google Cloud Storage or Amazon S3 when deploying.</p>
+<h2 id="using-circle-ci-for-automatic-deploys">Using Circle CI for automatic deploys</h2>
+<p>Circle CI 2.0 makes use of docker images which can produce faster builds. Grow has a docker image (<a href="https://hub.docker.com/r/grow/base/">grow/base</a>) that comes preloaded with grow and some of the common utilities used to build grow sites (like <code>npm</code> and <code>gcloud</code>).</p>
+<ol>
+<li>Set up your deployment (both the host and the configuration in <code>podspec.yaml</code>)</li>
+<li>Connect your GitHub repo with Circle CI</li>
+<li>Configure Circle CI</li>
+</ol>
+<p>To configure Circle CI, add a <code>.circleci/config.yml</code> file in your repository's root. Any required access keys can be configured as secure environment variables in the <em>settings</em> section of your Circle CI project.</p>
+<script src="https://gist.github.com/Zoramite/d446ebb996f95e93003ebfde397848c0.js"></script>
+
+<h3 id="complex-parallel-builds">Complex Parallel Builds</h3>
+<p>For large sites using a CI service it is possible to break up a build into parallel builds that each build for specific locales then combine the build results in a "fan-in" build after the locale specific builds.</p>
+<script src="https://gist.github.com/Zoramite/93f81a5a58afcb8cbbc474c891ff591c.js"></script>
+
+<h2 id="using-travis-ci-for-automatic-deploys">Using Travis CI for automatic deploys</h2>
+<ol>
+<li>Set up your deployment (both the host and the configuration in <code>podspec.yaml</code>).</li>
+<li>Connect your GitHub repo with Travis CI.</li>
+<li>Configure Travis CI.</li>
+</ol>
+<p>To configure Travis CI, add a <code>.travis.yml</code> file in your repository's root. Any required access keys can be configured as secure environment variables in the <em>settings</em> section of your Travis CI project.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>language: python
+python:
+- 2.7
+branches:
+  only:
+  - master
+cache: pip
+install: pip install grow
+script: grow deploy --noconfirm grow.io
+</pre></div>
+  </div>
+        </main>
+          <aside class="toc_column">
+            <h3>In this document</h3>
+            <div class="toc">
+<ul>
+<li><a href="#using-circle-ci-for-automatic-deploys">Using Circle CI for automatic deploys</a><ul>
+<li><a href="#complex-parallel-builds">Complex Parallel Builds</a></li>
+</ul>
+</li>
+<li><a href="#using-travis-ci-for-automatic-deploys">Using Travis CI for automatic deploys</a></li>
+</ul>
+</div>
+          </aside>
+    </div>
+  </div>
+<footer class="footer">
+  <div class="footer__container">
+    <p class="body-1">
+      <a href="https://github.com/grow/grow/">Grow</a> is released under the <a href="https://github.com/grow/grow/blob/master/LICENSE">MIT License</a>.
+      <br>
+      Except otherwise noted, docs are released under <a href="http://creativecommons.org/licenses/by/3.0/us/">CC 3.0</a> and icons are from <a href="http://flatties.uiparade.com">Flatties</a>.
+    </p>
+    <p class="body-1">
+      <a href="https://github.com/grow/grow.io/edit/master/content/docs/continuous.md">Edit on GitHub</a>
+    </p>
+  </div>
+</footer>    </div>
+
+    <script src="/js/composite/global-7bb167004cd34288c477594f56fc1413.min.js"></script>
+
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-44018013-3', 'auto');
+        ga('send', 'pageview');
+      </script>
+  <script src="/js/composite/docs-86f8da85c9025afce6b585ab59548634.min.js"></script>
+  </body>
+</html>

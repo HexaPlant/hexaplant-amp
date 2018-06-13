@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, height=device-height">
+    <title>
+Documents    </title>
+    <meta property="og:title" content="Documents – grow.io">
+    <meta property="og:site_name" content="grow.io">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://localhost/docs/documents/">
+      <link rel="shortcut icon" href="/favicon.ico">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Dosis:300,400,500|Source+Code+Pro" rel="stylesheet">
+    <link href="/css/composite/global-815332777827e9f19889b183c4d607cd.min.css" rel="stylesheet">
+  <link href="/css/composite/docs-f7da157a92f76d14dfae562341bc6dc1.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="wrapper">
+<header class="header">
+  <div class="header__logo">
+    <a href="/">
+      <img src="/static/images/grow.svg">
+      Grow
+    </a>
+  </div>
+  <nav class="header__nav nav">
+    <div class="nav__items nav__items--end">
+        <a class="nav__items__item " href="/start/">Start</a>
+        <a class="nav__items__item " href="/docs/">Docs</a>
+        <a class="nav__items__item " href="/project/">About</a>
+        <a class="nav__items__item " href="/search/">Search</a>
+        <a class="nav__items__item " href="/styleguide/">Styles</a>
+    </div>
+  </nav>
+</header>  <div class="block__main">
+    <div class="split_columns split_columns--reverse">
+<nav class="side_nav">
+      <h3>Get Started</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/">Welcome</a>
+      </li>
+      <li>
+        <a href="/docs/samples/">Themes &amp; samples</a>
+      </li>
+        </ul>
+      <h3>Reference</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/directory-structure/">Directory structure</a>
+      </li>
+      <li>
+        <a href="/docs/podspec/">Podspec</a>
+      </li>
+      <li>
+        <a href="/docs/templates/">Templates</a>
+      </li>
+      <li>
+        <a href="/docs/collections/">Collections</a>
+      </li>
+      <li class="active">
+        <a href="/docs/documents/">Documents</a>
+      </li>
+      <li>
+        <a href="/docs/urls/">Routes and URLs</a>
+      </li>
+      <li>
+        <a href="/docs/content-localization/">Content localization</a>
+      </li>
+      <li>
+        <a href="/docs/environments/">Build Environments</a>
+      </li>
+      <li>
+        <a href="/docs/markdown-extensions/">Markdown reference</a>
+      </li>
+      <li>
+        <a href="/docs/translations/">Translations</a>
+      </li>
+      <li>
+        <a href="/docs/preprocessors/">Preprocessors</a>
+      </li>
+      <li>
+        <a href="/docs/ui-tools/">UI Tools</a>
+      </li>
+      <li>
+        <a href="/docs/preferences/">Command Preferences</a>
+      </li>
+        </ul>
+      <h3>Extensions</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/extensions-install/">Installing Extensions</a>
+      </li>
+      <li>
+        <a href="/docs/extensions-legacy/">Legacy Extensions</a>
+      </li>
+      <li>
+        <a href="/docs/extensions/">Create Extensions</a>
+      </li>
+      <li>
+        <a href="/docs/extensions-preprocessor-legacy/">Create Preprocessors</a>
+      </li>
+        </ul>
+      <h3>Style Guide</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/partials/">Partials</a>
+      </li>
+        </ul>
+      <h3>Workflow</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/development-server/">Development server</a>
+      </li>
+      <li>
+        <a href="/docs/building/">Building</a>
+      </li>
+      <li>
+        <a href="/docs/deployment/">Deployment</a>
+      </li>
+      <li>
+        <a href="/docs/continuous/">Continuous integration</a>
+      </li>
+      <li>
+        <a href="/docs/git-usage/">Git + Grow = ♡</a>
+      </li>
+  </ul>
+</nav>        <main class="main_column pad readable_lines">
+          <h1>Documents</h1>
+  <div class="content">
+      
+<p>All content in Grow is stored inside <strong>content documents</strong>. Content documents are Markdown and YAML files in a pod's <code>/content/&lt;collection&gt;</code> directory.</p>
+<p>Documents optionally have a <code>path</code> property which allows the document to be exposed as a page in your site. If a document does not have a <code>path</code>, it is considered to be a partial document and can be included and re-used by other documents.</p>
+<h2 id="anatomy">Anatomy</h2>
+<h3 id="file-types">File types</h3>
+<p>Aside from the <em>_blueprint.yaml</em> file, files in a content collection's directory are treated as content documents. Grow accepts content documents in the following formats, indicated by their file extensions:</p>
+<ul>
+<li>HTML (<code>.html</code>, <code>.htm</code>)</li>
+<li>Markdown (<code>.markdown</code>, <code>.md</code>, <code>.mdown</code>, <code>.mkdn</code>, <code>.mkd</code>)</li>
+<li>YAML (<code>.yaml</code>, <code>.yml</code>)</li>
+</ul>
+<h3 id="document-path">Document path</h3>
+<p>The <strong>document path</strong> of a content document is its path relative to the pod's <code>/content/</code> directory. For example, a document whose <a href="#">pod path</a> is <code>/content/pages/welcome.md</code> would have a document path of <strong>pages/welcome.md</strong>.</p>
+<h3 id="front-matter">Front matter</h3>
+<p>YAML front matter is YAML metadata that is prepended to a document's body.</p>
+<p>Front matter contains fields. Field names prefixed with a dollar sign ($) are ones which are built-in to Grow. Front matter is encapsulated by three dashes (<code>---</code>). From views, fields can be accessed using <code>doc.&lt;field name&gt;</code> where <code>&lt;field name&gt;</code> is the name of the field. The dollar sign prefix should be omitted from field names accessed using template variables.</p>
+<p>As long as a blueprint specifies a document's <code>view</code> and its <code>path</code>, including YAML front matter in a content document is optional.</p>
+<h4 id="constructors">Constructors</h4>
+<p>Yaml constructors can be used to load in other documents or files into fields of the document.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>csv:    <span style="color: #902000">!g.csv</span> /pod/path/to.csv
+doc:    <span style="color: #902000">!g.doc</span> /content/page/about.yaml
+json:   <span style="color: #902000">!g.json</span> /pod/path/to.json
+static: <span style="color: #902000">!g.static</span> /pod/path/to.img
+url:    <span style="color: #902000">!g.url</span> /content/page/about.yaml
+yaml:   <span style="color: #902000">!g.yaml</span> /pod/path/to.yaml
+</pre></div>
+
+
+<p>Yaml constructors can also reference specific keys in the referenced yaml file.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>yaml:   <span style="color: #902000">!g.yaml</span> /pod/path/to.yaml?key.sub_key
+</pre></div>
+
+
+<h3 id="body">Body</h3>
+<p>A document's body is the stuff that comes after its YAML front matter. For Markdown-formatted documents, Grow provides a shortcut for accessing rendered HTML using <code>{{doc.html}}</code> (see the <code>html</code> API function below). The unprocessed body contents can be accessed with <code>{{doc.body}}</code>.</p>
+<h3 id="rendering-and-serving">Rendering and serving</h3>
+<p>Content documents are servable if they have a <code>path</code> (the URL path the document should be served at) and a <code>view</code> (the template used to render the document). By default, <code>path</code> and <code>view</code> are inherited from the collection's blueprint.</p>
+<p>If the blueprint does not have a <code>path</code> and a <code>view</code> set, you may specify <code>$path</code> and <code>$view</code> at the document-level. This also means that you can override the <code>$path</code> and <code>$view</code> on a document-by-document basis.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>$path: /about/              <span style="color: #60a0b0; font-style: italic"># Serves this document at /about/.</span>
+$view: /views/base.html     <span style="color: #60a0b0; font-style: italic"># Renders this document with /views/base.html.</span>
+</pre></div>
+
+
+<h2 id="example-documents">Example documents</h2>
+<h3 id="markdown-body">Markdown body</h3>
+<p>Markdown-formatted documents can have optional YAML front matter, which is delimited using <code>---</code>.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic"># /content/pages/foo.md</span>
+
+​---
+$title: Hello, Grow!
+$category: Get Started
+​---
+<span style="color: #60a0b0; font-style: italic"># Welcome to Grow!</span>
+
+This is a [Markdown](http://daringfireball.net/projects/markdown/) document.
+
+- I can use...
+- ... Markdown syntax...
+- ... to write my content.
+</pre></div>
+
+
+<h3 id="yaml-body">YAML body</h3>
+<p>YAML-formatted documents never use a separate YAML front matter. <code>{{doc.html}}</code> and <code>{{doc.body}}</code> are both <code>None</code> for YAML-formatted content documents.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic"># /content/pages/bar.yaml</span>
+
+$title: Hello, Grow!
+$category: Get Started
+
+key1: value1
+key2: value2
+</pre></div>
+
+
+<h3 id="html-body">HTML body</h3>
+<p>HTML-formatted documents have YAML front matter and an HTML body. As you'd expect, <code>{{doc.html}}</code> yields the HTML source for this document, and you'd likely want to use this as <code>{{doc.html|render|safe}}</code> in order to render the HTML within the tag's context.</p>
+<p>HTML-formatted documents are particularly useful when a content document has its own, unique presentation, that's closely coupled to its content structure. For example, if your collection has an index page, and if the index page has its own unique presentation that is never used anywhere else on the site, the index content document could define its own HTML template unique to itself.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span># /content/pages/index.html
+
+​---
+$title: Hello, Grow!
+$category: Get Started
+
+sections:
+- title: Section 1
+  text: Lorem ipsum dolor sit amet.
+- title: Section 2
+  text: Lorem ipsum dolor sit amet.
+- title: Section 3
+  text: Lorem ipsum dolor sit amet.
+​---
+<span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">for</span> <span style="color: #bb60d5">section</span> <span style="color: #007020; font-weight: bold">in</span> <span style="color: #bb60d5">doc.sections</span> <span style="color: #007020">%}</span>
+  &lt;h2&gt;<span style="color: #007020">{{</span><span style="color: #bb60d5">section.title</span><span style="color: #007020">}}</span>&lt;/h2&gt;
+  &lt;p&gt;<span style="color: #007020">{{</span><span style="color: #bb60d5">section.text</span><span style="color: #007020">}}</span>
+<span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">endfor</span> <span style="color: #007020">%}</span>
+</pre></div>
+
+
+<h2 id="functions">Functions</h2>
+<p>There are several API functions available for documents. These are implemented as functions rather than properties because they accept optional parameters.</p>
+<h3 id="next">next</h3>
+<p><code>next(&lt;document list&gt;)</code></p>
+<p>Returns the next document from a list of documents. If no list is provided, the default document ordering within a collection is used. If there is no next document, <code>None</code> is returned.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span># Returns the next document from the default list of documents.
+<span style="color: #007020">{{</span><span style="color: #bb60d5">doc.next</span><span style="color: #666666">()</span><span style="color: #007020">}}</span>                    # &lt;Document&gt;
+
+# Returns the next document from a custom list of documents.
+<span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">set</span> <span style="color: #bb60d5">doc1</span> <span style="color: #666666">=</span> <span style="color: #bb60d5">g.doc</span><span style="color: #666666">(</span><span style="color: #4070a0">&#39;/content/pages/foo.md&#39;</span><span style="color: #666666">)</span> <span style="color: #007020">%}</span>
+<span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">set</span> <span style="color: #bb60d5">doc2</span> <span style="color: #666666">=</span> <span style="color: #bb60d5">g.doc</span><span style="color: #666666">(</span><span style="color: #4070a0">&#39;/content/pages/bar.md&#39;</span><span style="color: #666666">)</span> <span style="color: #007020">%}</span>
+<span style="color: #007020">{{</span><span style="color: #bb60d5">doc.next</span><span style="color: #666666">([</span><span style="color: #bb60d5">doc1</span><span style="color: #666666">,</span> <span style="color: #bb60d5">doc</span><span style="color: #666666">,</span> <span style="color: #bb60d5">doc2</span><span style="color: #666666">])</span><span style="color: #007020">}}</span>   # &lt;Document (/content/pages/bar.md)&gt;
+</pre></div>
+
+
+<h3 id="prev">prev</h3>
+<p><code>prev(&lt;document list&gt;)</code></p>
+<p>Opposite of <code>next</code>. Returns the previous document from a list of documents. If no list is provided, the default document ordering within a collection is used. If there is no previous document, <code>None</code> is returned.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span># Returns the previous document from the default list of documents.
+<span style="color: #007020">{{</span><span style="color: #bb60d5">doc.prev</span><span style="color: #666666">()</span><span style="color: #007020">}}</span>                    # &lt;Document&gt;
+
+# Returns the previous document from a custom list of documents.
+<span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">set</span> <span style="color: #bb60d5">doc1</span> <span style="color: #666666">=</span> <span style="color: #bb60d5">g.doc</span><span style="color: #666666">(</span><span style="color: #4070a0">&#39;/content/pages/foo.md&#39;</span><span style="color: #666666">)</span> <span style="color: #007020">%}</span>
+<span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">set</span> <span style="color: #bb60d5">doc2</span> <span style="color: #666666">=</span> <span style="color: #bb60d5">g.doc</span><span style="color: #666666">(</span><span style="color: #4070a0">&#39;/content/pages/bar.md&#39;</span><span style="color: #666666">)</span> <span style="color: #007020">%}</span>
+<span style="color: #007020">{{</span><span style="color: #bb60d5">doc.prev</span><span style="color: #666666">([</span><span style="color: #bb60d5">doc1</span><span style="color: #666666">,</span> <span style="color: #bb60d5">doc</span><span style="color: #666666">,</span> <span style="color: #bb60d5">doc2</span><span style="color: #666666">])</span><span style="color: #007020">}}</span>   # &lt;Document (/content/pages/foo.md)&gt;
+</pre></div>
+
+
+<h3 id="titles">titles</h3>
+<p>A function that returns a title, given a title name. Allows for cascading titles. Useful for giving the document a different title in different contexts (for example, a breadcrumb or a side menu). If the parameter is omitted or None, the document's canonical title is used.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>$title: Example Hello World Document
+$titles:
+  nav: Hello World
+  breadcrumb: Hello World Document
+</pre></div>
+
+
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020">{{</span><span style="color: #bb60d5">doc.titles</span><span style="color: #666666">(</span><span style="color: #4070a0">&#39;nav&#39;</span><span style="color: #666666">)</span><span style="color: #007020">}}</span>          # Hello
+<span style="color: #007020">{{</span><span style="color: #bb60d5">doc.titles</span><span style="color: #666666">(</span><span style="color: #4070a0">&#39;breadcrumb&#39;</span><span style="color: #666666">)</span><span style="color: #007020">}}</span>   # Hello World Document
+<span style="color: #007020">{{</span><span style="color: #bb60d5">doc.titles</span><span style="color: #666666">(</span><span style="color: #4070a0">&#39;unknown&#39;</span><span style="color: #666666">)</span><span style="color: #007020">}}</span>      # Example Hello World Document
+<span style="color: #007020">{{</span><span style="color: #bb60d5">doc.title</span><span style="color: #666666">()</span><span style="color: #007020">}}</span>                # Example Hello World Document
+</pre></div>
+
+
+<h2 id="properties">Properties</h2>
+<p>Documents have a few built-in properties that cannot be overwritten by configs.</p>
+<h3 id="base">base</h3>
+<p>The basename (minus extension) of the document's file.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span># In document /content/pages/foo.md
+<span style="color: #007020">{{</span><span style="color: #bb60d5">doc.base</span><span style="color: #007020">}}</span>        # foo
+</pre></div>
+
+
+<h3 id="body_1">body</h3>
+<p>The unprocessed body of the document.</p>
+<h3 id="collection">collection</h3>
+<p>A reference to the document's collection.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #000080; font-weight: bold">#</span> In document /content/pages/foo.md
+{{doc.collection}}  # &lt;Collection (/content/pages/)&gt;
+</pre></div>
+
+
+<h3 id="collection_base">collection_base</h3>
+<p>A reference to the collection's relative base directory.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #000080; font-weight: bold">#</span> In document /content/pages/foo.md
+{{doc.collection_base}}  # /
+
+<span style="color: #000080; font-weight: bold">#</span> In document /content/pages/sub/foo.md
+{{doc.collection_base}}  # /sub/
+</pre></div>
+
+
+<h3 id="collection_path">collection_path</h3>
+<p>A reference to the document's path relative collection directory.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #000080; font-weight: bold">#</span> In document /content/pages/foo.md
+{{doc.collection_path}}  # /foo.md
+
+<span style="color: #000080; font-weight: bold">#</span> In document /content/pages/sub/foo.md
+{{doc.collection_path}}  # /sub/foo.md
+</pre></div>
+
+
+<h3 id="exists">exists</h3>
+<p>Whether a document exists.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">set</span> <span style="color: #bb60d5">page</span> <span style="color: #666666">=</span> <span style="color: #bb60d5">g.doc</span><span style="color: #666666">(</span><span style="color: #4070a0">&#39;/content/pages/home.yaml&#39;</span><span style="color: #666666">)</span> <span style="color: #007020">%}</span>
+<span style="color: #007020">{{</span><span style="color: #bb60d5">page.exists</span><span style="color: #007020">}}</span>
+</pre></div>
+
+
+<h3 id="footnotes">footnotes</h3>
+<p>Manages footnotes in a document and displays corresponding symbols.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>This needs to be considered.<span style="color: #007020">{{</span><span style="color: #bb60d5">doc.footnotes.add</span><span style="color: #666666">(</span><span style="color: #4070a0">&#39;More details available.&#39;</span><span style="color: #666666">)</span><span style="color: #007020">}}</span>
+</pre></div>
+
+
+<p>Can also make links to the list of footnotes.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">set</span> <span style="color: #bb60d5">symbol</span> <span style="color: #666666">=</span> <span style="color: #bb60d5">doc.footnotes.add</span><span style="color: #666666">(</span><span style="color: #4070a0">&#39;More details available.&#39;</span><span style="color: #666666">)</span> <span style="color: #007020">%}</span>
+This needs to be considered.&lt;a href=&quot;#footnote-<span style="color: #007020">{{</span><span style="color: #bb60d5">doc.footnotes.index</span><span style="color: #666666">(</span><span style="color: #bb60d5">symbol</span><span style="color: #666666">)</span><span style="color: #007020">}}</span>&quot;&gt;<span style="color: #007020">{{</span><span style="color: #bb60d5">symbol</span><span style="color: #007020">}}</span>&lt;/a&gt;
+</pre></div>
+
+
+<p>Footnotes can be displayed later on the page.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">for</span> <span style="color: #bb60d5">symbol</span><span style="color: #666666">,</span> <span style="color: #bb60d5">value</span> <span style="color: #007020; font-weight: bold">in</span> <span style="color: #bb60d5">doc.footnotes</span> <span style="color: #007020">%}</span>
+  &lt;p id=&quot;footnote-<span style="color: #007020">{{loop</span><span style="color: #bb60d5">.index0</span><span style="color: #007020">}}</span>&quot;&gt;<span style="color: #007020">{{</span><span style="color: #bb60d5">symbol</span><span style="color: #007020">}}</span> : <span style="color: #007020">{{_</span><span style="color: #666666">(</span><span style="color: #bb60d5">value</span><span style="color: #666666">)</span><span style="color: #007020">}}</span>&lt;/p&gt;
+<span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">endfor</span> <span style="color: #007020">%}</span>
+</pre></div>
+
+
+<p>The footnotes can be configured using the <code>$footnotes</code> field in the document or
+inherits the <a href="/docs/podspec/#footnotes">podspec <code>footnotes</code> configuration</a>.</p>
+<h3 id="html">html</h3>
+<p>Returns the document's body (for <code>.md</code> documents, the Markdown body) rendered as HTML.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020">{{</span><span style="color: #bb60d5">doc.html</span><span style="color: #666666">|</span><span style="color: #06287e">safe</span><span style="color: #007020">}}</span>  # Avoid escaping the HTML by piping to the &quot;safe&quot; filter.
+</pre></div>
+
+
+<h3 id="locale">locale</h3>
+<p>Returns the document's <a href="http://babel.edgewall.org/wiki/ApiDocs/babel.core#babel.core:Locale">Locale object</a>.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020">{{</span><span style="color: #bb60d5">doc.locale</span><span style="color: #007020">}}</span>                           # Locale object.
+
+# Display name of the document&#39;s locale in the document&#39;s language.
+<span style="color: #007020">{{</span><span style="color: #bb60d5">doc.get_display_name</span><span style="color: #666666">(</span><span style="color: #bb60d5">doc.locale</span><span style="color: #666666">)</span><span style="color: #007020">}}</span>
+
+# Display name of the document&#39;s locale in English.
+<span style="color: #007020">{{</span><span style="color: #bb60d5">doc.get_display_name</span><span style="color: #666666">(</span><span style="color: #4070a0">&#39;en&#39;</span><span style="color: #666666">)</span><span style="color: #007020">}}</span>
+
+# Whether the locale&#39;s language is RTL (right-to-left).
+<span style="color: #007020">{{</span><span style="color: #bb60d5">doc.locale.is_rtl</span><span style="color: #007020">}}</span>
+</pre></div>
+
+
+<h3 id="locales">locales</h3>
+<p>Returns a list of <a href="http://babel.edgewall.org/wiki/ApiDocs/babel.core#babel.core:Locale">Locale objects</a> for the document.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020">{{</span><span style="color: #bb60d5">doc.locales</span><span style="color: #007020">}}</span>
+</pre></div>
+
+
+<h3 id="title">title</h3>
+<p>Returns the document's canonical title as defined by <code>$title</code>.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020">{{</span><span style="color: #bb60d5">doc.title</span><span style="color: #007020">}}</span>
+</pre></div>
+
+
+<h3 id="url">url</h3>
+<p>The document's URL object.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020">{{</span><span style="color: #bb60d5">doc.url</span><span style="color: #007020">}}</span>            # The full URL to the document (based on the environment).
+<span style="color: #007020">{{</span><span style="color: #bb60d5">doc.url.path</span><span style="color: #007020">}}</span>       # The serving path to the document.
+<span style="color: #007020">{{</span><span style="color: #bb60d5">doc.url.host</span><span style="color: #007020">}}</span>
+<span style="color: #007020">{{</span><span style="color: #bb60d5">doc.url.scheme</span><span style="color: #007020">}}</span>
+<span style="color: #007020">{{</span><span style="color: #bb60d5">doc.url.port</span><span style="color: #007020">}}</span>
+</pre></div>
+
+
+<h2 id="built-in-fields">Built-in fields</h2>
+<p>Built-in fields carry special meaning that can affect various aspects of building your site. The values of built-in fields can change things such as a tag's output in the template API or the routes served by your site.</p>
+<h3 id="$category">$category</h3>
+<p>The category the document falls into.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>$category: Get Started
+</pre></div>
+
+
+<h3 id="$date">$date</h3>
+<p>A reference to the document's date defined by the <code>$date</code> field.</p>
+<h3 id="$dates">$dates</h3>
+<p>A function that returns a specific date based on the <code>$dates</code> field.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>$title: Example Hello World Document
+$dates:
+  created: 2017-12-01
+  published: 2017-12-25
+</pre></div>
+
+
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020">{{</span><span style="color: #bb60d5">doc.dates</span><span style="color: #666666">(</span><span style="color: #4070a0">&#39;created&#39;</span><span style="color: #666666">)</span><span style="color: #007020">}}</span>     # datetime.datetime(2017, 12, 1, 0, 0)
+<span style="color: #007020">{{</span><span style="color: #bb60d5">doc.dates</span><span style="color: #666666">(</span><span style="color: #4070a0">&#39;published&#39;</span><span style="color: #666666">)</span><span style="color: #007020">}}</span>   # datetime.datetime(2017, 12, 25, 0, 0)
+</pre></div>
+
+
+<h3 id="$hidden">$hidden</h3>
+<p>Whether to hide the document when querying for documents with the <code>g.docs</code> tag. Note that even if a document is marked hidden, it will still be rendered and served at its URL.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic"># Document will not show up in g.docs() results.</span>
+$hidden: true
+</pre></div>
+
+
+<h3 id="$localization">$localization</h3>
+<p>Specify custom localization rules for this document only. Overrides the collection's <code>localization</code> configuration.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic"># Localized documents will have a custom path.</span>
+$localization:
+  path: /foo/{locale}/{base}/
+
+<span style="color: #60a0b0; font-style: italic"># Override the locales this document is available in.</span>
+$localization:
+  locales:
+  - de
+  - it
+  - fr
+</pre></div>
+
+
+<h3 id="$order">$order</h3>
+<p>Specify the order for the collection's default document order. Negative and decimal values are allowed.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>$order: 2
+</pre></div>
+
+
+<h3 id="$parent">$parent</h3>
+<p>Specify the parent document in terms of content hierarchy. Used to auto-generate navigation and content relationships.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic"># Document /content/pages/foo.md becomes the parent.</span>
+$parent: /content/pages/foo.md
+</pre></div>
+
+
+<h3 id="$path">$path</h3>
+<p>The serving path to make the document available at. By default, individual documents inherit the path specified by their blueprint. However, it can be overriden by specifying <code>$path</code> at the document-level.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic"># Makes the document available at /foo/bar/.</span>
+$path: /foo/bar/
+
+<span style="color: #60a0b0; font-style: italic"># Makes the document available at /foo/.</span>
+$path: /{base}/
+</pre></div>
+
+
+<h3 id="$slug">$slug</h3>
+<p>Override the document's slug. By default, the document's slug is derived by slugifying its canonical title.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>$slug: foo-bar-baz
+</pre></div>
+
+
+<h3 id="$title">$title</h3>
+<p>The document's canonical title.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>$title: Canonical Title
+</pre></div>
+
+
+<h3 id="$titles">$titles</h3>
+<p>Specify custom titles for the document to be used in different contexts and by macros. Used by the <code>{{doc.titles()}}</code> function.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>$title: Really Long Canonical Title
+$titles:
+  breadcrumb: Breadcrumb Title
+  nav: Nav Title
+</pre></div>
+
+
+<h3 id="$view">$view</h3>
+<p>The view to use when rendering the page for this document. By default, individual documents inherit the view specified by their blueprint. However, it can be overriden by specifying it at the document-level.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic"># Renders the document with the template at /views/pages.html</span>
+$view: /views/pages.html
+</pre></div>
+  </div>
+        </main>
+          <aside class="toc_column">
+            <h3>In this document</h3>
+            <div class="toc">
+<ul>
+<li><a href="#anatomy">Anatomy</a><ul>
+<li><a href="#file-types">File types</a></li>
+<li><a href="#document-path">Document path</a></li>
+<li><a href="#front-matter">Front matter</a><ul>
+<li><a href="#constructors">Constructors</a></li>
+</ul>
+</li>
+<li><a href="#body">Body</a></li>
+<li><a href="#rendering-and-serving">Rendering and serving</a></li>
+</ul>
+</li>
+<li><a href="#example-documents">Example documents</a><ul>
+<li><a href="#markdown-body">Markdown body</a></li>
+<li><a href="#yaml-body">YAML body</a></li>
+<li><a href="#html-body">HTML body</a></li>
+</ul>
+</li>
+<li><a href="#functions">Functions</a><ul>
+<li><a href="#next">next</a></li>
+<li><a href="#prev">prev</a></li>
+<li><a href="#titles">titles</a></li>
+</ul>
+</li>
+<li><a href="#properties">Properties</a><ul>
+<li><a href="#base">base</a></li>
+<li><a href="#body_1">body</a></li>
+<li><a href="#collection">collection</a></li>
+<li><a href="#collection_base">collection_base</a></li>
+<li><a href="#collection_path">collection_path</a></li>
+<li><a href="#exists">exists</a></li>
+<li><a href="#footnotes">footnotes</a></li>
+<li><a href="#html">html</a></li>
+<li><a href="#locale">locale</a></li>
+<li><a href="#locales">locales</a></li>
+<li><a href="#title">title</a></li>
+<li><a href="#url">url</a></li>
+</ul>
+</li>
+<li><a href="#built-in-fields">Built-in fields</a><ul>
+<li><a href="#$category">$category</a></li>
+<li><a href="#$date">$date</a></li>
+<li><a href="#$dates">$dates</a></li>
+<li><a href="#$hidden">$hidden</a></li>
+<li><a href="#$localization">$localization</a></li>
+<li><a href="#$order">$order</a></li>
+<li><a href="#$parent">$parent</a></li>
+<li><a href="#$path">$path</a></li>
+<li><a href="#$slug">$slug</a></li>
+<li><a href="#$title">$title</a></li>
+<li><a href="#$titles">$titles</a></li>
+<li><a href="#$view">$view</a></li>
+</ul>
+</li>
+</ul>
+</div>
+          </aside>
+    </div>
+  </div>
+<footer class="footer">
+  <div class="footer__container">
+    <p class="body-1">
+      <a href="https://github.com/grow/grow/">Grow</a> is released under the <a href="https://github.com/grow/grow/blob/master/LICENSE">MIT License</a>.
+      <br>
+      Except otherwise noted, docs are released under <a href="http://creativecommons.org/licenses/by/3.0/us/">CC 3.0</a> and icons are from <a href="http://flatties.uiparade.com">Flatties</a>.
+    </p>
+    <p class="body-1">
+      <a href="https://github.com/grow/grow.io/edit/master/content/docs/documents.md">Edit on GitHub</a>
+    </p>
+  </div>
+</footer>    </div>
+
+    <script src="/js/composite/global-7bb167004cd34288c477594f56fc1413.min.js"></script>
+
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-44018013-3', 'auto');
+        ga('send', 'pageview');
+      </script>
+  <script src="/js/composite/docs-86f8da85c9025afce6b585ab59548634.min.js"></script>
+  </body>
+</html>

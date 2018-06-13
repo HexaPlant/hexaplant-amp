@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, height=device-height">
+    <title>
+Markdown reference    </title>
+    <meta property="og:title" content="Markdown reference – grow.io">
+    <meta property="og:site_name" content="grow.io">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://localhost/docs/markdown-extensions/">
+      <link rel="shortcut icon" href="/favicon.ico">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Dosis:300,400,500|Source+Code+Pro" rel="stylesheet">
+    <link href="/css/composite/global-815332777827e9f19889b183c4d607cd.min.css" rel="stylesheet">
+  <link href="/css/composite/docs-f7da157a92f76d14dfae562341bc6dc1.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="wrapper">
+<header class="header">
+  <div class="header__logo">
+    <a href="/">
+      <img src="/static/images/grow.svg">
+      Grow
+    </a>
+  </div>
+  <nav class="header__nav nav">
+    <div class="nav__items nav__items--end">
+        <a class="nav__items__item " href="/start/">Start</a>
+        <a class="nav__items__item " href="/docs/">Docs</a>
+        <a class="nav__items__item " href="/project/">About</a>
+        <a class="nav__items__item " href="/search/">Search</a>
+        <a class="nav__items__item " href="/styleguide/">Styles</a>
+    </div>
+  </nav>
+</header>  <div class="block__main">
+    <div class="split_columns split_columns--reverse">
+<nav class="side_nav">
+      <h3>Get Started</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/">Welcome</a>
+      </li>
+      <li>
+        <a href="/docs/samples/">Themes &amp; samples</a>
+      </li>
+        </ul>
+      <h3>Reference</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/directory-structure/">Directory structure</a>
+      </li>
+      <li>
+        <a href="/docs/podspec/">Podspec</a>
+      </li>
+      <li>
+        <a href="/docs/templates/">Templates</a>
+      </li>
+      <li>
+        <a href="/docs/collections/">Collections</a>
+      </li>
+      <li>
+        <a href="/docs/documents/">Documents</a>
+      </li>
+      <li>
+        <a href="/docs/urls/">Routes and URLs</a>
+      </li>
+      <li>
+        <a href="/docs/content-localization/">Content localization</a>
+      </li>
+      <li>
+        <a href="/docs/environments/">Build Environments</a>
+      </li>
+      <li class="active">
+        <a href="/docs/markdown-extensions/">Markdown reference</a>
+      </li>
+      <li>
+        <a href="/docs/translations/">Translations</a>
+      </li>
+      <li>
+        <a href="/docs/preprocessors/">Preprocessors</a>
+      </li>
+      <li>
+        <a href="/docs/ui-tools/">UI Tools</a>
+      </li>
+      <li>
+        <a href="/docs/preferences/">Command Preferences</a>
+      </li>
+        </ul>
+      <h3>Extensions</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/extensions-install/">Installing Extensions</a>
+      </li>
+      <li>
+        <a href="/docs/extensions-legacy/">Legacy Extensions</a>
+      </li>
+      <li>
+        <a href="/docs/extensions/">Create Extensions</a>
+      </li>
+      <li>
+        <a href="/docs/extensions-preprocessor-legacy/">Create Preprocessors</a>
+      </li>
+        </ul>
+      <h3>Style Guide</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/partials/">Partials</a>
+      </li>
+        </ul>
+      <h3>Workflow</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/docs/development-server/">Development server</a>
+      </li>
+      <li>
+        <a href="/docs/building/">Building</a>
+      </li>
+      <li>
+        <a href="/docs/deployment/">Deployment</a>
+      </li>
+      <li>
+        <a href="/docs/continuous/">Continuous integration</a>
+      </li>
+      <li>
+        <a href="/docs/git-usage/">Git + Grow = ♡</a>
+      </li>
+  </ul>
+</nav>        <main class="main_column pad readable_lines">
+          <h1>Markdown reference</h1>
+  <div class="content">
+      
+<p>Grow uses the <a href="https://github.com/waylan/Python-Markdown">Python-Markdown</a> package for its Markdown implementation. You can see <a href="http://daringfireball.net/projects/markdown/syntax">John Gruber's Syntax Documentation</a> to learn about Markdown's default syntax rules.</p>
+<p>These built-in extensions are enabled by default.</p>
+<h2 id="tables">Tables</h2>
+<p>Generates tables. <a href="http://pythonhosted.org/Markdown/extensions/tables.html">View documentation</a>.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>| Header 1 | Header 2
+|-|-|
+| Row 1 | Content
+| Row 2 | Content
+</pre></div>
+
+
+<h2 id="table-of-contents">Table of Contents</h2>
+<p>Generates a table of contents based on the headings in a document. <a href="https://python-markdown.github.io/extensions/toc/">View documentation</a>.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>[​TOC]
+</pre></div>
+
+
+<h3 id="configuration">Configuration</h3>
+<p>Configuration options available to the <a href="https://python-markdown.github.io/extensions/toc/#usage">toc extension</a> can be configured in the podspec.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic"># podspec.yaml</span>
+markdown:
+  extensions:
+  - kind: toc
+    marker: [<span style="color: #bb60d5">TOC</span>]
+    title:
+    baselevel: 1
+    anchorlink: False
+    permalink: False
+    separator: <span style="color: #4070a0">&quot;-&quot;</span>
+</pre></div>
+
+
+<h2 id="include">Include</h2>
+<p>Includes content from another document.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #000080; font-weight: bold">#</span> Remove the extra space after `)`.
+[include(&#39;/content/shared/stuff.md&#39;) ]
+</pre></div>
+
+
+<h2 id="url">URL</h2>
+<p>Url to a document or static file in the pod.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #000080; font-weight: bold">#</span> Remove the extra space after `)`.
+[url(&#39;/content/pages/archive.md&#39;) ]
+</pre></div>
+
+
+<h2 id="sourcecode">Sourcecode</h2>
+<p>Implements pygments syntax highlighting for code snippets.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>[​sourcecode:html]
+&lt;!doctype html&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;title&gt;Hello World!&lt;/title&gt;
+&lt;p&gt;Source code highlighting.
+[​/sourcecode]
+</pre></div>
+
+
+<p>You can also highlight specific lines:</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>[​sourcecode:html, hl_lines=&quot;1 3&quot;]
+&lt;!doctype html&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;title&gt;Hello World!&lt;/title&gt;
+&lt;p&gt;Source code highlighting.
+[​/sourcecode]
+</pre></div>
+
+
+<p>Which appears as:</p>
+<p>​
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="background-color: #ffffcc"><span style="color: #007020">&lt;!doctype html&gt;</span>
+</span>&lt;<span style="color: #062873; font-weight: bold">meta</span> <span style="color: #4070a0">charset</span><span style="color: #666666">=</span><span style="color: #4070a0">&quot;utf-8&quot;</span>&gt;
+<span style="background-color: #ffffcc">&lt;<span style="color: #062873; font-weight: bold">title</span>&gt;Hello World!&lt;/<span style="color: #062873; font-weight: bold">title</span>&gt;
+</span>&lt;<span style="color: #062873; font-weight: bold">p</span>&gt;Source code highlighting.
+</pre></div></p>
+<h3 id="configuration_1">Configuration</h3>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic"># podspec.yaml</span>
+markdown:
+  extensions:
+  - kind: sourcecode
+    classes: False         <span style="color: #60a0b0; font-style: italic"># Uses classes instead of inline styles.</span>
+    class_name: code       <span style="color: #60a0b0; font-style: italic"># Class to use on the wrapper div.</span>
+    highlighter: pygments  <span style="color: #60a0b0; font-style: italic"># pygments/plain</span>
+    theme: default         <span style="color: #60a0b0; font-style: italic"># Pygments theme name.</span>
+</pre></div>
+
+
+<p>If you choose to use classes instead of inline styles you can use pygments to generate the stylesheet for a <a href="http://richleland.github.io/pygments-css/">theme</a>.</p>
+<p>To generate the styles for the <code>friendly</code> theme with a <code>code</code> class wrapper.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>pygmentize -S friendly -f html -a .code &gt; styles.css
+</pre></div>
+
+
+<h2 id="code-block">Code Block</h2>
+<p>An alternative to the <code>[sourcecode]</code> block is to use GitHub-flavor backticks via python markdown's <a href="https://python-markdown.github.io/extensions/fenced_code_blocks/">code fence extension</a>.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #4070a0">`​``js</span>
+<span style="color: #4070a0">console.log(&#39;Hello World&#39;);</span>
+<span style="color: #4070a0">`</span>​``
+</pre></div>
+
+
+<p>You can also highlight specific lines:</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #4070a0">`​``js hl_lines=&quot;1&quot;</span>
+<span style="color: #4070a0">console.log(&#39;Hello World&#39;);</span>
+<span style="color: #4070a0">`</span>​``
+</pre></div>
+
+
+<p>Which would show up as:</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="background-color: #ffffcc">console.log(<span style="color: #4070a0">&#39;Hello World&#39;</span>);
+</span></pre></div>
+
+
+<h3 id="configuration_2">Configuration</h3>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic"># podspec.yaml</span>
+markdown:
+  extensions:
+  - kind: markdown.extensions.codehilite
+    classes: False         <span style="color: #60a0b0; font-style: italic"># Uses classes instead of inline styles.</span>
+    class_name: code       <span style="color: #60a0b0; font-style: italic"># Class to use on the wrapper div.</span>
+    highlighter: pygments  <span style="color: #60a0b0; font-style: italic"># pygments/plain</span>
+    theme: default         <span style="color: #60a0b0; font-style: italic"># Pygments theme name.</span>
+</pre></div>
+
+
+<p>If you choose to use classes instead of inline styles you can use pygments to generate the stylesheet for a <a href="http://richleland.github.io/pygments-css/">theme</a>.</p>
+<p>To generate the styles for the <code>friendly</code> theme with a <code>code</code> class wrapper.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>pygmentize -S friendly -f html -a .code &gt; styles.css
+</pre></div>
+  </div>
+        </main>
+          <aside class="toc_column">
+            <h3>In this document</h3>
+            <div class="toc">
+<ul>
+<li><a href="#tables">Tables</a></li>
+<li><a href="#table-of-contents">Table of Contents</a><ul>
+<li><a href="#configuration">Configuration</a></li>
+</ul>
+</li>
+<li><a href="#include">Include</a></li>
+<li><a href="#url">URL</a></li>
+<li><a href="#sourcecode">Sourcecode</a><ul>
+<li><a href="#configuration_1">Configuration</a></li>
+</ul>
+</li>
+<li><a href="#code-block">Code Block</a><ul>
+<li><a href="#configuration_2">Configuration</a></li>
+</ul>
+</li>
+</ul>
+</div>
+          </aside>
+    </div>
+  </div>
+<footer class="footer">
+  <div class="footer__container">
+    <p class="body-1">
+      <a href="https://github.com/grow/grow/">Grow</a> is released under the <a href="https://github.com/grow/grow/blob/master/LICENSE">MIT License</a>.
+      <br>
+      Except otherwise noted, docs are released under <a href="http://creativecommons.org/licenses/by/3.0/us/">CC 3.0</a> and icons are from <a href="http://flatties.uiparade.com">Flatties</a>.
+    </p>
+    <p class="body-1">
+      <a href="https://github.com/grow/grow.io/edit/master/content/docs/markdown-extensions.md">Edit on GitHub</a>
+    </p>
+  </div>
+</footer>    </div>
+
+    <script src="/js/composite/global-7bb167004cd34288c477594f56fc1413.min.js"></script>
+
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-44018013-3', 'auto');
+        ga('send', 'pageview');
+      </script>
+  <script src="/js/composite/docs-86f8da85c9025afce6b585ab59548634.min.js"></script>
+  </body>
+</html>

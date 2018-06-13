@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, height=device-height">
+    <title>
+Localizing your site    </title>
+    <meta property="og:title" content="Localizing your site – grow.io">
+    <meta property="og:site_name" content="grow.io">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://localhost/start/6/">
+      <link rel="shortcut icon" href="/favicon.ico">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Dosis:300,400,500|Source+Code+Pro" rel="stylesheet">
+    <link href="/css/composite/global-815332777827e9f19889b183c4d607cd.min.css" rel="stylesheet">
+  <link href="/css/composite/docs-f7da157a92f76d14dfae562341bc6dc1.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="wrapper">
+<header class="header">
+  <div class="header__logo">
+    <a href="/">
+      <img src="/static/images/grow.svg">
+      Grow
+    </a>
+  </div>
+  <nav class="header__nav nav">
+    <div class="nav__items nav__items--end">
+        <a class="nav__items__item " href="/start/">Start</a>
+        <a class="nav__items__item " href="/docs/">Docs</a>
+        <a class="nav__items__item " href="/project/">About</a>
+        <a class="nav__items__item " href="/search/">Search</a>
+        <a class="nav__items__item " href="/styleguide/">Styles</a>
+    </div>
+  </nav>
+</header>  <div class="block__main">
+    <div class="split_columns split_columns--reverse">
+<nav class="side_nav">
+      <h3>Codelab</h3>
+      <ul class="nav nav-stacked">
+      <li>
+        <a href="/start/">Start with Grow</a>
+      </li>
+      <li>
+        <a href="/start/1/">Getting Grow</a>
+      </li>
+      <li>
+        <a href="/start/2/">Initializing a new Grow project</a>
+      </li>
+      <li>
+        <a href="/start/3/">Live development</a>
+      </li>
+      <li>
+        <a href="/start/4/">Pod specification</a>
+      </li>
+      <li>
+        <a href="/start/5/">Working with content</a>
+      </li>
+      <li class="active">
+        <a href="/start/6/">Localizing your site</a>
+      </li>
+      <li>
+        <a href="/start/7/">Building your site</a>
+      </li>
+      <li>
+        <a href="/start/8/">Launching</a>
+      </li>
+      <li>
+        <a href="/start/9/">Wrap up</a>
+      </li>
+  </ul>
+</nav>        <main class="pad readable_lines">
+          <h1>Localizing your site</h1>
+  <div class="content">
+      <p>Grow's goal is to be the best and easiest way to localize high-quality, content-heavy web sites. We've tried to turn localization from an often-confusing process/requirement into one that fits, neatly and flexibly, right into your web site production workflow.</p>
+<h2 id="specifying-locales">Specifying locales</h2>
+<p>In our codelab's podspec, we've specified that the default locale for our site is <em>"en"</em> and the site should be available in four locales. The below configuration applies to all pages and content throughout the site.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic"># /podspec.yaml</span>
+localization:
+  default_locale: en
+  locales:
+  - de
+  - en
+  - ja
+  - zh
+</pre></div>
+
+
+<p>In order to actually build a page to a localized URLs, a localized URL path format is specified for a page's content collection.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic"># /content/pages/_blueprint.yaml</span>
+path: /{slug}/
+localization:
+  path: /{locale}/{slug}/
+</pre></div>
+
+
+<p>The combination of the config in the podspec and the config in the blueprint instructs Grow to build four pages for each piece of content in the <em>pages</em> collection. One for the default locale, and three localized variations. The <code>path</code> configs determine the URL paths for the default and the localized pages, respectively.</p>
+<h2 id="adding-locales">Adding locales</h2>
+<p>To localize your site into an additional locale, simply add it to the list of locales in the podspec file. All content that inherits the site-wide configuration will now be configured to have that additional locale.</p>
+<p>Go ahead and add the <em>es</em> locale to the list of locales in <code>podspec.yaml</code>.</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>locales:
+- es
+</pre></div>
+
+
+<p>Refresh your site and notice the language select in the footer. The choice corresponding to the <em>es</em> locale has been automatically added to the menu. Choosing the menu item brings you to the es-localized site.</p>
+<h2 id="machine-translation">Machine translation</h2>
+<p>Grow comes with a machine translation feature (by way of the <a href="https://bitbucket.org/zhuoqiang/goslate">Goslate library</a> which leverages Google Translate). Machine translation can help you prepare your site ready for professional localization and translation.</p>
+<p>You can populate your pod with machine translations during the design and development phase, and then send off the message catalogs to a translation provider for professional translation. (Machine translations can be very useful, but you probably shouldn't rely on them for your production site!)</p>
+<p>Let's try machine translating the <code>ja</code> locale. Run the following command:</p>
+<div class="code" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>grow translations machine --locale<span style="color: #666666">=</span>ja
+</pre></div>
+
+
+<p>If you've left your server running, you'll have to restart your development server for the translations to take effect. Open <code>http://localhost:8080/ja/</code> and view the localized web site. Note that machine translation does not translate the Markdown body of a content document – just tagged fields in configs and tagged UI strings.</p>
+<h2 id="translation-storage">Translation storage</h2>
+<p>All translations are stored in the <em>/translations/</em> directory of your pod in formats compatible with gettext. The <code>messages.pot</code> file is a message template, and each locale has its own <code>messages.po</code> catalog file. Translations are compiled to <code>messages.mo</code> files.</p>
+  </div>
+
+          <nav class="relative_nav">
+              <a href="/start/5/" class="button button--icon-start">
+                <i class="material-icons">arrow_back</i>
+                Working with content
+              </a>
+              <a href="/start/7/" class="button button--icon-end">
+                Building your site
+                <i class="material-icons">arrow_forward</i>
+              </a>
+          </nav>
+        </main>
+    </div>
+  </div>
+<footer class="footer">
+  <div class="footer__container">
+    <p class="body-1">
+      <a href="https://github.com/grow/grow/">Grow</a> is released under the <a href="https://github.com/grow/grow/blob/master/LICENSE">MIT License</a>.
+      <br>
+      Except otherwise noted, docs are released under <a href="http://creativecommons.org/licenses/by/3.0/us/">CC 3.0</a> and icons are from <a href="http://flatties.uiparade.com">Flatties</a>.
+    </p>
+    <p class="body-1">
+      <a href="https://github.com/grow/grow.io/edit/master/content/codelab/6.md">Edit on GitHub</a>
+    </p>
+  </div>
+</footer>    </div>
+
+    <script src="/js/composite/global-7bb167004cd34288c477594f56fc1413.min.js"></script>
+
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-44018013-3', 'auto');
+        ga('send', 'pageview');
+      </script>
+  <script src="/js/composite/docs-86f8da85c9025afce6b585ab59548634.min.js"></script>
+  </body>
+</html>
