@@ -1,0 +1,66 @@
+<!doctype html>
+<!--
+A minimal example showing how to display a IIIF manifest for a Europeana record
+in the Leaflet-IIIF viewer.
+
+Before running this, you need to change "YOUR_API_KEY" to your actual Europeana
+API key. Get one at <http://labs.europeana.eu/api/registration>.
+
+This example builds on Jack Reed's Leaflet-IIIF plugin example at
+<http://mejackreed.github.io/Leaflet-IIIF/examples/iiif-manifest-example.js>
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Europeana Leaflet-IIIF example</title>
+    <link rel="stylesheet" href="https://europeanastyleguide.a.cdnify.io/v0.2.62/js/modules/lib/map/leaflet-0.7.3/leaflet.css" />
+    <link rel="stylesheet" href="https://europeanastyleguide.a.cdnify.io/v0.2.62/js/modules/lib/iiif/iiif.css" />
+
+    <style type="text/css">
+      html, body, #map {
+        height: 100%;
+        margin: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="map"></div>
+
+    <script src="https://europeanastyleguide.a.cdnify.io/v0.2.62/js/modules/lib/jquery/jquery.js"></script>
+    <script src="https://europeanastyleguide.a.cdnify.io/v0.2.62/js/modules/lib/map/leaflet-0.7.3/leaflet.js"></script>
+    <script src="https://europeanastyleguide.a.cdnify.io/v0.2.62/js/modules/lib/iiif/leaflet-iiif.js"></script>
+
+    <script type="text/javascript">
+      var recordId = '/9200211/en_list_one_vad_0342';
+      var europeanaApiKey = 'YOUR_API_KEY';
+      
+      var apiUrl = 'https://goobi.acdh.oeaw.ac.at/viewer/rest/iiif/manifests/AC13384299/manifest";
+      $.getJSON(apiUrl, function(data) {
+        var manifestUrl = data.object.aggregations[0].webResources[0].dctermsIsReferencedBy[0];
+
+        var iiif;
+        var iiifLayers = {};
+
+        map = L.map('map', {
+          center: [0, 0],
+          crs: L.CRS.Simple,
+          zoom: 0
+        });
+
+        // Grab a IIIF manifest
+        $.getJSON(manifestUrl, function(data) {
+          // For each image create a L.TileLayer.Iiif object and add that to an object literal for the layer control
+          $.each(data.sequences[0].canvases, function(_, val) {
+            iiifLayers[val.label] = L.tileLayer.iiif(val.images[0].resource.service['@id'] + '/info.json');
+          });
+          // Add layers control to the map
+          L.control.layers(iiifLayers).addTo(map);
+
+          // Access the first IIIF object and add it to the map
+          iiifLayers[Object.keys(iiifLayers)[0]].addTo(map);
+        });
+      });
+    </script>
+  </body>
+</html>
